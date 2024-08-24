@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "ques-mod:item/mythril_shovel"
+  }
+}

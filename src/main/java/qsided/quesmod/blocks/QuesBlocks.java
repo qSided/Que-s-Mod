@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
 
 public class QuesBlocks {
-    public static final Block MYTHRIL_DEPOSIT = register(new Block(AbstractBlock.Settings.create().hardness(30).requiresTool()), "mythril_deposit", true);
+    public static final Block MYTHRIL_DEPOSIT = register(new Block(AbstractBlock.Settings.create().hardness(3)), "mythril_deposit", true);
     public static Block register(Block block, String name, boolean shouldRegisterItem) {
         Identifier id = Identifier.of(QuesMod.MOD_ID, name);
         

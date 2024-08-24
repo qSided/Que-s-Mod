@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qsided.quesmod.blocks.QuesBlocks;
 import qsided.quesmod.items.QuesItems;
+import qsided.quesmod.items.materials.QuesArmorMaterials;
 
 public class QuesMod implements ModInitializer {
 	// This logger is used to write text to the console and the log file.
@@ -18,6 +19,7 @@ public class QuesMod implements ModInitializer {
 	public void onInitialize() {
 		QuesItems.initialize();
 		QuesBlocks.initialize();
+		QuesArmorMaterials.initialize();
 
 		LOGGER.info("Que's mod loaded!");
 	}

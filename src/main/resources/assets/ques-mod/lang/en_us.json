@@ -1,4 +1,10 @@
 {
   "item.ques-mod.mythril": "Mythril",
+  "item.ques-mod.mythril_sword": "Mythril Sword",
+  "item.ques-mod.mythril_pickaxe": "Mythril Pickaxe",
+  "item.ques-mod.mythril_axe": "Mythril Axe",
+  "item.ques-mod.mythril_shovel": "Mythril Shovel",
+  "item.ques-mod.mythril_hoe": "Mythril Hoe",
   "block.ques-mod.mythril_deposit": "Mythril Deposit"
+
 }
