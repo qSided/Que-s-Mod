@@ -5,6 +5,15 @@
   "item.ques-mod.mythril_axe": "Mythril Axe",
   "item.ques-mod.mythril_shovel": "Mythril Shovel",
   "item.ques-mod.mythril_hoe": "Mythril Hoe",
-  "block.ques-mod.mythril_deposit": "Mythril Deposit"
-
+  "item.ques-mod.mythril_helmet": "Mythril Helmet",
+  "item.ques-mod.mythril_chestplate": "Mythril Chestplate",
+  "item.ques-mod.mythril_leggings": "Mythril Leggings",
+  "item.ques-mod.mythril_boots": "Mythril Boots",
+  "block.ques-mod.mythril_deposit": "Mythril Deposit",
+  "item.ques-mod.mythril_template_apply": "Diamond Equipment",
+  "item.ques-mod.mythril_template_ingredient": "Mythril",
+  "item.ques-mod.mythril_template_title": "Mythril Upgrade",
+  "item.ques-mod.mythril_template_base_description": "Add diamond armor, weapon, or tool",
+  "item.ques-mod.mythril_template_addition_description": "Add Mythril",
+  "item.ques-mod.mythril_upgrade_template": "Smithing Template"
 }

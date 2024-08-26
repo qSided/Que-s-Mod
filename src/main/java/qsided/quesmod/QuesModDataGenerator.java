@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import qsided.quesmod.data.QuesBlockLootTables;
 import qsided.quesmod.data.QuesItemModels;
+import qsided.quesmod.data.QuesRecipes;
 
 public class QuesModDataGenerator implements DataGeneratorEntrypoint {
 	@Override
@@ -11,5 +12,6 @@ public class QuesModDataGenerator implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack quesPack = fabricDataGenerator.createPack();
 		quesPack.addProvider(QuesBlockLootTables::new);
 		quesPack.addProvider(QuesItemModels::new);
+		quesPack.addProvider(QuesRecipes::new);
 	}
 }

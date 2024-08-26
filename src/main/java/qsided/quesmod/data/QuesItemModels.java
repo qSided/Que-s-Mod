@@ -24,5 +24,10 @@ public class QuesItemModels extends FabricModelProvider {
         itemModelGenerator.register(QuesItems.MYTHRIL_AXE, Models.HANDHELD);
         itemModelGenerator.register(QuesItems.MYTHRIL_SHOVEL, Models.HANDHELD);
         itemModelGenerator.register(QuesItems.MYTHRIL_HOE, Models.HANDHELD);
+        itemModelGenerator.register(QuesItems.MYTHRIL_HELMET, Models.GENERATED);
+        itemModelGenerator.register(QuesItems.MYTHRIL_CHESTPLATE, Models.GENERATED);
+        itemModelGenerator.register(QuesItems.MYTHRIL_LEGGINGS, Models.GENERATED);
+        itemModelGenerator.register(QuesItems.MYTHRIL_BOOTS, Models.GENERATED);
+        itemModelGenerator.register(QuesItems.MYTHRIL_UPGRADE_TEMPLATE, Models.GENERATED);
     }
 }

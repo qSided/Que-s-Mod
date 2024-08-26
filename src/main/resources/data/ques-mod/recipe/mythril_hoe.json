@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "ques-mod:mythril_upgrade_template"
+  },
+  "base": {
+    "item": "minecraft:diamond_hoe"
+  },
+  "addition": {
+    "item": "ques-mod:mythril"
+  },
+  "result": {
+    "id": "ques-mod:mythril_hoe"
+  }
+}

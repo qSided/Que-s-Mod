@@ -10,7 +10,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
-import qsided.quesmod.items.QuesItems;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +18,7 @@ import java.util.function.Supplier;
 public class QuesArmorMaterials {
     
     public static void initialize() {}
+    public static final int MYTHRIL_DURABILITY_MULTIPLIER = 12;
     
     public static final RegistryEntry<ArmorMaterial> MYTHRIL = registerMaterial(
             "mythril",
