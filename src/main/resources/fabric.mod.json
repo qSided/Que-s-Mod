@@ -3,7 +3,7 @@
 	"id": "ques-mod",
 	"version": "${version}",
 	"name": "Que's Mod",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "Que's mod does a lot of different stuff.",
 	"authors": [
 		"qSided"
 	],

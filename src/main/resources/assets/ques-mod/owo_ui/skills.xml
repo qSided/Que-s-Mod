@@ -1,0 +1,70 @@
+<owo-ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/wisp-forest/owo-lib/1.20/owo-ui.xsd">
+    <components>
+        <flow-layout direction="vertical">
+            <children>
+                <!-- This one is for the main Container! -->
+                <flow-layout direction="vertical">
+
+                    <children>
+
+                        <collapsible expanded="true">
+
+                            <children><!-- Everything under the collapsible -->
+                                <grid-layout rows="2" columns="3" id="grid">
+                                    <children>
+
+                                    </children>
+                                </grid-layout>
+                                <!--
+                                <label>
+                                    <text translate="true">skills.descriptions.ques-mod.mining</text>
+                                </label>
+                                <box>
+                                    <sizing>
+                                        <vertical method="fixed">6</vertical>
+                                        <horizontal method="fill">100</horizontal>
+                                    </sizing>
+                                    <fill>true</fill>
+                                    <color>#2f2f2f</color>
+                                </box>
+                                <label id="mlevel"/>
+                                -->
+                            </children>
+
+                            <padding>
+                                <all>10</all>
+                            </padding>
+
+                            <text translate="true">skills.ques-mod.mining</text><!-- Text displayed on collapsible -->
+                            <horizontal-alignment>left</horizontal-alignment>
+                        </collapsible>
+                    </children>
+
+                    <horizontal-alignment>left</horizontal-alignment>
+                    <vertical-alignment>center</vertical-alignment>
+
+                    <padding>
+                        <all>10</all>
+                    </padding>
+
+                    <surface>
+                        <panel dark="true"/>
+                    </surface>
+                    <sizing>
+                        <vertical method="fill">70</vertical>
+                        <horizontal method="fill">80</horizontal>
+                    </sizing>
+                </flow-layout>
+
+            </children>
+
+            <vertical-alignment>center</vertical-alignment>
+            <horizontal-alignment>center</horizontal-alignment>
+
+            <surface>
+                <vanilla-translucent/>
+            </surface>
+        </flow-layout>
+    </components>
+</owo-ui>

@@ -15,5 +15,13 @@
   "item.ques-mod.mythril_template_title": "Mythril Upgrade",
   "item.ques-mod.mythril_template_base_description": "Add diamond armor, weapon, or tool",
   "item.ques-mod.mythril_template_addition_description": "Add Mythril",
-  "item.ques-mod.mythril_upgrade_template": "Smithing Template"
+  "item.ques-mod.mythril_upgrade_template": "Smithing Template",
+  "itemGroup.ques_items": "Que's Items",
+  "skills.ques-mod.mining": "§5Mining",
+  "skills.ques-mod.combat": "§cCombat",
+  "skills.ques-mod.enchanting": "§9Enchanting",
+  "skills.ques-mod.alchemy": "§eAlchemy",
+  "skills.ques-mod.current_level": "§8Current Lvl§7: ",
+  "skills.ques-mod.current_experience": "§8Current Exp§7: ",
+  "skills.descriptions.ques-mod.mining": "§8Your §5mining §8skill determines the §dspeed\n§8at which you break blocks and\nthe §ddurability §8of pickaxes and shovels."
 }

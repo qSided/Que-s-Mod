@@ -1,9 +1,11 @@
 package qsided.quesmod.items;
 
+import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -13,7 +15,14 @@ import qsided.quesmod.items.materials.QuesArmorMaterials;
 
 import java.util.List;
 
+import static net.minecraft.item.SwordItem.createAttributeModifiers;
+
 public class QuesItems {
+    public static final RegistryKey<ItemGroup> QUES_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(QuesMod.MOD_ID, "ques_items"));
+    public static final ItemGroup QUES_ITEM_GROUP = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(QuesItems.MYTHRIL_SWORD))
+            .displayName(Text.translatable("itemGroup.ques_items"))
+            .build();
     public static final Item MYTHRIL = register(new Item(new Item.Settings().maxCount(64).fireproof()), "mythril");
     public static final MythrilMaterial MYTHRIL_INSTANCE = new MythrilMaterial();
     public static final Item MYTHRIL_SWORD = register(new SwordItem(MYTHRIL_INSTANCE, new Item.Settings()), "mythril_sword");
@@ -61,25 +70,23 @@ public class QuesItems {
     public static Item register(Item item, String id) {
         Identifier itemId = Identifier.of(QuesMod.MOD_ID, id);
         
-        Item registeredItem = Registry.register(Registries.ITEM, itemId, item);
-        
-        return registeredItem;
+        return Registry.register(Registries.ITEM, itemId, item);
     }
     
     public static void initialize() {
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS)
-                .register((itemGroup) -> {
-                    itemGroup.add(MYTHRIL);
-                    itemGroup.add(MYTHRIL_UPGRADE_TEMPLATE);
-                });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS)
-                .register((itemGroup) -> {
-                    itemGroup.add(MYTHRIL_PICKAXE);
-                    itemGroup.add(MYTHRIL_AXE);
-                    itemGroup.add(MYTHRIL_SHOVEL);
-                    itemGroup.add(MYTHRIL_HOE);
-                });
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT)
-                .register(itemGroup -> itemGroup.add(MYTHRIL_SWORD));
+        Registry.register(Registries.ITEM_GROUP, QUES_ITEM_GROUP_KEY, QUES_ITEM_GROUP);
+        ItemGroupEvents.modifyEntriesEvent(QUES_ITEM_GROUP_KEY).register(itemGroup -> {
+            itemGroup.add(MYTHRIL);
+            itemGroup.add(MYTHRIL_UPGRADE_TEMPLATE);
+            itemGroup.add(MYTHRIL_SWORD);
+            itemGroup.add(MYTHRIL_PICKAXE);
+            itemGroup.add(MYTHRIL_AXE);
+            itemGroup.add(MYTHRIL_SHOVEL);
+            itemGroup.add(MYTHRIL_HOE);
+            itemGroup.add(MYTHRIL_HELMET);
+            itemGroup.add(MYTHRIL_CHESTPLATE);
+            itemGroup.add(MYTHRIL_LEGGINGS);
+            itemGroup.add(MYTHRIL_BOOTS);
+        });
     }
 }
