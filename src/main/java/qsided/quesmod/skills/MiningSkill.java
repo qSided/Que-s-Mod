@@ -1,47 +1,35 @@
 package qsided.quesmod.skills;
 
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Identifier;
 import qsided.quesmod.PlayerData;
-import qsided.quesmod.QuesMod;
-import qsided.quesmod.networking.LevelUpPayload;
+import qsided.quesmod.events.IncreaseSkillExperienceCallback;
 
-import static qsided.quesmod.QuesMod.sendSkillData;
+import java.util.Random;
+
 import static qsided.quesmod.StateSaverAndLoader.getPlayerState;
 
 public class MiningSkill {
     
-    public static void registerMining() {
-        PlayerBlockBreakEvents.AFTER.register((world, player, pos, state, blockEntity) -> {
-            //StateSaverAndLoader serverState = StateSaverAndLoader.getServerState(world.getServer());
+    public static void register() {
+        Random r = new Random();
+        int randomInt = r.nextInt(100) + 1;
+        
+        PlayerBlockBreakEvents.AFTER.register((world, player, pos, blockState, blockEntity) -> {
             
-            PlayerData playerState = getPlayerState(player);
+            PlayerData state = getPlayerState(player);
+            float miningExp = state.skillExperience.getOrDefault("mining", 0F);
+            int miningLevel = state.skillLevels.getOrDefault("mining", 1);
             
             //Mining skill leveling logic
-            playerState.skillExperience.put("miningExp", (playerState.skillExperience.getOrDefault("miningExp", 0F) + (5 + (state.getBlock().getHardness() / 3))));
-            if (playerState.skillExperience.get("miningExp") >= 120 * (playerState.skillLevels.get("miningLevel") * 3.4)) {
-                Identifier miningModifier = Identifier.of(QuesMod.MOD_ID, "mining_modifier");
-                
-                playerState.skillExperience.put("miningExp", 0F);
-                playerState.skillLevels.put("miningLevel", playerState.skillLevels.getOrDefault("miningLevel", 1) + 1);
-                
-                player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
-                        new EntityAttributeModifier(miningModifier, playerState.skillLevels.get("miningLevel") * .25, EntityAttributeModifier.Operation.ADD_VALUE));
-                
-                ServerPlayNetworking.send((ServerPlayerEntity) player, new LevelUpPayload("Mining", playerState.skillLevels.get("miningLevel")));
-                
-                if (playerState.skillLevels.getOrDefault("miningLevel", 1) == 33) {
-                    player.getAttributeInstance(EntityAttributes.PLAYER_SUBMERGED_MINING_SPEED).overwritePersistentModifier(
-                            new EntityAttributeModifier(Identifier.of(QuesMod.MOD_ID, "miningGoalOne"), 10, EntityAttributeModifier.Operation.ADD_VALUE)
-                    );
-                }
-            }
+            IncreaseSkillExperienceCallback.EVENT.invoker().increaseExp((ServerPlayerEntity) player, state, "mining", miningExp + (5 + (blockState.getBlock().getHardness() / 3)));
             
-            sendSkillData(playerState, (ServerPlayerEntity) player);
+            if (player.getEquippedStack(EquipmentSlot.MAINHAND).isIn(ItemTags.PICKAXES) || player.getEquippedStack(EquipmentSlot.MAINHAND).isIn(ItemTags.SHOVELS)
+                    && player.getEquippedStack(EquipmentSlot.MAINHAND).isDamaged() && randomInt <= miningLevel) {
+                player.getEquippedStack(EquipmentSlot.MAINHAND).setDamage(Math.max(player.getEquippedStack(EquipmentSlot.MAINHAND).getDamage() - 1, 0));
+            }
         });
     }
 }

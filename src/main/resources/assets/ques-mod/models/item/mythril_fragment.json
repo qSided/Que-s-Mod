@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "ques-mod:item/mythril"
+    "layer0": "ques-mod:item/mythril_fragment"
   }
 }

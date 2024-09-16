@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "ques-mod:mythril"
+          "name": "ques-mod:mythril_chunk"
         }
       ],
       "rolls": 1.0

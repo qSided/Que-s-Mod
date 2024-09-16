@@ -15,6 +15,6 @@ public class QuesBlockLootTables extends FabricBlockLootTableProvider {
     
     @Override
     public void generate() {
-        addDrop(QuesBlocks.MYTHRIL_DEPOSIT, drops(QuesItems.MYTHRIL));
+        addDrop(QuesBlocks.MYTHRIL_CHUNK, drops(QuesItems.MYTHRIL_FRAGMENT));
     }
 }

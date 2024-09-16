@@ -1,5 +1,5 @@
 {
-  "feature": "ques-mod:mythril_deposit_feature",
+  "feature": "ques-mod:mythril_chunk_feature",
   "placement": [
     {
       "type": "minecraft:count",

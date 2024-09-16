@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "ques-mod:mythril_fragment"
+        },
+        {
+            "item": "ques-mod:mythril_fragment"
+        },
+        {
+            "item": "ques-mod:mythril_fragment"
+        },
+        {
+            "item": "ques-mod:mythril_fragment"
+        },
+        {
+            "item": "minecraft:copper_ingot"
+        },
+        {
+            "item": "minecraft:copper_ingot"
+        },
+        {
+            "item": "minecraft:copper_ingot"
+        },
+        {
+            "item": "minecraft:copper_ingot"
+        }
+    ],
+    "result": {
+        "id": "ques-mod:mythril_ingot",
+        "count": 1
+    },
+    "group": "mythril"
+}

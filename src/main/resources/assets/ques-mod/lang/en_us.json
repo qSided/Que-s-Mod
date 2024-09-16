@@ -1,5 +1,6 @@
 {
-  "item.ques-mod.mythril": "Mythril",
+  "item.ques-mod.mythril_fragment": "Mythril Fragment",
+  "item.ques-mod.mythril_ingot": "Mythril Ingot",
   "item.ques-mod.mythril_sword": "Mythril Sword",
   "item.ques-mod.mythril_pickaxe": "Mythril Pickaxe",
   "item.ques-mod.mythril_axe": "Mythril Axe",
@@ -9,19 +10,106 @@
   "item.ques-mod.mythril_chestplate": "Mythril Chestplate",
   "item.ques-mod.mythril_leggings": "Mythril Leggings",
   "item.ques-mod.mythril_boots": "Mythril Boots",
-  "block.ques-mod.mythril_deposit": "Mythril Deposit",
+  "block.ques-mod.mythril_chunk": "Mythril Chunk",
   "item.ques-mod.mythril_template_apply": "Diamond Equipment",
-  "item.ques-mod.mythril_template_ingredient": "Mythril",
+  "item.ques-mod.mythril_template_ingredient": "Mythril Ingot",
   "item.ques-mod.mythril_template_title": "Mythril Upgrade",
   "item.ques-mod.mythril_template_base_description": "Add diamond armor, weapon, or tool",
-  "item.ques-mod.mythril_template_addition_description": "Add Mythril",
+  "item.ques-mod.mythril_template_addition_description": "Add Mythril Ingot",
   "item.ques-mod.mythril_upgrade_template": "Smithing Template",
   "itemGroup.ques_items": "Que's Items",
-  "skills.ques-mod.mining": "§5Mining",
-  "skills.ques-mod.combat": "§cCombat",
-  "skills.ques-mod.enchanting": "§9Enchanting",
-  "skills.ques-mod.alchemy": "§eAlchemy",
-  "skills.ques-mod.current_level": "§8Current Lvl§7: ",
-  "skills.ques-mod.current_experience": "§8Current Exp§7: ",
-  "skills.descriptions.ques-mod.mining": "§8Your §5mining §8skill determines the §dspeed\n§8at which you break blocks and\nthe §ddurability §8of pickaxes and shovels."
+
+  "skills.ques-mod.max_level": [
+    { "text":  "Max Level", "color": "#b58259"}
+  ],
+
+
+  "skills.ques-mod.mining": [
+    { "text": "Mining", "color": "dark_purple"}
+  ],
+  "skills.ques-mod.mining.efficiency": [
+    { "text": "Efficiency", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.ques-mod.mining.efficiency.tooltip": [
+    { "text": "Efficiency", "color": "#9d65e6"},
+    { "text": " determines how quickly you break blocks.\n", "color": "#d1d0cd"},
+    { "text": "Each level is an", "color": "#d1d0cd"},
+    { "text": " ~2% ", "color": "#9d65e6"},
+    { "text": "increase in mining speed.", "color": "#d1d0cd"}
+  ],
+  "skills.ques-mod.mining.degrade_chance": [
+    { "text": "Degrade Chance", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.level_up.ques-mod.mining": [
+    { "text": "Mining ", "color": "dark_purple"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+
+  "skills.ques-mod.enchanting": [
+    { "text": "Enchanting", "color": "blue"}
+  ],
+  "skills.ques-mod.enchanting.cost": [
+    { "text": "Enchanting Cost", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.level_up.ques-mod.enchanting": [
+    { "text": "Enchanting ", "color": "blue"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+
+  "skills.ques-mod.combat": [
+    { "text": "Combat", "color": "red"}
+  ],
+  "skills.level_up.ques-mod.combat": [
+    { "text": "Combat ", "color": "red"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+
+  "skills.ques-mod.alchemy": [
+    { "text": "Alchemy", "color": "yellow"}
+  ],
+
+
+  "skills.ques-mod.current_level": [
+    { "text": "Level", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.ques-mod.current_experience": [
+    { "text": "Experience", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+    ],
+
+
+  "skills.descriptions.ques-mod.mining": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "mining", "color": "dark_purple"},
+    { "text": " skill determines your ", "color": "#d1d0cd"},
+    { "text": "efficiency", "color": "#9d65e6"},
+    { "text": " when breaking blocks and the ", "color": "#d1d0cd"},
+    { "text": "durability", "color": "#9d65e6"},
+    { "text": " of your pickaxes and shovels.", "color": "#d1d0cd"}
+  ],
+  "skills.descriptions.ques-mod.enchanting": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "enchanting", "color": "blue"},
+    { "text": " skill determines the ", "color": "#d1d0cd"},
+    { "text": "cost of enchanting", "color": "#4646ca"},
+    { "text": " and your ", "color": "#d1d0cd"},
+    { "text": "enchanting power modifier", "color": "#4646ca"},
+    { "text": " when enchanting items.", "color": "#d1d0cd"}
+  ],
+  "skills.descriptions.ques-mod.combat": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "combat", "color": "red"},
+    { "text": " skill determines the ", "color": "#d1d0cd"},
+    { "text": "damage done", "color": "#a0395a"},
+    { "text": " to other creatures and your ", "color": "#d1d0cd"},
+    { "text": "attack speed", "color": "#a0395a"},
+    { "text": " with swords and axes.", "color": "#d1d0cd"}
+  ]
 }

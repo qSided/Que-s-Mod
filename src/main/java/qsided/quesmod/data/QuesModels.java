@@ -5,16 +5,16 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import qsided.quesmod.blocks.QuesBlocks;
 import qsided.quesmod.items.QuesItems;
 
-public class QuesItemModels extends FabricModelProvider {
-    public QuesItemModels(FabricDataOutput output) {
+public class QuesModels extends FabricModelProvider {
+    public QuesModels(FabricDataOutput output) {
         super(output);
     }
     
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
-    
     }
     
     @Override

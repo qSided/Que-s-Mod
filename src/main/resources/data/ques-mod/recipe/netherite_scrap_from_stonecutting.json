@@ -1,0 +1,10 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "minecraft:ancient_debris"
+    },
+    "result": {
+        "id": "minecraft:netherite_scrap",
+        "count": 2
+    }
+}
