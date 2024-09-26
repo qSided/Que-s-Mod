@@ -8,6 +8,7 @@ import io.wispforest.owo.ui.container.GridLayout;
 import io.wispforest.owo.ui.core.Color;
 import io.wispforest.owo.ui.core.HorizontalAlignment;
 import io.wispforest.owo.ui.core.Positioning;
+import io.wispforest.owo.ui.core.Surface;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
@@ -49,19 +50,67 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                         0,
                         2)
                 .child(
-                        Components.spacer(5),
-                        0,
-                        1)
-                .child(
                         Components.label(Text.translatable("skills.ques-mod.current_experience"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
                         1,
                         0)
                 .child(
                         Components.label(Text.translatable("skills.ques-mod.enchanting.cost"))
-                                .horizontalTextAlignment(HorizontalAlignment.LEFT),
+                                .horizontalTextAlignment(HorizontalAlignment.LEFT)
+                                .tooltip(Text.translatable("skills.ques-mod.enchanting.cost.tooltip")),
+                        2,
+                        0)
+                .child(
+                        Components.label(Text.translatable("skills.ques-mod.enchanting.modifier"))
+                                .horizontalTextAlignment(HorizontalAlignment.LEFT)
+                                .tooltip(Text.translatable("skills.ques-mod.enchanting.modifier.tooltip")),
                         3,
-                        0);
+                        0
+                );
+        
+        if (isBetween(enchantingLevel, 20, 39)) {
+            rootComponent.childById(GridLayout.class, "enchanting")
+                    .child(
+                            Components.label(Text.of(String.valueOf(1))),
+                            3,
+                            2
+                    );
+        } else if (isBetween(enchantingLevel, 40, 59)) {
+            rootComponent.childById(GridLayout.class, "enchanting")
+                    .child(
+                            Components.label(Text.of(String.valueOf(2))),
+                            3,
+                            2
+                    );
+        } else if (isBetween(enchantingLevel, 60, 79)) {
+            rootComponent.childById(GridLayout.class, "enchanting")
+                    .child(
+                            Components.label(Text.of(String.valueOf(3))),
+                            3,
+                            2
+                    );
+        } else if (isBetween(enchantingLevel, 80, 99)) {
+            rootComponent.childById(GridLayout.class, "enchanting")
+                    .child(
+                            Components.label(Text.of(String.valueOf(4))),
+                            3,
+                            2
+                    );
+        } else if (enchantingLevel == 100) {
+            rootComponent.childById(GridLayout.class, "enchanting")
+                    .child(
+                            Components.label(Text.of(String.valueOf(5))),
+                            3,
+                            2
+                    );
+        } else {
+            rootComponent.childById(GridLayout.class, "enchanting")
+                    .child(
+                            Components.label(Text.of(String.valueOf(0))),
+                            3,
+                            2
+                    );
+        }
         
         if (isBetween(enchantingLevel, 0, 32)) {
             rootComponent.childById(GridLayout.class, "enchanting")
@@ -69,7 +118,7 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                             Components.label(Text.of("-" + 0))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                            3,
+                            2,
                             2);
         } else if (isBetween(enchantingLevel, 33, 65)) {
             rootComponent.childById(GridLayout.class, "enchanting")
@@ -77,7 +126,7 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                             Components.label(Text.of("-" + 1))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                            3,
+                            2,
                             2);
         } else if (isBetween(enchantingLevel, 66, 100)) {
             rootComponent.childById(GridLayout.class, "enchanting")
@@ -85,7 +134,7 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                             Components.label(Text.of("-" + 2))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                            3,
+                            2,
                             2);
         }
         
@@ -108,6 +157,7 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
         }
         
         rootComponent.childById(DropdownComponent.class, "skill-selection")
+                .text(Text.translatable("skills.ques-mod.select_skill"))
                 .button(Text.translatable("skills.ques-mod.mining"), button -> {
                     client.setScreen(new MiningSkillScreen());
                 })
@@ -117,9 +167,6 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 .button(Text.translatable("skills.ques-mod.combat"), button -> {
                     client.setScreen(new CombatSkillScreen());
                 })
-                .button(Text.translatable("skills.ques-mod.alchemy"), button -> {
-                
-                })
-                .positioning(Positioning.absolute(0, 0));
+                .positioning(Positioning.absolute(10, 20));
     }
 }

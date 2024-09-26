@@ -72,8 +72,10 @@ public abstract class EnchantItemMixin {
                         enchantingPower = 2;
                     } else if (isBetween(state.skillLevels.getOrDefault("enchantingLevel", 1), 60, 79)) {
                         enchantingPower = 3;
-                    } else if (isBetween(state.skillLevels.getOrDefault("enchantingLevel", 1), 80, 100)) {
+                    } else if (isBetween(state.skillLevels.getOrDefault("enchantingLevel", 1), 80, 99)) {
                         enchantingPower = 4;
+                    } else if (state.skillLevels.getOrDefault("enchantingLevel", 1) == 100) {
+                        enchantingPower = 5;
                     } else {
                         enchantingPower = 0;
                     }
@@ -101,9 +103,14 @@ public abstract class EnchantItemMixin {
                         int randomInt = r.nextInt(100) + 1;
                         
                         for (EnchantmentLevelEntry enchantmentLevelEntry : list) {
-                            if (randomInt <= state.skillLevels.getOrDefault("enchantingLevel", 1)) {
-                                int levelIncrease = r.nextInt(enchantingPower + 1);
-                                itemToEnchant.addEnchantment(enchantmentLevelEntry.enchantment, enchantmentLevelEntry.level + levelIncrease);
+                            if (randomInt <= state.skillLevels.getOrDefault("enchanting", 1)) {
+                                if (state.skillLevels.getOrDefault("enchanting", 1) == 100) {
+                                    int levelIncrease = r.nextInt(2, enchantingPower + 1);
+                                    itemToEnchant.addEnchantment(enchantmentLevelEntry.enchantment, enchantmentLevelEntry.level + levelIncrease);
+                                } else {
+                                    int levelIncrease = r.nextInt(enchantingPower + 1);
+                                    itemToEnchant.addEnchantment(enchantmentLevelEntry.enchantment, enchantmentLevelEntry.level + levelIncrease);
+                                }
                             } else {
                                 itemToEnchant.addEnchantment(enchantmentLevelEntry.enchantment, enchantmentLevelEntry.level);
                             }

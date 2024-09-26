@@ -8,6 +8,7 @@ import io.wispforest.owo.ui.container.GridLayout;
 import io.wispforest.owo.ui.core.Color;
 import io.wispforest.owo.ui.core.HorizontalAlignment;
 import io.wispforest.owo.ui.core.Positioning;
+import io.wispforest.owo.ui.core.Surface;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
@@ -45,10 +46,6 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
                         0,
                         2)
                 .child(
-                        Components.spacer(5),
-                        0,
-                        1)
-                .child(
                         Components.label(Text.translatable("skills.ques-mod.current_experience"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
                         1,
@@ -61,7 +58,8 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
                         0)
                 .child(
                         Components.label(Text.translatable("skills.ques-mod.mining.degrade_chance"))
-                                .horizontalTextAlignment(HorizontalAlignment.LEFT),
+                                .horizontalTextAlignment(HorizontalAlignment.LEFT)
+                                .tooltip(Text.translatable("skills.ques-mod.mining.degrade_chance.tooltip")),
                         3,
                         0)
                 .child(
@@ -108,6 +106,7 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
         }
         
         rootComponent.childById(DropdownComponent.class, "skill-selection")
+                .text(Text.translatable("skills.ques-mod.select_skill"))
                 .button(Text.translatable("skills.ques-mod.mining"), button -> {
                     client.setScreen(new MiningSkillScreen());
                 })
@@ -117,9 +116,6 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 .button(Text.translatable("skills.ques-mod.combat"), button -> {
                     client.setScreen(new CombatSkillScreen());
                 })
-                .button(Text.translatable("skills.ques-mod.alchemy"), button -> {
-                
-                })
-                .positioning(Positioning.absolute(0, 0));
+                .positioning(Positioning.absolute(10, 20));
     }
 }
