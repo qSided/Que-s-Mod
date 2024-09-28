@@ -1,4 +1,4 @@
-package qsided.quesmod.data.requirements;
+package qsided.quesmod.config.requirements;
 
 public class Requirements {
     String skill;

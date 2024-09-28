@@ -15,7 +15,7 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
-import qsided.quesmod.data.requirements.ItemWithRequirements;
+import qsided.quesmod.config.requirements.ItemWithRequirements;
 import qsided.quesmod.gui.CombatSkillScreen;
 import qsided.quesmod.gui.EnchantingSkillScreen;
 import qsided.quesmod.gui.MiningSkillScreen;
@@ -56,7 +56,7 @@ public class QuesModClient implements ClientModInitializer {
 			ObjectMapper mapper = new ObjectMapper();
 			CollectionType typeReference = TypeFactory.defaultInstance().constructCollectionType(List.class, ItemWithRequirements.class);
             try {
-                List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/reqs.json"), typeReference);
+                List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/reqs.json"), typeReference);
 				items.forEach(item -> {
 					if (stack.getItem().toString().equals(item.getItemId())) {
 						lines

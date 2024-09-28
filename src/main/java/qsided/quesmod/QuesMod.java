@@ -24,7 +24,7 @@ import net.minecraft.world.gen.feature.PlacedFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import qsided.quesmod.blocks.QuesBlocks;
-import qsided.quesmod.data.requirements.RequirementsGenerator;
+import qsided.quesmod.config.ConfigGenerator;
 import qsided.quesmod.events.IncreaseSkillExperienceCallback;
 import qsided.quesmod.events.IncreaseSkillLevelCallback;
 import qsided.quesmod.items.QuesItems;
@@ -54,7 +54,8 @@ public class QuesMod implements ModInitializer {
         EnchantingSkill.register();
         CombatSkill.register();
         try {
-            RequirementsGenerator.genConfig();
+            ConfigGenerator.genReqsConfig();
+            ConfigGenerator.genWoodcuttingConfig();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -67,7 +67,7 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         3,
-                        2);;
+                        2);
         
         if (miningLevel.equals(1)) {
             rootComponent.childById(GridLayout.class, "mining")

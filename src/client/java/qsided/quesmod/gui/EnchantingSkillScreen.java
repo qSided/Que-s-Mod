@@ -71,42 +71,48 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
         if (isBetween(enchantingLevel, 20, 39)) {
             rootComponent.childById(GridLayout.class, "enchanting")
                     .child(
-                            Components.label(Text.of(String.valueOf(1))),
+                            Components.label(Text.of(String.valueOf(1)))
+                                    .color(Color.ofArgb(0xd1d0cd)),
                             3,
                             2
                     );
         } else if (isBetween(enchantingLevel, 40, 59)) {
             rootComponent.childById(GridLayout.class, "enchanting")
                     .child(
-                            Components.label(Text.of(String.valueOf(2))),
+                            Components.label(Text.of(String.valueOf(2)))
+                                    .color(Color.ofArgb(0xd1d0cd)),
                             3,
                             2
                     );
         } else if (isBetween(enchantingLevel, 60, 79)) {
             rootComponent.childById(GridLayout.class, "enchanting")
                     .child(
-                            Components.label(Text.of(String.valueOf(3))),
+                            Components.label(Text.of(String.valueOf(3)))
+                                    .color(Color.ofArgb(0xd1d0cd)),
                             3,
                             2
                     );
         } else if (isBetween(enchantingLevel, 80, 99)) {
             rootComponent.childById(GridLayout.class, "enchanting")
                     .child(
-                            Components.label(Text.of(String.valueOf(4))),
+                            Components.label(Text.of(String.valueOf(4)))
+                                    .color(Color.ofArgb(0xd1d0cd)),
                             3,
                             2
                     );
         } else if (enchantingLevel == 100) {
             rootComponent.childById(GridLayout.class, "enchanting")
                     .child(
-                            Components.label(Text.of(String.valueOf(5))),
+                            Components.label(Text.of(String.valueOf(5)))
+                                    .color(Color.ofArgb(0xd1d0cd)),
                             3,
                             2
                     );
         } else {
             rootComponent.childById(GridLayout.class, "enchanting")
                     .child(
-                            Components.label(Text.of(String.valueOf(0))),
+                            Components.label(Text.of(String.valueOf(0)))
+                                    .color(Color.ofArgb(0xd1d0cd)),
                             3,
                             2
                     );

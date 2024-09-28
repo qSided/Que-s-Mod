@@ -18,15 +18,21 @@
   "item.ques-mod.mythril_template_addition_description": "Add Mythril Ingot",
   "item.ques-mod.mythril_upgrade_template": "Smithing Template",
   "itemGroup.ques_items": "Que's Items",
+
+  "key.category.skills.open": "Que's Mod",
+  "key.ques-mod.open_skills": "Open Skills",
+
   "ques-mod.player_joined": [
     { "text": "You are using verion ", "color": "#2e469e"},
-    { "text": "0.1.7-", "color": "#3533d4"},
+    { "text": "0.1.8-", "color": "#3533d4"},
     { "text": "alpha", "color": "#b633d4"},
     { "text": ".", "color": "#2e469e"},
     { "text": " Press ", "color": "#2e469e"},
     { "text": "Right-Alt", "color": "#3a31e8"},
     { "text": " (default) to open the skills screen", "color": "#2e469e"}
   ],
+
+
   "tooltip.ques-mod.requirements": [
     { "text": "Requires ", "color": "gray"}
   ],
@@ -36,6 +42,8 @@
   "skills.ques-mod.select_skill": [
     { "text":  "Select Skill:", "color": "#b58259"}
   ],
+
+
   "skills.ques-mod.mining": [
     { "text": "Mining", "color": "dark_purple"}
   ],
@@ -63,6 +71,8 @@
     { "text": "Mining ", "color": "dark_purple"},
     { "text": "↑", "color": "#8f8f96"}
   ],
+
+
   "skills.ques-mod.enchanting": [
     { "text": "Enchanting", "color": "blue"}
   ],
@@ -87,13 +97,25 @@
     { "text": "Enchanting ", "color": "blue"},
     { "text": "↑", "color": "#8f8f96"}
   ],
+
+
   "skills.ques-mod.combat": [
     { "text": "Combat", "color": "red"}
+  ],
+  "skills.ques-mod.combat.attack_damage": [
+  { "text": "Damage", "color": "#869970"},
+  { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.ques-mod.combat.attack_speed": [
+    { "text": "Speed", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
   ],
   "skills.level_up.ques-mod.combat": [
     { "text": "Combat ", "color": "red"},
     { "text": "↑", "color": "#8f8f96"}
   ],
+
+
   "skills.ques-mod.alchemy": [
     { "text": "Alchemy", "color": "yellow"}
   ],
@@ -105,6 +127,8 @@
     { "text": "Experience", "color": "#869970"},
     { "text": ": ", "color": "#8ca66d"}
     ],
+
+
   "skills.descriptions.ques-mod.mining": [
     { "text": "Your ", "color": "#d1d0cd"},
     { "text": "mining", "color": "dark_purple"},
