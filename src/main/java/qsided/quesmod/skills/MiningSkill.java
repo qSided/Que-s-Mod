@@ -1,10 +1,16 @@
 package qsided.quesmod.skills;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.player.PlayerBlockBreakEvents;
 import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
 import qsided.quesmod.PlayerData;
+import qsided.quesmod.QuesMod;
 import qsided.quesmod.events.IncreaseSkillExperienceCallback;
 
 import java.util.Random;

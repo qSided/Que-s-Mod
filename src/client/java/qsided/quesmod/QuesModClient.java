@@ -19,6 +19,7 @@ import qsided.quesmod.config.requirements.ItemWithRequirements;
 import qsided.quesmod.gui.CombatSkillScreen;
 import qsided.quesmod.gui.EnchantingSkillScreen;
 import qsided.quesmod.gui.MiningSkillScreen;
+import qsided.quesmod.gui.WoodcuttingSkillScreen;
 import qsided.quesmod.networking.LevelUpPayload;
 import qsided.quesmod.networking.RequestSkillsPayload;
 import qsided.quesmod.networking.SendSkillsExperiencePayload;
@@ -74,11 +75,13 @@ public class QuesModClient implements ClientModInitializer {
 			MiningSkillScreen.setMiningLevel(payload.mining());
 			EnchantingSkillScreen.setEnchantingLevel(payload.enchanting());
 			CombatSkillScreen.setCombatLevel(payload.combat());
+			WoodcuttingSkillScreen.setWoodcuttingLevel(payload.woodcutting());
 		});
 		ClientPlayNetworking.registerGlobalReceiver(SendSkillsExperiencePayload.ID, (payload, context) -> {
 			MiningSkillScreen.setMiningExperience(payload.mining());
 			EnchantingSkillScreen.setEnchantingExperience(payload.enchanting());
 			CombatSkillScreen.setCombatExperience(payload.combat());
+			WoodcuttingSkillScreen.setWoodcuttingExperience(payload.woodcutting());
 		});
 	}
 }

@@ -20,10 +20,9 @@ public class LevelUp {
             ServerPlayNetworking.send(player, new LevelUpPayload(skill, state.skillLevels.get(skill)));
             
             if (skill.equals("mining")) {
-                Identifier miningModifier = Identifier.of(QuesMod.MOD_ID, "mining_modifier");
                 
-                player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
-                        new EntityAttributeModifier(miningModifier, state.skillLevels.getOrDefault(skill, 1) * .5, EntityAttributeModifier.Operation.ADD_VALUE));
+                //player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
+                //        new EntityAttributeModifier(miningModifier, state.skillLevels.getOrDefault(skill, 1) * .5, EntityAttributeModifier.Operation.ADD_VALUE));
                 
                 if (state.skillLevels.getOrDefault(skill, 1) == 33) {
                     player.getAttributeInstance(EntityAttributes.PLAYER_SUBMERGED_MINING_SPEED).overwritePersistentModifier(

@@ -8,39 +8,38 @@ import io.wispforest.owo.ui.container.GridLayout;
 import io.wispforest.owo.ui.core.Color;
 import io.wispforest.owo.ui.core.HorizontalAlignment;
 import io.wispforest.owo.ui.core.Positioning;
-import io.wispforest.owo.ui.core.Surface;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
 
 import java.text.DecimalFormat;
 
-public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
-    public static Integer miningLevel = 1;
-    public static Float miningExperience = 0F;
-    public MiningSkillScreen() {
-        super(FlowLayout.class, DataSource.asset(Identifier.of(QuesMod.MOD_ID, "mining")));
+public class WoodcuttingSkillScreen extends BaseUIModelScreen<FlowLayout> {
+    public static Integer woodcuttingLevel = 1;
+    public static Float woodcuttingExperience = 0F;
+    public WoodcuttingSkillScreen() {
+        super(FlowLayout.class, DataSource.asset(Identifier.of(QuesMod.MOD_ID, "woodcutting")));
     }
     
-    public static void setMiningLevel(int level) {
-        MiningSkillScreen.miningLevel = level;
+    public static void setWoodcuttingLevel(int level) {
+        WoodcuttingSkillScreen.woodcuttingLevel = level;
     }
-    public static void setMiningExperience(float experience) {
-        MiningSkillScreen.miningExperience = experience;
+    public static void setWoodcuttingExperience(float experience) {
+        WoodcuttingSkillScreen.woodcuttingExperience = experience;
     }
     
     @Override
     protected void build(FlowLayout rootComponent) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
-        rootComponent.childById(GridLayout.class, "mining")
+        rootComponent.childById(GridLayout.class, "woodcutting")
                 .child(
                         Components.label(Text.translatable("skills.ques-mod.current_level"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
                 0,
                 0)
                 .child(
-                        Components.label(Text.of(String.valueOf(miningLevel)))
+                        Components.label(Text.of(String.valueOf(woodcuttingLevel)))
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         0,
@@ -51,26 +50,24 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
                         1,
                         0)
                 .child(
-                        Components.label(Text.translatable("skills.ques-mod.mining.efficiency"))
-                            .horizontalTextAlignment(HorizontalAlignment.LEFT)
-                                .tooltip(Text.translatable("skills.ques-mod.mining.efficiency.tooltip")),
+                        Components.label(Text.translatable("skills.ques-mod.woodcutting.efficiency"))
+                            .horizontalTextAlignment(HorizontalAlignment.LEFT),
                         2,
                         0)
                 .child(
-                        Components.label(Text.translatable("skills.ques-mod.mining.degrade_chance"))
-                                .horizontalTextAlignment(HorizontalAlignment.LEFT)
-                                .tooltip(Text.translatable("skills.ques-mod.mining.degrade_chance.tooltip")),
+                        Components.label(Text.translatable("skills.ques-mod.woodcutting.degrade_chance"))
+                                .horizontalTextAlignment(HorizontalAlignment.LEFT),
                         3,
                         0)
                 .child(
-                        Components.label(Text.of("-" + miningLevel + "%"))
+                        Components.label(Text.of("-" + woodcuttingLevel + "%"))
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         3,
                         2);
         
-        if (miningLevel.equals(1)) {
-            rootComponent.childById(GridLayout.class, "mining")
+        if (woodcuttingLevel.equals(1)) {
+            rootComponent.childById(GridLayout.class, "woodcutting")
                     .child(
                             Components.label(Text.of(String.valueOf(0)))
                                     .color(Color.ofArgb(0xd1d0cd))
@@ -78,25 +75,25 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
                             2,
                             2);
         } else {
-            rootComponent.childById(GridLayout.class, "mining")
+            rootComponent.childById(GridLayout.class, "woodcutting")
                     .child(
-                        Components.label(Text.of(String.valueOf(miningLevel * .5)))
+                        Components.label(Text.of(String.valueOf(woodcuttingLevel * .5)))
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         2,
                         2);
         }
         
-        if (miningLevel < 100) {
-            rootComponent.childById(GridLayout.class, "mining")
+        if (woodcuttingLevel < 100) {
+            rootComponent.childById(GridLayout.class, "woodcutting")
                     .child(
-                            Components.label(Text.of(df.format(miningExperience) + "/" + df.format(120 * (miningLevel * 3.8))))
+                            Components.label(Text.of(df.format(woodcuttingExperience) + "/" + df.format(120 * (woodcuttingLevel * 3.8))))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                             1,
                             2);
         } else {
-            rootComponent.childById(GridLayout.class, "mining")
+            rootComponent.childById(GridLayout.class, "woodcutting")
                     .child(
                             Components.label(Text.translatable("skills.ques-mod.max_level"))
                                     .color(Color.ofArgb(0xd1d0cd))
@@ -108,7 +105,7 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
         rootComponent.childById(DropdownComponent.class, "skill-selection")
                 .text(Text.translatable("skills.ques-mod.select_skill"))
                 .button(Text.translatable("skills.ques-mod.mining"), button -> {
-                    client.setScreen(new MiningSkillScreen());
+                    client.setScreen(new WoodcuttingSkillScreen());
                 })
                 .button(Text.translatable("skills.ques-mod.enchanting"), button -> {
                     client.setScreen(new EnchantingSkillScreen());
@@ -116,9 +113,9 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 .button(Text.translatable("skills.ques-mod.combat"), button -> {
                     client.setScreen(new CombatSkillScreen());
                 })
-                //.button(Text.translatable("skills.ques-mod.woodcutting"), button -> {
-                //    client.setScreen(new WoodcuttingSkillScreen());
-                //})
+                .button(Text.translatable("skills.ques-mod.woodcutting"), button -> {
+                    client.setScreen(new WoodcuttingSkillScreen());
+                })
                 .positioning(Positioning.absolute(10, 20));
     }
 }

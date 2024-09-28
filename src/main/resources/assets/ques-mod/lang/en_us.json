@@ -22,6 +22,10 @@
   "key.category.skills.open": "Que's Mod",
   "key.ques-mod.open_skills": "Open Skills",
 
+  "skills.ques-mod.failed_reqs": [
+    { "text": "You do not meet the requirements for that item!", "color": "red" }
+  ],
+
   "ques-mod.player_joined": [
     { "text": "You are using verion ", "color": "#2e469e"},
     { "text": "0.2.0-", "color": "#3533d4"},

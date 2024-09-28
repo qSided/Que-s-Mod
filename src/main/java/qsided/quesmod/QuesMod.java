@@ -50,7 +50,7 @@ public class QuesMod implements ModInitializer {
         EnchantingSkill.register();
         CombatSkill.register();
         WoodcuttingSkill.register();
-        LevelRequirement.register();
+        SkillCheckHandler.register();
         
         LevelUp.onLevelUp();
         ExperienceUp.onExperienceUp();

@@ -173,6 +173,9 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 .button(Text.translatable("skills.ques-mod.combat"), button -> {
                     client.setScreen(new CombatSkillScreen());
                 })
+                //.button(Text.translatable("skills.ques-mod.woodcutting"), button -> {
+                //    client.setScreen(new WoodcuttingSkillScreen());
+                //})
                 .positioning(Positioning.absolute(10, 20));
     }
 }
