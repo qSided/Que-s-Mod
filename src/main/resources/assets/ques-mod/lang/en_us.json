@@ -24,7 +24,7 @@
 
   "ques-mod.player_joined": [
     { "text": "You are using verion ", "color": "#2e469e"},
-    { "text": "0.1.8-", "color": "#3533d4"},
+    { "text": "0.2.0-", "color": "#3533d4"},
     { "text": "alpha", "color": "#b633d4"},
     { "text": ".", "color": "#2e469e"},
     { "text": " Press ", "color": "#2e469e"},
