@@ -4,7 +4,7 @@
     "item": "ques-mod:mythril_upgrade_template"
   },
   "base": {
-    "item": "minecraft:diamond_pickaxe"
+    "item": "minecraft:netherite_pickaxe"
   },
   "addition": {
     "item": "ques-mod:mythril_ingot"

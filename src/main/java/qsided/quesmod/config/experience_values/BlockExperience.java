@@ -5,13 +5,13 @@ import java.util.Map;
 public class BlockExperience {
     
     public String id;
-    public Map<String, Integer> experience;
+    public Map<String, Float> experience;
     
     public BlockExperience() {
         super();
     }
     
-    public BlockExperience(String id, Map<String, Integer> experience) {
+    public BlockExperience(String id, Map<String, Float> experience) {
         this.id = id;
         this.experience = experience;
     }
@@ -20,7 +20,7 @@ public class BlockExperience {
         return id;
     }
     
-    public Map<String, Integer> getExperience() {
+    public Map<String, Float> getExperience() {
         return experience;
     }
     
@@ -28,7 +28,7 @@ public class BlockExperience {
         this.id = id;
     }
     
-    public void setExperience(Map<String, Integer> experience) {
+    public void setExperience(Map<String, Float> experience) {
         this.experience = experience;
     }
 }

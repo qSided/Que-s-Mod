@@ -14,7 +14,7 @@
                             </surface>
                         </dropdown>
                         <item>
-                            <stack>minecraft:enchanted_book</stack>
+                            <stack>minecraft:chainmail_chestplate</stack>
                             <sizing>
                                 <horizontal method="fill">17</horizontal>
                                 <vertical method="fill">30</vertical>
@@ -22,17 +22,17 @@
                             <positioning type="relative">50,10</positioning>
                         </item>
                         <label>
-                            <text translate="true">skills.descriptions.ques-mod.enchanting</text>
+                            <text translate="true">skills.descriptions.ques-mod.endurance</text>
                             <horizontal-text-alignment>center</horizontal-text-alignment>
                             <positioning type="relative">50,50</positioning>
                             <max-width>300</max-width>
                         </label>
-                        <grid-layout rows="4" columns="3" id="enchanting">
+                        <grid-layout rows="4" columns="3" id="endurance">
                             <children/>
                             <positioning type="relative">50,78</positioning>
                             <surface>
                                 <panel dark="true"/>
-                            </surface>
+                             </surface>
                             <padding><all>7</all></padding>
                         </grid-layout>
                     </children>
@@ -48,6 +48,7 @@
                         <vertical method="fill">100</vertical>
                         <horizontal method="fill">100</horizontal>
                     </sizing>
+
                 </flow-layout>
 
             </children>

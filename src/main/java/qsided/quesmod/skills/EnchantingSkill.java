@@ -17,7 +17,7 @@ public class EnchantingSkill {
             int enchantingLevel = state.skillLevels.getOrDefault("enchanting", 1);
             
             if (enchantingLevel < 100) {
-                IncreaseSkillExperienceCallback.EVENT.invoker().increaseExp(player, state, "enchanting", enchantingExp + (24 * levelsSpent));
+                IncreaseSkillExperienceCallback.EVENT.invoker().increaseExp(player, state, "enchanting", (float) (24 * levelsSpent));
             }
             
             return ActionResult.PASS;

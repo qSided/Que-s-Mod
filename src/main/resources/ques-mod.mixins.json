@@ -3,7 +3,8 @@
   "package": "qsided.quesmod.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "EnchantItemMixin"
+    "EnchantItemMixin",
+    "OnDamagedMixin"
   ],
   "injectors": {
     "defaultRequire": 1

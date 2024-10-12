@@ -1,16 +1,16 @@
 {
   "type": "minecraft:ore",
   "config": {
-    "size": 2,
+    "size": 3,
     "discard_chance_on_air_exposure": 0,
     "targets": [
       {
+        "target": {
+          "predicate_type": "minecraft:block_match",
+          "block": "minecraft:end_stone"
+        },
         "state": {
           "Name": "ques-mod:mythril_chunk"
-        },
-        "target": {
-          "predicate_type": "minecraft:tag_match",
-          "tag": "minecraft:deepslate_ore_replaceables"
         }
       }
     ]

@@ -4,7 +4,7 @@
     "item": "ques-mod:mythril_upgrade_template"
   },
   "base": {
-    "item": "minecraft:diamond_chestplate"
+    "item": "minecraft:netherite_chestplate"
   },
   "addition": {
     "item": "ques-mod:mythril_ingot"

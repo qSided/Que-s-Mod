@@ -4,25 +4,10 @@
     {
       "type": "minecraft:count",
       "count": {
-        "type": "minecraft:weighted_list",
-        "distribution": [
-          {
-            "weight": 1,
-            "data": 0
-          },
-          {
-            "weight": 3,
-            "data": 1
-          },
-          {
-            "weight": 2,
-            "data": 2
-          },
-          {
-            "weight": 1,
-            "data": 3
-          }
-        ]
+        "type": "minecraft:clamped",
+        "min_inclusive": 1,
+        "max_inclusive": 5,
+        "source": 1
       }
     },
     {
@@ -31,12 +16,12 @@
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:trapezoid",
+        "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": -62
+          "absolute": -20
         },
         "max_inclusive": {
-          "absolute": -36
+          "absolute": 80
         }
       }
     },

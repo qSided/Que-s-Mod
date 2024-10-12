@@ -8,7 +8,6 @@ import io.wispforest.owo.ui.container.GridLayout;
 import io.wispforest.owo.ui.core.Color;
 import io.wispforest.owo.ui.core.HorizontalAlignment;
 import io.wispforest.owo.ui.core.Positioning;
-import io.wispforest.owo.ui.core.Surface;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
@@ -16,32 +15,37 @@ import qsided.quesmod.QuesModClient;
 
 import java.text.DecimalFormat;
 
-public class CombatSkillScreen extends BaseUIModelScreen<FlowLayout> {
-    public static Integer combatLevel = 1;
-    public static Float combatExperience = 0F;
-    public CombatSkillScreen() {
-        super(FlowLayout.class, DataSource.asset(Identifier.of(QuesMod.MOD_ID, "combat")));
+public class EnduranceSkillScreen extends BaseUIModelScreen<FlowLayout> {
+    public static Integer enduranceLevel = 1;
+    public static Float enduranceExperience = 0F;
+    public static Float maxHealth = 0F;
+    
+    public EnduranceSkillScreen() {
+        super(FlowLayout.class, DataSource.asset(Identifier.of(QuesMod.MOD_ID, "endurance")));
     }
     
-    public static void setCombatLevel(int level) {
-        CombatSkillScreen.combatLevel = level;
+    public static void setMaxHealth(Float maxHealth) {
+        EnduranceSkillScreen.maxHealth = maxHealth;
     }
-    public static void setCombatExperience(float experience) {
-        CombatSkillScreen.combatExperience = experience;
+    public static void setEnduranceLevel(int level) {
+        EnduranceSkillScreen.enduranceLevel = level;
+    }
+    public static void setEnduranceExperience(float experience) {
+        EnduranceSkillScreen.enduranceExperience = experience;
     }
     
     @Override
     protected void build(FlowLayout rootComponent) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
-        rootComponent.childById(GridLayout.class, "combat")
+        rootComponent.childById(GridLayout.class, "endurance")
                 .child(
                         Components.label(Text.translatable("skills.ques-mod.current_level"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
                 0,
                 0)
                 .child(
-                        Components.label(Text.of(String.valueOf(combatLevel)))
+                        Components.label(Text.of(String.valueOf(enduranceLevel)))
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         0,
@@ -53,61 +57,27 @@ public class CombatSkillScreen extends BaseUIModelScreen<FlowLayout> {
                         1,
                         0)
                 .child(
-                        Components.label(Text.translatable("skills.ques-mod.combat.attack_damage"))
+                        Components.label(Text.translatable("skills.ques-mod.endurance.max_health"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
                         2,
                         0)
                 .child(
-                        Components.label(Text.translatable("skills.ques-mod.combat.attack_speed"))
-                                .horizontalTextAlignment(HorizontalAlignment.LEFT),
-                        3,
-                        0);
+                        Components.label(Text.of(String.valueOf(maxHealth)))
+                                .color(Color.ofArgb(0xd1d0cd))
+                                .horizontalTextAlignment(HorizontalAlignment.RIGHT),
+                        2,
+                        2);
         
-        if (combatLevel.equals(1)) {
-            rootComponent.childById(GridLayout.class, "combat")
+        if (enduranceLevel < 100) {
+            rootComponent.childById(GridLayout.class, "endurance")
                     .child(
-                            Components.label(Text.of(String.valueOf(0)))
-                                    .color(Color.ofArgb(0xd1d0cd))
-                                    .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                            2,
-                            2);
-        } else {
-            rootComponent.childById(GridLayout.class, "combat")
-                    .child(
-                            Components.label(Text.of(String.valueOf(combatLevel * .18)))
-                                    .color(Color.ofArgb(0xd1d0cd))
-                                    .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                            2,
-                            2);
-        }
-        if (combatLevel.equals(1)) {
-            rootComponent.childById(GridLayout.class, "combat")
-                    .child(
-                            Components.label(Text.of(String.valueOf(0)))
-                                    .color(Color.ofArgb(0xd1d0cd))
-                                    .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                            3,
-                            2);
-        } else {
-            rootComponent.childById(GridLayout.class, "combat")
-                    .child(
-                            Components.label(Text.of(String.valueOf(combatLevel * .03)))
-                                    .color(Color.ofArgb(0xd1d0cd))
-                                    .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                            3,
-                            2);
-        }
-        
-        if (combatLevel < 100) {
-            rootComponent.childById(GridLayout.class, "combat")
-                    .child(
-                            Components.label(Text.of(df.format(combatExperience) + "/" + df.format(60 * (combatLevel * 3.8))))
+                            Components.label(Text.of(df.format(enduranceExperience) + "/" + df.format(60 * (enduranceLevel * 3.8))))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                             1,
                             2);
         } else {
-            rootComponent.childById(GridLayout.class, "combat")
+            rootComponent.childById(GridLayout.class, "endurance")
                     .child(
                             Components.label(Text.translatable("skills.ques-mod.max_level"))
                                     .color(Color.ofArgb(0xd1d0cd))

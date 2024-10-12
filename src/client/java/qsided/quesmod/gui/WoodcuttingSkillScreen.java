@@ -11,6 +11,7 @@ import io.wispforest.owo.ui.core.Positioning;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
+import qsided.quesmod.QuesModClient;
 
 import java.text.DecimalFormat;
 
@@ -55,12 +56,12 @@ public class WoodcuttingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                         2,
                         0)
                 .child(
-                        Components.label(Text.translatable("skills.ques-mod.woodcutting.degrade_chance"))
+                        Components.label(Text.translatable("skills.ques-mod.woodcutting.extra_chance"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
                         3,
                         0)
                 .child(
-                        Components.label(Text.of("-" + woodcuttingLevel + "%"))
+                        Components.label(Text.of(woodcuttingLevel + "%"))
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         3,
@@ -87,7 +88,7 @@ public class WoodcuttingSkillScreen extends BaseUIModelScreen<FlowLayout> {
         if (woodcuttingLevel < 100) {
             rootComponent.childById(GridLayout.class, "woodcutting")
                     .child(
-                            Components.label(Text.of(df.format(woodcuttingExperience) + "/" + df.format(120 * (woodcuttingLevel * 3.8))))
+                            Components.label(Text.of(df.format(woodcuttingExperience) + "/" + df.format(60 * (woodcuttingLevel * 3.8))))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                             1,
@@ -104,18 +105,31 @@ public class WoodcuttingSkillScreen extends BaseUIModelScreen<FlowLayout> {
         
         rootComponent.childById(DropdownComponent.class, "skill-selection")
                 .text(Text.translatable("skills.ques-mod.select_skill"))
+                .divider()
                 .button(Text.translatable("skills.ques-mod.mining"), button -> {
-                    client.setScreen(new WoodcuttingSkillScreen());
+                    QuesModClient.setLastScreenOpen("mining");
+                    client.setScreen(new MiningSkillScreen());
                 })
+                .divider()
                 .button(Text.translatable("skills.ques-mod.enchanting"), button -> {
+                    QuesModClient.setLastScreenOpen("enchanting");
                     client.setScreen(new EnchantingSkillScreen());
                 })
+                .divider()
                 .button(Text.translatable("skills.ques-mod.combat"), button -> {
+                    QuesModClient.setLastScreenOpen("combat");
                     client.setScreen(new CombatSkillScreen());
                 })
+                .divider()
                 .button(Text.translatable("skills.ques-mod.woodcutting"), button -> {
+                    QuesModClient.setLastScreenOpen("woodcutting");
                     client.setScreen(new WoodcuttingSkillScreen());
                 })
-                .positioning(Positioning.absolute(10, 20));
+                .divider()
+                .button(Text.translatable("skills.ques-mod.endurance"), button -> {
+                    QuesModClient.setLastScreenOpen("endurance");
+                    client.setScreen(new EnduranceSkillScreen());
+                })
+                .positioning(Positioning.absolute(10, 10));
     }
 }

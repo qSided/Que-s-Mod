@@ -5,11 +5,12 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.TagKey;
+import qsided.quesmod.items.QuesItems;
 
 public class MythrilMaterial implements ToolMaterial {
     @Override
     public int getDurability() {
-        return 1850;
+        return 2780;
     }
     
     @Override
@@ -19,7 +20,7 @@ public class MythrilMaterial implements ToolMaterial {
     
     @Override
     public float getAttackDamage() {
-        return 7.0F;
+        return 6.0F;
     }
     
     @Override
@@ -34,6 +35,6 @@ public class MythrilMaterial implements ToolMaterial {
     
     @Override
     public Ingredient getRepairIngredient() {
-        return null;
+        return Ingredient.ofItems(QuesItems.MYTHRIL_INGOT);
     }
 }

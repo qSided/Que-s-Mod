@@ -4,9 +4,19 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.block.Blocks;
+import net.minecraft.data.server.loottable.vanilla.VanillaChestLootTableGenerator;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTables;
+import net.minecraft.loot.condition.RandomChanceLootCondition;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
+import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -19,6 +29,7 @@ import org.slf4j.LoggerFactory;
 import qsided.quesmod.blocks.QuesBlocks;
 import qsided.quesmod.commands.SkillsCommand;
 import qsided.quesmod.config.ConfigGenerator;
+import qsided.quesmod.config.QuesConfig;
 import qsided.quesmod.items.QuesItems;
 import qsided.quesmod.items.materials.QuesArmorMaterials;
 import qsided.quesmod.networking.*;
@@ -33,7 +44,8 @@ public class QuesMod implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("ques-mod");
 	public static final String MOD_ID = "ques-mod";
 	public static final RegistryKey<PlacedFeature> MYTHRIL_CHUNK_FEATURE = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(MOD_ID, "mythril_chunk_feature"));
-	
+    public static final QuesConfig OWO_CONFIG = QuesConfig.createAndLoad();
+    
 	@Override
 	public void onInitialize() {
         QuesItems.initialize();
@@ -43,6 +55,7 @@ public class QuesMod implements ModInitializer {
         try {
             ConfigGenerator.genReqsConfig();
             ConfigGenerator.genWoodcuttingConfig();
+            ConfigGenerator.genMiningConfig();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -50,6 +63,7 @@ public class QuesMod implements ModInitializer {
         EnchantingSkill.register();
         CombatSkill.register();
         WoodcuttingSkill.register();
+        EnduranceSkill.register();
         SkillCheckHandler.register();
         
         LevelUp.onLevelUp();
@@ -57,7 +71,7 @@ public class QuesMod implements ModInitializer {
         
         SkillsCommand.register();
         
-        BiomeModifications.addFeature(BiomeSelectors.foundInOverworld(), GenerationStep.Feature.UNDERGROUND_ORES, MYTHRIL_CHUNK_FEATURE);
+        BiomeModifications.addFeature(BiomeSelectors.foundInTheEnd(), GenerationStep.Feature.UNDERGROUND_ORES, MYTHRIL_CHUNK_FEATURE);
         
         PayloadTypeRegistry.playS2C().register(LevelUpPayload.ID, LevelUpPayload.CODEC);
         PayloadTypeRegistry.playC2S().register(RequestSkillsPayload.ID, RequestSkillsPayload.CODEC);
@@ -73,9 +87,22 @@ public class QuesMod implements ModInitializer {
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             PlayerData state = getPlayerState(handler.getPlayer());
             
-            handler.getPlayer().sendMessage(Text.translatable("ques-mod.player_joined"));
+            if (OWO_CONFIG.displayJoinMessage()) {
+                handler.getPlayer().sendMessage(Text.translatable("ques-mod.player_joined"));
+            }
             
             sendSkillData(state, handler.getPlayer());
+        });
+        
+        LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
+            if (key.equals(LootTables.END_CITY_TREASURE_CHEST)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.75f))
+                        .with(ItemEntry.builder(QuesItems.MYTHRIL_UPGRADE_TEMPLATE))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1f, 1f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
         });
         
         LOGGER.info("Que's mod loaded!");
@@ -91,14 +118,16 @@ public class QuesMod implements ModInitializer {
 		Integer combatLevel = playerState.skillLevels.getOrDefault("combat", 1);
 		Integer woodcuttingLevel = playerState.skillLevels.getOrDefault("woodcutting", 1);
 		Integer farmingLevel = playerState.skillLevels.getOrDefault("farming", 1);
+		Integer enduranceLevel = playerState.skillLevels.getOrDefault("endurance", 1);
 		
 		Float miningExp = playerState.skillExperience.getOrDefault("mining", 0F);
 		Float enchantingExp = playerState.skillExperience.getOrDefault("enchanting", 0F);
 		Float combatExp = playerState.skillExperience.getOrDefault("combat", 0F);
 		Float woodcuttingExp = playerState.skillExperience.getOrDefault("woodcutting", 0F);
 		Float farmingExp = playerState.skillExperience.getOrDefault("farming", 0F);
+		Float enduranceExp = playerState.skillExperience.getOrDefault("endurance", 0F);
 		
-		ServerPlayNetworking.send(player, new SendSkillsLevelsPayload(miningLevel, enchantingLevel, combatLevel, woodcuttingLevel, farmingLevel));
-		ServerPlayNetworking.send(player, new SendSkillsExperiencePayload(miningExp, enchantingExp, combatExp, woodcuttingExp, farmingExp));
+		ServerPlayNetworking.send(player, new SendSkillsLevelsPayload(miningLevel, enchantingLevel, combatLevel, woodcuttingLevel, farmingLevel, enduranceLevel));
+		ServerPlayNetworking.send(player, new SendSkillsExperiencePayload(miningExp, enchantingExp, combatExp, woodcuttingExp, farmingExp, enduranceExp));
 	}
 }

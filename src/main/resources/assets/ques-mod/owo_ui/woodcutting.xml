@@ -8,6 +8,10 @@
 
                     <children>
                         <dropdown id="skill-selection">
+                            <surface>
+                                <flat>#171717</flat>
+                                <outline>#121212</outline>
+                            </surface>
                         </dropdown>
                         <item>
                             <stack>minecraft:golden_axe</stack>

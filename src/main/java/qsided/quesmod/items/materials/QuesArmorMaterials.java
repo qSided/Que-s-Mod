@@ -18,22 +18,22 @@ import java.util.function.Supplier;
 public class QuesArmorMaterials {
     
     public static void initialize() {}
-    public static final int MYTHRIL_DURABILITY_MULTIPLIER = 12;
+    public static final int MYTHRIL_DURABILITY_MULTIPLIER = 40;
     
     public static final RegistryEntry<ArmorMaterial> MYTHRIL = registerMaterial(
             "mythril",
             //Piece and toughness value
             Map.of(
-                    ArmorItem.Type.HELMET, 2,
-                    ArmorItem.Type.CHESTPLATE, 5,
-                    ArmorItem.Type.LEGGINGS, 4,
-                    ArmorItem.Type.BOOTS, 3),
-            5,
+                    ArmorItem.Type.HELMET, 4,
+                    ArmorItem.Type.CHESTPLATE, 9,
+                    ArmorItem.Type.LEGGINGS, 7,
+                    ArmorItem.Type.BOOTS, 4),
+            8,
             //Equip sound
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
             null,
-            0.0F,
-            0.0F,
+            3.5F,
+            0.2F,
             false
             );
     

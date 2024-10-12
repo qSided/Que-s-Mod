@@ -16,10 +16,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.lwjgl.glfw.GLFW;
 import qsided.quesmod.config.requirements.ItemWithRequirements;
-import qsided.quesmod.gui.CombatSkillScreen;
-import qsided.quesmod.gui.EnchantingSkillScreen;
-import qsided.quesmod.gui.MiningSkillScreen;
-import qsided.quesmod.gui.WoodcuttingSkillScreen;
+import qsided.quesmod.gui.*;
 import qsided.quesmod.networking.LevelUpPayload;
 import qsided.quesmod.networking.RequestSkillsPayload;
 import qsided.quesmod.networking.SendSkillsExperiencePayload;
@@ -30,8 +27,19 @@ import java.io.IOException;
 import java.util.List;
 
 public class QuesModClient implements ClientModInitializer {
+	public static String lastScreenOpen = "mining";
+	
+	public static String getLastScreenOpen() {
+		return lastScreenOpen;
+	}
+	
+	public static void setLastScreenOpen(String lastScreenOpen) {
+		QuesModClient.lastScreenOpen = lastScreenOpen;
+	}
+	
 	@Override
 	public void onInitializeClient() {
+		
 		MinecraftClient client = MinecraftClient.getInstance();
 		
 		KeyBinding openSkills = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.ques-mod.open_skills", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_ALT, "key.category.skills.open"));
@@ -39,7 +47,14 @@ public class QuesModClient implements ClientModInitializer {
 		ClientTickEvents.END_CLIENT_TICK.register(client1 -> {
 			while (openSkills.wasPressed()) {
 				ClientPlayNetworking.send(new RequestSkillsPayload(client.player.getUuid().toString()));
-				client.setScreen(new MiningSkillScreen());
+				switch (getLastScreenOpen()) {
+                    case "mining" -> client.setScreen(new MiningSkillScreen());
+					case "enchanting" -> client.setScreen(new EnchantingSkillScreen());
+					case "combat" -> client.setScreen(new CombatSkillScreen());
+					case "woodcutting" -> client.setScreen(new WoodcuttingSkillScreen());
+                    case "endurance" -> client.setScreen(new EnduranceSkillScreen());
+                    default -> client.setScreen(new MiningSkillScreen());
+                }
 			}
 		});
 		
@@ -76,12 +91,16 @@ public class QuesModClient implements ClientModInitializer {
 			EnchantingSkillScreen.setEnchantingLevel(payload.enchanting());
 			CombatSkillScreen.setCombatLevel(payload.combat());
 			WoodcuttingSkillScreen.setWoodcuttingLevel(payload.woodcutting());
+			EnduranceSkillScreen.setEnduranceLevel(payload.endurance());
+			EnduranceSkillScreen.setMaxHealth(context.player().getMaxHealth());
 		});
 		ClientPlayNetworking.registerGlobalReceiver(SendSkillsExperiencePayload.ID, (payload, context) -> {
 			MiningSkillScreen.setMiningExperience(payload.mining());
 			EnchantingSkillScreen.setEnchantingExperience(payload.enchanting());
 			CombatSkillScreen.setCombatExperience(payload.combat());
 			WoodcuttingSkillScreen.setWoodcuttingExperience(payload.woodcutting());
+			EnduranceSkillScreen.setEnduranceExperience(payload.endurance());
+			EnduranceSkillScreen.setMaxHealth(context.player().getMaxHealth());
 		});
 	}
 }

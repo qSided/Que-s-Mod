@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#D#",
+        "#E#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:netherite_ingot"
+        },
+        "D": {
+            "item": "ques-mod:mythril_upgrade_template"
+        },
+        "E": {
+            "item": "minecraft:end_stone"
+        }
+    },
+    "result": {
+        "id": "ques-mod:mythril_upgrade_template",
+        "count": 2
+    }
+}

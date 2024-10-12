@@ -25,7 +25,7 @@ public class CombatSkill {
                 int combatLevel = state.skillLevels.getOrDefault("combat", 1);
                 
                 if (combatLevel < 100) {
-                    IncreaseSkillExperienceCallback.EVENT.invoker().increaseExp(player, state, "combat", combatExp + (12 + (killedEntity.getMaxHealth() / 4)));
+                    IncreaseSkillExperienceCallback.EVENT.invoker().increaseExp(player, state, "combat", (12 + (killedEntity.getMaxHealth() / 4)));
                 }
             }
         });
