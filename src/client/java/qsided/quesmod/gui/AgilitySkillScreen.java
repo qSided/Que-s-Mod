@@ -15,86 +15,71 @@ import qsided.quesmod.QuesModClient;
 
 import java.text.DecimalFormat;
 
-public class WoodcuttingSkillScreen extends BaseUIModelScreen<FlowLayout> {
-    public static Integer woodcuttingLevel = 1;
-    public static Float woodcuttingExperience = 0F;
-    public WoodcuttingSkillScreen() {
-        super(FlowLayout.class, DataSource.asset(Identifier.of(QuesMod.MOD_ID, "woodcutting")));
+public class AgilitySkillScreen extends BaseUIModelScreen<FlowLayout> {
+    public static Integer agilityLevel = 1;
+    public static Float agilityExperience = 0F;
+    public static Double movementSpeed = 0.0;
+    
+    public AgilitySkillScreen() {
+        super(FlowLayout.class, DataSource.asset(Identifier.of(QuesMod.MOD_ID, "agility")));
     }
     
-    public static void setWoodcuttingLevel(int level) {
-        WoodcuttingSkillScreen.woodcuttingLevel = level;
+    public static void setAgilityLevel(int level) {
+        AgilitySkillScreen.agilityLevel = level;
     }
-    public static void setWoodcuttingExperience(float experience) {
-        WoodcuttingSkillScreen.woodcuttingExperience = experience;
+    public static void setAgilityExperience(float experience) {
+        AgilitySkillScreen.agilityExperience = experience;
+    }
+    public static void setMovementSpeed(Double movementSpeed) {
+        AgilitySkillScreen.movementSpeed = movementSpeed;
     }
     
     @Override
     protected void build(FlowLayout rootComponent) {
         DecimalFormat df = new DecimalFormat();
         df.setMaximumFractionDigits(2);
-        rootComponent.childById(GridLayout.class, "woodcutting")
+        DecimalFormat df2 = new DecimalFormat();
+        df2.setMaximumFractionDigits(0);
+        rootComponent.childById(GridLayout.class, "agility")
                 .child(
                         Components.label(Text.translatable("skills.ques-mod.current_level"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
                 0,
                 0)
                 .child(
-                        Components.label(Text.of(String.valueOf(woodcuttingLevel)))
+                        Components.label(Text.of(String.valueOf(agilityLevel)))
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         0,
                         2)
+                
                 .child(
                         Components.label(Text.translatable("skills.ques-mod.current_experience"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
                         1,
                         0)
                 .child(
-                        Components.label(Text.translatable("skills.ques-mod.woodcutting.efficiency"))
-                            .horizontalTextAlignment(HorizontalAlignment.LEFT),
-                        2,
-                        0)
-                .child(
-                        Components.label(Text.translatable("skills.ques-mod.woodcutting.extra_chance"))
+                        Components.label(Text.translatable("skills.ques-mod.agility.movement_speed"))
                                 .horizontalTextAlignment(HorizontalAlignment.LEFT),
-                        3,
+                        2,
                         0)
                 .child(
-                        Components.label(Text.of(woodcuttingLevel + "%"))
-                                .color(Color.ofArgb(0xd1d0cd))
-                                .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                        3,
-                        2);
-        
-        if (woodcuttingLevel.equals(1)) {
-            rootComponent.childById(GridLayout.class, "woodcutting")
-                    .child(
-                            Components.label(Text.of(String.valueOf(0)))
-                                    .color(Color.ofArgb(0xd1d0cd))
-                                    .horizontalTextAlignment(HorizontalAlignment.RIGHT),
-                            2,
-                            2);
-        } else {
-            rootComponent.childById(GridLayout.class, "woodcutting")
-                    .child(
-                        Components.label(Text.of(String.valueOf(woodcuttingLevel * .5)))
+                        Components.label(Text.of("+" + df2.format(movementSpeed * 1000) + "%"))
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         2,
                         2);
-        }
         
-        if (woodcuttingLevel < 100) {
-            rootComponent.childById(GridLayout.class, "woodcutting")
+        if (agilityLevel < 100) {
+            rootComponent.childById(GridLayout.class, "agility")
                     .child(
-                            Components.label(Text.of(df.format(woodcuttingExperience) + "/" + df.format(60 * (woodcuttingLevel * 3.8))))
+                            Components.label(Text.of(df.format(agilityExperience) + "/" + df.format(60 * (agilityLevel * 3.8))))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                             1,
                             2);
         } else {
-            rootComponent.childById(GridLayout.class, "woodcutting")
+            rootComponent.childById(GridLayout.class, "agility")
                     .child(
                             Components.label(Text.translatable("skills.ques-mod.max_level"))
                                     .color(Color.ofArgb(0xd1d0cd))

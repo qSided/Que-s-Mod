@@ -171,6 +171,11 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                     client.setScreen(new MiningSkillScreen());
                 })
                 .divider()
+                .button(Text.translatable("skills.ques-mod.woodcutting"), button -> {
+                    QuesModClient.setLastScreenOpen("woodcutting");
+                    client.setScreen(new WoodcuttingSkillScreen());
+                })
+                .divider()
                 .button(Text.translatable("skills.ques-mod.enchanting"), button -> {
                     QuesModClient.setLastScreenOpen("enchanting");
                     client.setScreen(new EnchantingSkillScreen());
@@ -181,14 +186,14 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                     client.setScreen(new CombatSkillScreen());
                 })
                 .divider()
-                .button(Text.translatable("skills.ques-mod.woodcutting"), button -> {
-                    QuesModClient.setLastScreenOpen("woodcutting");
-                    client.setScreen(new WoodcuttingSkillScreen());
-                })
-                .divider()
                 .button(Text.translatable("skills.ques-mod.endurance"), button -> {
                     QuesModClient.setLastScreenOpen("endurance");
                     client.setScreen(new EnduranceSkillScreen());
+                })
+                .divider()
+                .button(Text.translatable("skills.ques-mod.agility"), button -> {
+                    QuesModClient.setLastScreenOpen("agility");
+                    client.setScreen(new AgilitySkillScreen());
                 })
                 .positioning(Positioning.absolute(10, 10));
     }

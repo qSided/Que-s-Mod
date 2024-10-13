@@ -35,34 +35,36 @@ public class SkillCheckHandler {
         ServerEntityEvents.EQUIPMENT_CHANGE.register((livingEntity, equipmentSlot, previousStack, currentStack) -> {
             if (livingEntity instanceof PlayerEntity player && !player.isCreative()) {
                 PlayerData state = StateSaverAndLoader.getPlayerState(player);
-                try {
-                    List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/reqs.json"), typeReference);
-                    items.forEach(item -> {
-                        if (currentStack.getItem().toString().equals(item.getItemId())
-                                && state.skillLevels.getOrDefault(item.getRequirements().getSkill(), 1) < item.getRequirements().getLevel()) {
-                            player.dropItem(currentStack, true);
-                            player.equipStack(equipmentSlot, Items.AIR.getDefaultStack());
-                            player.sendMessage(Text.translatable("skills.ques-mod.failed_reqs"), false);
-                        }
-                    });
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 
-                Identifier efficiencyModifier = Identifier.of(QuesMod.MOD_ID, "efficiency_modifier");
-                if (currentStack.isIn(ItemTags.PICKAXES) || currentStack.isIn(ItemTags.SHOVELS) && equipmentSlot.equals(EquipmentSlot.MAINHAND)) {
-                    player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
-                            new EntityAttributeModifier(efficiencyModifier, state.skillLevels.getOrDefault("mining", 1) * .5, EntityAttributeModifier.Operation.ADD_VALUE));
-                    QuesMod.LOGGER.info(String.valueOf(player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).getModifier(efficiencyModifier)));
-                } else if (currentStack.isIn(ItemTags.AXES) && equipmentSlot.equals(EquipmentSlot.MAINHAND)) {
-                    player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
-                            new EntityAttributeModifier(efficiencyModifier, state.skillLevels.getOrDefault("woodcutting", 1) * .5, EntityAttributeModifier.Operation.ADD_VALUE)
-                    );
-                    QuesMod.LOGGER.info(String.valueOf(player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).getModifier(efficiencyModifier)));
-                } else {
-                    player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).removeModifier(efficiencyModifier);
+                if (QuesMod.OWO_CONFIG.enableRequirements()) {
+                    try {
+                        List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/reqs.json"), typeReference);
+                        items.forEach(item -> {
+                            if (currentStack.getItem().toString().equals(item.getItemId())
+                                    && state.skillLevels.getOrDefault(item.getRequirements().getSkill(), 1) < item.getRequirements().getLevel()) {
+                                player.dropItem(currentStack, true);
+                                player.equipStack(equipmentSlot, Items.AIR.getDefaultStack());
+                                player.sendMessage(Text.translatable("skills.ques-mod.failed_reqs"), false);
+                            }
+                        });
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    
+                    Identifier efficiencyModifier = Identifier.of(QuesMod.MOD_ID, "efficiency_modifier");
+                    if (currentStack.isIn(ItemTags.PICKAXES) || currentStack.isIn(ItemTags.SHOVELS) && equipmentSlot.equals(EquipmentSlot.MAINHAND)) {
+                        player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
+                                new EntityAttributeModifier(efficiencyModifier, state.skillLevels.getOrDefault("mining", 1) * .5, EntityAttributeModifier.Operation.ADD_VALUE));
+                        QuesMod.LOGGER.info(String.valueOf(player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).getModifier(efficiencyModifier)));
+                    } else if (currentStack.isIn(ItemTags.AXES) && equipmentSlot.equals(EquipmentSlot.MAINHAND)) {
+                        player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
+                                new EntityAttributeModifier(efficiencyModifier, state.skillLevels.getOrDefault("woodcutting", 1) * .5, EntityAttributeModifier.Operation.ADD_VALUE)
+                        );
+                        QuesMod.LOGGER.info(String.valueOf(player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).getModifier(efficiencyModifier)));
+                    } else {
+                        player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).removeModifier(efficiencyModifier);
+                    }
                 }
-                
             }
         });
     }

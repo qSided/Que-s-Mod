@@ -48,6 +48,13 @@ public class LevelUp {
                                     EntityAttributeModifier.Operation.ADD_VALUE)
                     );
                 }
+                case "agility" -> {
+                    Identifier agilityModifier = Identifier.of(QuesMod.MOD_ID, "agility_modifier");
+                    
+                    player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).overwritePersistentModifier(
+                            new EntityAttributeModifier(agilityModifier, state.skillLevels.getOrDefault(skill, 1) * 0.001, EntityAttributeModifier.Operation.ADD_VALUE)
+                    );
+                }
             }
             
             sendSkillData(state, player);

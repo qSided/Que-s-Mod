@@ -12,8 +12,10 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 import qsided.quesmod.config.requirements.ItemWithRequirements;
 import qsided.quesmod.gui.*;
@@ -53,6 +55,7 @@ public class QuesModClient implements ClientModInitializer {
 					case "combat" -> client.setScreen(new CombatSkillScreen());
 					case "woodcutting" -> client.setScreen(new WoodcuttingSkillScreen());
                     case "endurance" -> client.setScreen(new EnduranceSkillScreen());
+					case "agility" -> client.setScreen(new AgilitySkillScreen());
                     default -> client.setScreen(new MiningSkillScreen());
                 }
 			}
@@ -93,6 +96,8 @@ public class QuesModClient implements ClientModInitializer {
 			WoodcuttingSkillScreen.setWoodcuttingLevel(payload.woodcutting());
 			EnduranceSkillScreen.setEnduranceLevel(payload.endurance());
 			EnduranceSkillScreen.setMaxHealth(context.player().getMaxHealth());
+			AgilitySkillScreen.setAgilityLevel(payload.agility());
+			AgilitySkillScreen.setMovementSpeed(context.player().getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getModifier(Identifier.of(QuesMod.MOD_ID, "agility_modifier")).value());
 		});
 		ClientPlayNetworking.registerGlobalReceiver(SendSkillsExperiencePayload.ID, (payload, context) -> {
 			MiningSkillScreen.setMiningExperience(payload.mining());
@@ -101,6 +106,8 @@ public class QuesModClient implements ClientModInitializer {
 			WoodcuttingSkillScreen.setWoodcuttingExperience(payload.woodcutting());
 			EnduranceSkillScreen.setEnduranceExperience(payload.endurance());
 			EnduranceSkillScreen.setMaxHealth(context.player().getMaxHealth());
+			AgilitySkillScreen.setAgilityExperience(payload.agility());
+			AgilitySkillScreen.setMovementSpeed(context.player().getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getModifier(Identifier.of(QuesMod.MOD_ID, "agility_modifier")).value());
 		});
 	}
 }

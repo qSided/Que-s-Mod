@@ -8,8 +8,6 @@ import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.block.Blocks;
-import net.minecraft.data.server.loottable.vanilla.VanillaChestLootTableGenerator;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
@@ -30,6 +28,7 @@ import qsided.quesmod.blocks.QuesBlocks;
 import qsided.quesmod.commands.SkillsCommand;
 import qsided.quesmod.config.ConfigGenerator;
 import qsided.quesmod.config.QuesConfig;
+import qsided.quesmod.events.IncreaseSkillExperienceCallback;
 import qsided.quesmod.items.QuesItems;
 import qsided.quesmod.items.materials.QuesArmorMaterials;
 import qsided.quesmod.networking.*;
@@ -77,12 +76,24 @@ public class QuesMod implements ModInitializer {
         PayloadTypeRegistry.playC2S().register(RequestSkillsPayload.ID, RequestSkillsPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(SendSkillsLevelsPayload.ID, SendSkillsLevelsPayload.CODEC);
         PayloadTypeRegistry.playS2C().register(SendSkillsExperiencePayload.ID, SendSkillsExperiencePayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(SendPlayerFallPayload.ID, SendPlayerFallPayload.CODEC);
+        PayloadTypeRegistry.playC2S().register(SendPlayerJumpPayload.ID, SendPlayerJumpPayload.CODEC);
         
         ServerPlayNetworking.registerGlobalReceiver(RequestSkillsPayload.ID, (payload, context) -> {
             PlayerData playerState = StateSaverAndLoader.getPlayerState(context.player());
             
             sendSkillData(playerState, context.player());
         });
+        
+        ServerPlayNetworking.registerGlobalReceiver(SendPlayerFallPayload.ID, ((payload, context) -> {
+            PlayerData state = StateSaverAndLoader.getPlayerState(context.player());
+            IncreaseSkillExperienceCallback.EVENT.invoker().increaseExp(context.player(), state, "agility", (float) Math.min((payload.integer() / 100), 50));
+        }));
+        
+        ServerPlayNetworking.registerGlobalReceiver(SendPlayerJumpPayload.ID, ((payload, context) -> {
+            PlayerData state = StateSaverAndLoader.getPlayerState(context.player());
+            IncreaseSkillExperienceCallback.EVENT.invoker().increaseExp(context.player(), state, "agility", (float) (payload.integer()));
+        }));
         
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {
             PlayerData state = getPlayerState(handler.getPlayer());
@@ -117,17 +128,17 @@ public class QuesMod implements ModInitializer {
 		Integer enchantingLevel = playerState.skillLevels.getOrDefault("enchanting", 1);
 		Integer combatLevel = playerState.skillLevels.getOrDefault("combat", 1);
 		Integer woodcuttingLevel = playerState.skillLevels.getOrDefault("woodcutting", 1);
-		Integer farmingLevel = playerState.skillLevels.getOrDefault("farming", 1);
 		Integer enduranceLevel = playerState.skillLevels.getOrDefault("endurance", 1);
+        Integer agilityLevel = playerState.skillLevels.getOrDefault("agility", 1);
 		
 		Float miningExp = playerState.skillExperience.getOrDefault("mining", 0F);
 		Float enchantingExp = playerState.skillExperience.getOrDefault("enchanting", 0F);
 		Float combatExp = playerState.skillExperience.getOrDefault("combat", 0F);
 		Float woodcuttingExp = playerState.skillExperience.getOrDefault("woodcutting", 0F);
-		Float farmingExp = playerState.skillExperience.getOrDefault("farming", 0F);
 		Float enduranceExp = playerState.skillExperience.getOrDefault("endurance", 0F);
+        Float agilityExp = playerState.skillExperience.getOrDefault("agility", 0F);
 		
-		ServerPlayNetworking.send(player, new SendSkillsLevelsPayload(miningLevel, enchantingLevel, combatLevel, woodcuttingLevel, farmingLevel, enduranceLevel));
-		ServerPlayNetworking.send(player, new SendSkillsExperiencePayload(miningExp, enchantingExp, combatExp, woodcuttingExp, farmingExp, enduranceExp));
+		ServerPlayNetworking.send(player, new SendSkillsLevelsPayload(miningLevel, enchantingLevel, combatLevel, woodcuttingLevel, enduranceLevel, agilityLevel));
+		ServerPlayNetworking.send(player, new SendSkillsExperiencePayload(miningExp, enchantingExp, combatExp, woodcuttingExp, enduranceExp, agilityExp));
 	}
 }

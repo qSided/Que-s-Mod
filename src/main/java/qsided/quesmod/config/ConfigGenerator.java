@@ -27,7 +27,7 @@ public class ConfigGenerator {
         items.add(new ItemWithRequirements("minecraft:wooden_pickaxe", new Requirements("mining", 1)));
         items.add(new ItemWithRequirements("minecraft:wooden_axe", new Requirements("mining", 1)));
         items.add(new ItemWithRequirements("minecraft:wooden_shovel", new Requirements("mining", 1)));
-        //items.add(new ItemWithRequirements("minecraft:wooden_hoe", new Requirements("farming", 1)));
+        //items.add(new ItemWithRequirements("minecraft:wooden_hoe", new Requirements("agility", 1)));
         items.add(new ItemWithRequirements("minecraft:leather_helmet", new Requirements("endurance", 1)));
         items.add(new ItemWithRequirements("minecraft:leather_chestplate", new Requirements("endurance", 1)));
         items.add(new ItemWithRequirements("minecraft:leather_leggings", new Requirements("endurance", 1)));
@@ -37,13 +37,13 @@ public class ConfigGenerator {
         items.add(new ItemWithRequirements("minecraft:stone_pickaxe", new Requirements("mining", 4)));
         items.add(new ItemWithRequirements("minecraft:stone_axe", new Requirements("mining", 4)));
         items.add(new ItemWithRequirements("minecraft:stone_shovel", new Requirements("mining", 4)));
-        //items.add(new ItemWithRequirements("minecraft:stone_hoe", new Requirements("farming", 4)));
+        //items.add(new ItemWithRequirements("minecraft:stone_hoe", new Requirements("agility", 4)));
         
         items.add(new ItemWithRequirements("minecraft:iron_sword", new Requirements("combat", 12)));
         items.add(new ItemWithRequirements("minecraft:iron_pickaxe", new Requirements("mining", 12)));
         items.add(new ItemWithRequirements("minecraft:iron_axe", new Requirements("mining", 12)));
         items.add(new ItemWithRequirements("minecraft:iron_shovel", new Requirements("mining", 12)));
-        //items.add(new ItemWithRequirements("minecraft:iron_hoe", new Requirements("farming", 12)));
+        //items.add(new ItemWithRequirements("minecraft:iron_hoe", new Requirements("agility", 12)));
         items.add(new ItemWithRequirements("minecraft:iron_helmet", new Requirements("endurance", 10)));
         items.add(new ItemWithRequirements("minecraft:iron_chestplate", new Requirements("endurance", 10)));
         items.add(new ItemWithRequirements("minecraft:iron_leggings", new Requirements("endurance", 10)));
@@ -53,7 +53,7 @@ public class ConfigGenerator {
         items.add(new ItemWithRequirements("minecraft:gold_pickaxe", new Requirements("mining", 15)));
         items.add(new ItemWithRequirements("minecraft:gold_axe", new Requirements("mining", 15)));
         items.add(new ItemWithRequirements("minecraft:gold_shovel", new Requirements("mining", 15)));
-        //items.add(new ItemWithRequirements("minecraft:gold_hoe", new Requirements("farming", 15)));
+        //items.add(new ItemWithRequirements("minecraft:gold_hoe", new Requirements("agility", 15)));
         items.add(new ItemWithRequirements("minecraft:gold_helmet", new Requirements("endurance", 15)));
         items.add(new ItemWithRequirements("minecraft:gold_chestplate", new Requirements("endurance", 15)));
         items.add(new ItemWithRequirements("minecraft:gold_leggings", new Requirements("endurance", 15)));
@@ -63,7 +63,7 @@ public class ConfigGenerator {
         items.add(new ItemWithRequirements("minecraft:diamond_pickaxe", new Requirements("mining", 25)));
         items.add(new ItemWithRequirements("minecraft:diamond_axe", new Requirements("mining", 25)));
         items.add(new ItemWithRequirements("minecraft:diamond_shovel", new Requirements("mining", 25)));
-        //items.add(new ItemWithRequirements("minecraft:diamond_hoe", new Requirements("farming", 25)));
+        //items.add(new ItemWithRequirements("minecraft:diamond_hoe", new Requirements("agility", 25)));
         items.add(new ItemWithRequirements("minecraft:diamond_helmet", new Requirements("endurance", 20)));
         items.add(new ItemWithRequirements("minecraft:diamond_chestplate", new Requirements("endurance", 20)));
         items.add(new ItemWithRequirements("minecraft:diamond_leggings", new Requirements("endurance", 20)));
@@ -73,7 +73,7 @@ public class ConfigGenerator {
         items.add(new ItemWithRequirements("minecraft:netherite_pickaxe", new Requirements("mining", 40)));
         items.add(new ItemWithRequirements("minecraft:netherite_axe", new Requirements("mining", 40)));
         items.add(new ItemWithRequirements("minecraft:netherite_shovel", new Requirements("mining", 40)));
-        //items.add(new ItemWithRequirements("minecraft:netherite_hoe", new Requirements("farming", 40)));
+        //items.add(new ItemWithRequirements("minecraft:netherite_hoe", new Requirements("agility", 40)));
         items.add(new ItemWithRequirements("minecraft:netherite_helmet", new Requirements("endurance", 30)));
         items.add(new ItemWithRequirements("minecraft:netherite_chestplate", new Requirements("endurance", 30)));
         items.add(new ItemWithRequirements("minecraft:netherite_leggings", new Requirements("endurance", 30)));
@@ -83,7 +83,7 @@ public class ConfigGenerator {
         items.add(new ItemWithRequirements("ques-mod:mythril_pickaxe", new Requirements("mining", 50)));
         items.add(new ItemWithRequirements("ques-mod:mythril_axe", new Requirements("mining", 50)));
         items.add(new ItemWithRequirements("ques-mod:mythril_shovel", new Requirements("mining", 50)));
-        //items.add(new ItemWithRequirements("ques-mod:mythril_hoe", new Requirements("farming", 40)));
+        //items.add(new ItemWithRequirements("ques-mod:mythril_hoe", new Requirements("agility", 40)));
         items.add(new ItemWithRequirements("ques-mod:mythril_helmet", new Requirements("endurance", 40)));
         items.add(new ItemWithRequirements("ques-mod:mythril_chestplate", new Requirements("endurance", 40)));
         items.add(new ItemWithRequirements("ques-mod:mythril_leggings", new Requirements("endurance", 40)));
