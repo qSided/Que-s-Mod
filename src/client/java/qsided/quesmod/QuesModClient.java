@@ -72,21 +72,23 @@ public class QuesModClient implements ClientModInitializer {
 		
 		ItemTooltipCallback.EVENT.register((stack, tooltipContext, tooltipType, lines) -> {
 			
-			ObjectMapper mapper = new ObjectMapper();
-			CollectionType typeReference = TypeFactory.defaultInstance().constructCollectionType(List.class, ItemWithRequirements.class);
-            try {
-                List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/reqs.json"), typeReference);
-				items.forEach(item -> {
-					if (stack.getItem().toString().equals(item.getItemId())) {
-						lines
-								.add(Text.translatable("tooltip.ques-mod.requirements")
-								.append(Text.translatable("skills.ques-mod." + item.getRequirements().getSkill()))
-								.append(" " + item.getRequirements().getLevel()).formatted(Formatting.GRAY));
-					}
-				});
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+			if (QuesMod.OWO_CONFIG.enableRequirements()) {
+				ObjectMapper mapper = new ObjectMapper();
+				CollectionType typeReference = TypeFactory.defaultInstance().constructCollectionType(List.class, ItemWithRequirements.class);
+				try {
+					List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/reqs.json"), typeReference);
+					items.forEach(item -> {
+						if (stack.getItem().toString().equals(item.getItemId())) {
+							lines
+									.add(Text.translatable("tooltip.ques-mod.requirements")
+											.append(Text.translatable("skills.ques-mod." + item.getRequirements().getSkill()))
+											.append(" " + item.getRequirements().getLevel()).formatted(Formatting.GRAY));
+						}
+					});
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
         });
 		
 		ClientPlayNetworking.registerGlobalReceiver(SendSkillsLevelsPayload.ID, (payload, context) -> {
@@ -97,8 +99,9 @@ public class QuesModClient implements ClientModInitializer {
 			EnduranceSkillScreen.setEnduranceLevel(payload.endurance());
 			EnduranceSkillScreen.setMaxHealth(context.player().getMaxHealth());
 			AgilitySkillScreen.setAgilityLevel(payload.agility());
-			AgilitySkillScreen.setMovementSpeed(context.player().getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getModifier(Identifier.of(QuesMod.MOD_ID, "agility_modifier")).value());
-		});
+			AgilitySkillScreen.setJumpStrength(context.player().getAttributeInstance(EntityAttributes.GENERIC_JUMP_STRENGTH).getValue());
+			AgilitySkillScreen.setSafeDistance(context.player().getAttributeInstance(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE).getValue());
+			});
 		ClientPlayNetworking.registerGlobalReceiver(SendSkillsExperiencePayload.ID, (payload, context) -> {
 			MiningSkillScreen.setMiningExperience(payload.mining());
 			EnchantingSkillScreen.setEnchantingExperience(payload.enchanting());
@@ -107,7 +110,8 @@ public class QuesModClient implements ClientModInitializer {
 			EnduranceSkillScreen.setEnduranceExperience(payload.endurance());
 			EnduranceSkillScreen.setMaxHealth(context.player().getMaxHealth());
 			AgilitySkillScreen.setAgilityExperience(payload.agility());
-			AgilitySkillScreen.setMovementSpeed(context.player().getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).getModifier(Identifier.of(QuesMod.MOD_ID, "agility_modifier")).value());
-		});
+			AgilitySkillScreen.setJumpStrength(context.player().getAttributeInstance(EntityAttributes.GENERIC_JUMP_STRENGTH).getValue());
+			AgilitySkillScreen.setSafeDistance(context.player().getAttributeInstance(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE).getValue());
+			});
 	}
 }

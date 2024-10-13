@@ -18,7 +18,10 @@ import java.text.DecimalFormat;
 public class AgilitySkillScreen extends BaseUIModelScreen<FlowLayout> {
     public static Integer agilityLevel = 1;
     public static Float agilityExperience = 0F;
-    public static Double movementSpeed = 0.0;
+    public static Double safeDistance = 3.0;
+    
+    
+    public static Double jumpStrength = 0.42;
     
     public AgilitySkillScreen() {
         super(FlowLayout.class, DataSource.asset(Identifier.of(QuesMod.MOD_ID, "agility")));
@@ -30,8 +33,11 @@ public class AgilitySkillScreen extends BaseUIModelScreen<FlowLayout> {
     public static void setAgilityExperience(float experience) {
         AgilitySkillScreen.agilityExperience = experience;
     }
-    public static void setMovementSpeed(Double movementSpeed) {
-        AgilitySkillScreen.movementSpeed = movementSpeed;
+    public static void setJumpStrength(Double jumpStrength) {
+        AgilitySkillScreen.jumpStrength = jumpStrength;
+    }
+    public static void setSafeDistance(Double safeDistance) {
+        AgilitySkillScreen.safeDistance = safeDistance;
     }
     
     @Override
@@ -64,10 +70,32 @@ public class AgilitySkillScreen extends BaseUIModelScreen<FlowLayout> {
                         2,
                         0)
                 .child(
-                        Components.label(Text.of("+" + df2.format(movementSpeed * 1000) + "%"))
+                        Components.label(Text.translatable("skills.ques-mod.agility.jump_strength"))
+                                .horizontalTextAlignment(HorizontalAlignment.LEFT),
+                        3,
+                        0)
+                .child(
+                        Components.label(Text.translatable("skills.ques-mod.agility.safe_distance"))
+                                .horizontalTextAlignment(HorizontalAlignment.LEFT),
+                        4,
+                        0)
+                .child(
+                        Components.label(Text.of("+" + agilityLevel + "%"))
                                 .color(Color.ofArgb(0xd1d0cd))
                                 .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                         2,
+                        2)
+                .child(
+                        Components.label(Text.of(df.format(jumpStrength)))
+                                .color(Color.ofArgb(0xd1d0cd))
+                                .horizontalTextAlignment(HorizontalAlignment.RIGHT),
+                        3,
+                        2)
+                .child(
+                        Components.label(Text.of(df.format(safeDistance) + " Blocks"))
+                                .color(Color.ofArgb(0xd1d0cd))
+                                .horizontalTextAlignment(HorizontalAlignment.RIGHT),
+                        4,
                         2);
         
         if (agilityLevel < 100) {

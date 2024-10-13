@@ -36,7 +36,7 @@
 
   "ques-mod.player_joined": [
     { "text": "You are using verion ", "color": "#2e469e"},
-    { "text": "0.4.0-", "color": "#3533d4"},
+    { "text": "0.4.1-", "color": "#3533d4"},
     { "text": "alpha", "color": "#b633d4"},
     { "text": ".", "color": "#2e469e"},
     { "text": " Press ", "color": "#2e469e"},
@@ -167,6 +167,14 @@
     { "text": "Movement Speed", "color": "#869970"},
     { "text": ": ", "color": "#8ca66d"}
   ],
+  "skills.ques-mod.agility.jump_strength": [
+    { "text": "Jump Strength", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.ques-mod.agility.safe_distance": [
+    { "text": "Safe Distance", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
   "skills.level_up.ques-mod.agility": [
     { "text": "Agility ", "color": "green"},
     { "text": "↑", "color": "#8f8f96"}
@@ -230,6 +238,10 @@
     { "text": "agility", "color": "green"},
     { "text": " skill determines your ", "color": "#d1d0cd"},
     { "text": "movement speed", "color": "dark_green"},
+    { "text": ", ", "color": "#d1d0cd"},
+    { "text": "jump strength", "color": "dark_green"},
+    { "text": ", and ", "color": "#d1d0cd"},
+    { "text": "safe fall distance", "color": "dark_green"},
     { "text": ".", "color": "#d1d0cd"}
   ]
 }

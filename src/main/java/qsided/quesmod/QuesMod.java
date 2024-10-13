@@ -4,10 +4,13 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
@@ -114,6 +117,37 @@ public class QuesMod implements ModInitializer {
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1f, 1f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
+        });
+        
+        ServerPlayerEvents.AFTER_RESPAWN.register((oldPlayer, player, alive) -> {
+            PlayerData state = StateSaverAndLoader.getPlayerState(player);
+            
+            Identifier combatModifier = Identifier.of(QuesMod.MOD_ID, "combat_modifier");
+            player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).overwritePersistentModifier(
+                    new EntityAttributeModifier(combatModifier, state.skillLevels.getOrDefault("combat", 1) * .18,
+                            EntityAttributeModifier.Operation.ADD_VALUE)
+            );
+            player.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_SPEED).overwritePersistentModifier(
+                    new EntityAttributeModifier(combatModifier, state.skillLevels.getOrDefault("combat", 1) * .03,
+                            EntityAttributeModifier.Operation.ADD_VALUE)
+            );
+            
+            Identifier enduranceModifier = Identifier.of(QuesMod.MOD_ID, "endurance_modifier");
+            player.getAttributeInstance(EntityAttributes.GENERIC_MAX_HEALTH).overwritePersistentModifier(
+                    new EntityAttributeModifier(enduranceModifier, state.skillLevels.getOrDefault("endurance", 1) * 2,
+                            EntityAttributeModifier.Operation.ADD_VALUE)
+            );
+            
+            Identifier agilityModifier = Identifier.of(QuesMod.MOD_ID, "agility_modifier");
+            player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).overwritePersistentModifier(
+                    new EntityAttributeModifier(agilityModifier, state.skillLevels.getOrDefault("agility", 1) * 0.001, EntityAttributeModifier.Operation.ADD_VALUE)
+            );
+            player.getAttributeInstance(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE).overwritePersistentModifier(
+                    new EntityAttributeModifier(agilityModifier, state.skillLevels.getOrDefault("agility", 1) * 0.1, EntityAttributeModifier.Operation.ADD_VALUE)
+            );
+            player.getAttributeInstance(EntityAttributes.GENERIC_JUMP_STRENGTH).overwritePersistentModifier(
+                    new EntityAttributeModifier(agilityModifier, state.skillLevels.getOrDefault("agility", 1) * 0.0058, EntityAttributeModifier.Operation.ADD_VALUE)
+            );
         });
         
         LOGGER.info("Que's mod loaded!");

@@ -27,7 +27,7 @@
                             <positioning type="relative">50,50</positioning>
                             <max-width>300</max-width>
                         </label>
-                        <grid-layout rows="4" columns="3" id="agility">
+                        <grid-layout rows="5" columns="3" id="agility">
                             <children/>
                             <positioning type="relative">50,78</positioning>
                             <surface>

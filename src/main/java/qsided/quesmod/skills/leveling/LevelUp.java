@@ -3,6 +3,7 @@ package qsided.quesmod.skills.leveling;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
@@ -53,6 +54,12 @@ public class LevelUp {
                     
                     player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).overwritePersistentModifier(
                             new EntityAttributeModifier(agilityModifier, state.skillLevels.getOrDefault(skill, 1) * 0.001, EntityAttributeModifier.Operation.ADD_VALUE)
+                    );
+                    player.getAttributeInstance(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE).overwritePersistentModifier(
+                            new EntityAttributeModifier(agilityModifier, state.skillLevels.getOrDefault(skill, 1) * 0.1, EntityAttributeModifier.Operation.ADD_VALUE)
+                    );
+                    player.getAttributeInstance(EntityAttributes.GENERIC_JUMP_STRENGTH).overwritePersistentModifier(
+                            new EntityAttributeModifier(agilityModifier, state.skillLevels.getOrDefault(skill, 1) * 0.0058, EntityAttributeModifier.Operation.ADD_VALUE)
                     );
                 }
             }
