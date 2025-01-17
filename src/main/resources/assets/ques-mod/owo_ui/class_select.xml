@@ -1,0 +1,38 @@
+<owo-ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/wisp-forest/owo-lib/1.21/owo-ui.xsd">
+    <components>
+        <flow-layout direction="vertical">
+            <children>
+                <!-- This one is for the main Container! -->
+                <flow-layout direction="vertical">
+
+                    <children>
+
+                        <dropdown id="class-selection">
+                            <surface>
+                                <flat>#171717</flat>
+                                <outline>#121212</outline>
+                            </surface>
+                            <positioning type="relative">0,50</positioning>
+                        </dropdown>
+
+                    </children>
+
+                    <padding>
+                        <all>10</all>
+                    </padding>
+
+                    <sizing>
+                        <vertical method="fill">100</vertical>
+                        <horizontal method="fill">100</horizontal>
+                    </sizing>
+                </flow-layout>
+            </children>
+
+            <surface>
+                <vanilla-translucent/>
+            </surface>
+
+        </flow-layout>
+    </components>
+</owo-ui>

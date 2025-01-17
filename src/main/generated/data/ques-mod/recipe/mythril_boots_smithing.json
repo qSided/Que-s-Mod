@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "ques-mod:mythril_ingot",
+  "base": "minecraft:netherite_boots",
+  "result": {
+    "count": 1,
+    "id": "ques-mod:mythril_boots"
+  },
+  "template": "ques-mod:mythril_upgrade_template"
+}

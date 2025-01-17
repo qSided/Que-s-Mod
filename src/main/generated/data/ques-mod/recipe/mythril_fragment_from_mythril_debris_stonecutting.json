@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "ques-mod:mythril_debris",
+  "result": {
+    "count": 2,
+    "id": "ques-mod:mythril_fragment"
+  }
+}

@@ -1,9 +1,6 @@
 package qsided.quesmod.mixin;
 
-import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
-import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.advancement.criterion.EnchantedItemCriterion;
 import net.minecraft.enchantment.EnchantmentLevelEntry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
@@ -19,7 +16,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Util;
 import org.spongepowered.asm.mixin.*;
-import org.spongepowered.asm.mixin.injection.At;
 import qsided.quesmod.PlayerData;
 import qsided.quesmod.StateSaverAndLoader;
 import qsided.quesmod.events.EnchantItemCallback;
@@ -127,7 +123,7 @@ public abstract class EnchantItemMixin {
                             EnchantItemCallback.EVENT.invoker().interact((ServerPlayerEntity) player, itemToEnchant, id);
                         }
                         inventory.markDirty();
-                        seed.set(player.getEnchantmentTableSeed());
+                        seed.set(player.getEnchantingTableSeed());
                         onContentChanged(inventory);
                         world.playSound((PlayerEntity)null, pos, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.1F + 0.9F);
                     }
@@ -136,7 +132,7 @@ public abstract class EnchantItemMixin {
             }
         } else {
             String username = String.valueOf(player.getName());
-            Util.error(username + " pressed invalid button id: " + id);
+            Util.logErrorOrPause(username + " pressed invalid button id: " + id);
             return false;
         }
     }

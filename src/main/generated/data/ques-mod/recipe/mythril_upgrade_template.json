@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "mythril_upgrade",
+  "key": {
+    "l": "minecraft:netherite_ingot",
+    "w": "ques-mod:mythril_upgrade_template",
+    "x": "minecraft:end_stone"
+  },
+  "pattern": [
+    "lwl",
+    "lxl",
+    "lll"
+  ],
+  "result": {
+    "count": 2,
+    "id": "ques-mod:mythril_upgrade_template"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": true,
+  "values": [
+    {
+      "id": "#minecraft:incorrect_for_netherite_tool",
+      "required": false
+    }
+  ]
+}

@@ -10,14 +10,25 @@
   "item.ques-mod.mythril_chestplate": "Mythril Chestplate",
   "item.ques-mod.mythril_leggings": "Mythril Leggings",
   "item.ques-mod.mythril_boots": "Mythril Boots",
-  "block.ques-mod.mythril_chunk": "Mythril Chunk",
+  "item.ques-mod.mythril_debris": "Mythril Debris",
   "item.ques-mod.mythril_template_apply": "Netherite Equipment",
   "item.ques-mod.mythril_template_ingredient": "Mythril Ingot",
   "item.ques-mod.mythril_template_title": "Mythril Upgrade",
   "item.ques-mod.mythril_template_base_description": "Add netherite armor, weapon, or tool",
   "item.ques-mod.mythril_template_addition_description": "Add Mythril Ingot",
-  "item.ques-mod.mythril_upgrade_template": "Smithing Template",
+  "item.ques-mod.mythril_upgrade_template": "Mythril Upgrade",
   "itemGroup.ques_items": "Que's Items",
+
+  "classes.ques-mod.select": "Select",
+  "classes.ques-mod.class_selected": [
+    {
+      "text": "Class selected: ",
+      "color": "#8f8f96"
+    }
+  ],
+  "classes.ques-mod.description": "Description:",
+  "classes.ques-mod.starting_gear": "Starting Gear:",
+  "classes.ques-mod.levels": "Starting Levels:",
 
   "key.category.skills.open": "Que's Mod",
   "key.ques-mod.open_skills": "Open Skills",
@@ -36,7 +47,7 @@
 
   "ques-mod.player_joined": [
     { "text": "You are using verion ", "color": "#2e469e"},
-    { "text": "0.4.1-", "color": "#3533d4"},
+    { "text": "0.5.0-", "color": "#3533d4"},
     { "text": "alpha", "color": "#b633d4"},
     { "text": ".", "color": "#2e469e"},
     { "text": " Press ", "color": "#2e469e"},

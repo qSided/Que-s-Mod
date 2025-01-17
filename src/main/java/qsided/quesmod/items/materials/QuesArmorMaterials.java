@@ -1,51 +1,31 @@
 package qsided.quesmod.items.materials;
 
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.ArmorMaterial;
-import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.sound.SoundEvent;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentType;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Util;
 import qsided.quesmod.QuesMod;
 
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
+import java.util.EnumMap;
 
 public class QuesArmorMaterials {
-    
     public static void initialize() {}
-    public static final int MYTHRIL_DURABILITY_MULTIPLIER = 40;
     
-    public static final RegistryEntry<ArmorMaterial> MYTHRIL = registerMaterial(
-            "mythril",
-            //Piece and toughness value
-            Map.of(
-                    ArmorItem.Type.HELMET, 4,
-                    ArmorItem.Type.CHESTPLATE, 9,
-                    ArmorItem.Type.LEGGINGS, 7,
-                    ArmorItem.Type.BOOTS, 4),
-            8,
-            //Equip sound
-            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
-            null,
-            3.5F,
-            0.2F,
-            false
-            );
-    
-    public static RegistryEntry<ArmorMaterial> registerMaterial(String id, Map<ArmorItem.Type, Integer> defensePoints, int enchantability, RegistryEntry<SoundEvent> equipSound, Supplier<Ingredient> repairIngredient, float toughness, float kbResistance, boolean dyeable) {
-        List<ArmorMaterial.Layer> layers = List.of(
-                new ArmorMaterial.Layer(Identifier.of(QuesMod.MOD_ID, id), "", dyeable)
-        );
-        
-        ArmorMaterial material = new ArmorMaterial(defensePoints, enchantability, equipSound, repairIngredient, layers, toughness, kbResistance);
-        
-        material = Registry.register(Registries.ARMOR_MATERIAL, Identifier.of(QuesMod.MOD_ID, id), material);
-        
-        return RegistryEntry.of(material);
-    }
+    public static final ArmorMaterial MYTHRIL = new ArmorMaterial(40, Util.make(new EnumMap<>(EquipmentType.class), (map) -> {
+            map.put(EquipmentType.BOOTS, 4);
+            map.put(EquipmentType.LEGGINGS, 7);
+            map.put(EquipmentType.CHESTPLATE, 9);
+            map.put(EquipmentType.HELMET, 4);
+            map.put(EquipmentType.BODY, 12);
+        }
+        ),
+                18,
+                SoundEvents.ITEM_ARMOR_EQUIP_GENERIC,
+                3.0F,
+                0.15F,
+                null,
+                RegistryKey.of(RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset")), Identifier.of(QuesMod.MOD_ID, "mythril")));
 }

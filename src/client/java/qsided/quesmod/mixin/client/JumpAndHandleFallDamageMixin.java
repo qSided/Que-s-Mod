@@ -17,10 +17,4 @@ public class JumpAndHandleFallDamageMixin {
     public void handleFallDamage(PlayerEntity player, Identifier stat, int fallDistance, Operation<Void> original) {
         ClientPlayNetworking.send(new SendPlayerFallPayload(fallDistance));
     }
-    
-    @WrapOperation(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;incrementStat(Lnet/minecraft/util/Identifier;)V"))
-    public void jump(PlayerEntity player, Identifier stat, Operation<Void> original) {
-        ClientPlayNetworking.send(new SendPlayerJumpPayload(1));
-    }
-    
 }

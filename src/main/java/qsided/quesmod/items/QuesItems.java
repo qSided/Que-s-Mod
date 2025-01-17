@@ -1,20 +1,21 @@
 package qsided.quesmod.items;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.*;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import qsided.quesmod.QuesMod;
-import qsided.quesmod.blocks.QuesBlocks;
-import qsided.quesmod.items.materials.MythrilMaterial;
 import qsided.quesmod.items.materials.QuesArmorMaterials;
+import qsided.quesmod.items.materials.QuesToolMaterials;
 
 import java.util.List;
+import java.util.function.Function;
 
 public class QuesItems {
     
@@ -31,69 +32,75 @@ public class QuesItems {
     
     
     
-    public static final RegistryKey<ItemGroup> QUES_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(QuesMod.MOD_ID, "ques_items"));
-    public static final ItemGroup QUES_ITEM_GROUP = FabricItemGroup.builder()
-            .icon(() -> new ItemStack(QuesItems.MYTHRIL_SWORD))
-            .displayName(Text.translatable("itemGroup.ques_items"))
-            .build();
-    public static final Item MYTHRIL_FRAGMENT = register(new Item(new Item.Settings().maxCount(64).fireproof()), "mythril_fragment");
-    public static final Item MYTHRIL_INGOT = register(new Item(new Item.Settings().maxCount(64).fireproof()), "mythril_ingot");
-    public static final MythrilMaterial MYTHRIL_INSTANCE = new MythrilMaterial();
-    public static final Item MYTHRIL_SWORD = register(new SwordItem(MYTHRIL_INSTANCE, new Item.Settings()), "mythril_sword");
-    public static final Item MYTHRIL_PICKAXE = register(new PickaxeItem(MYTHRIL_INSTANCE, new Item.Settings()), "mythril_pickaxe");
-    public static final Item MYTHRIL_AXE = register(new AxeItem(MYTHRIL_INSTANCE, new Item.Settings()), "mythril_axe");
-    public static final Item MYTHRIL_SHOVEL = register(new ShovelItem(MYTHRIL_INSTANCE, new Item.Settings()), "mythril_shovel");
-    public static final Item MYTHRIL_HOE = register(new HoeItem(MYTHRIL_INSTANCE, new Item.Settings()), "mythril_hoe");
-    public static final Item MYTHRIL_HELMET = register(new ArmorItem(QuesArmorMaterials.MYTHRIL, ArmorItem.Type.HELMET,
-            new Item.Settings().maxDamage(ArmorItem.Type.HELMET.getMaxDamage(QuesArmorMaterials.MYTHRIL_DURABILITY_MULTIPLIER)).fireproof()), "mythril_helmet");
-    public static final Item MYTHRIL_CHESTPLATE = register(new ArmorItem(QuesArmorMaterials.MYTHRIL, ArmorItem.Type.CHESTPLATE,
-            new Item.Settings().maxDamage(ArmorItem.Type.CHESTPLATE.getMaxDamage(QuesArmorMaterials.MYTHRIL_DURABILITY_MULTIPLIER)).fireproof()), "mythril_chestplate");
-    public static final Item MYTHRIL_LEGGINGS = register(new ArmorItem(QuesArmorMaterials.MYTHRIL, ArmorItem.Type.LEGGINGS,
-            new Item.Settings().maxDamage(ArmorItem.Type.LEGGINGS.getMaxDamage(QuesArmorMaterials.MYTHRIL_DURABILITY_MULTIPLIER)).fireproof()), "mythril_leggings");
-    public static final Item MYTHRIL_BOOTS = register(new ArmorItem(QuesArmorMaterials.MYTHRIL, ArmorItem.Type.BOOTS,
-            new Item.Settings().maxDamage(ArmorItem.Type.BOOTS.getMaxDamage(QuesArmorMaterials.MYTHRIL_DURABILITY_MULTIPLIER)).fireproof()), "mythril_boots");
+    //public static final RegistryKey<ItemGroup> QUES_ITEM_GROUP_KEY = RegistryKey.of(Registries.ITEM_GROUP.getKey(), Identifier.of(QuesMod.MOD_ID, "ques_items"));
+    //public static final ItemGroup QUES_ITEM_GROUP = FabricItemGroup.builder()
+    //        .icon(() -> new ItemStack(QuesItems.MYTHRIL_SWORD))
+    //        .displayName(Text.translatable("itemGroup.ques_items"))
+    //        .build();
     
-    public static final Item MYTHRIL_UPGRADE_TEMPLATE = register(new SmithingTemplateItem(
-                            Text.translatable("item.ques-mod.mythril_template_apply").formatted(Formatting.BLUE),
-                            Text.translatable("item.ques-mod.mythril_template_ingredient").formatted(Formatting.BLUE),
-                            Text.translatable("item.ques-mod.mythril_template_title").formatted(Formatting.GRAY),
-                            Text.translatable("item.ques-mod.mythril_template_base_description"),
-                            Text.translatable("item.ques-mod.mythril_template_addition_description"),
-                            List.of(
-                                    EMPTY_ARMOR_SLOT_HELMET_TEXTURE,
-                                    EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE,
-                                    EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE,
-                                    EMPTY_ARMOR_SLOT_BOOTS_TEXTURE,
-                                    EMPTY_SLOT_HOE_TEXTURE,
-                                    EMPTY_SLOT_AXE_TEXTURE,
-                                    EMPTY_SLOT_SWORD_TEXTURE,
-                                    EMPTY_SLOT_SHOVEL_TEXTURE,
-                                    EMPTY_SLOT_PICKAXE_TEXTURE),
-                            List.of(
-                                    EMPTY_SLOT_INGOT_TEXTURE)),
-                        "mythril_upgrade_template");
-    public static Item register(Item item, String id) {
-        Identifier itemId = Identifier.of(QuesMod.MOD_ID, id);
+    public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment", settings -> new Item(settings.maxCount(64).fireproof()));
+    public static final Item MYTHRIL_INGOT = registerItem("mythril_ingot", settings -> new Item(settings.fireproof().maxCount(64)));
+    public static final Item MYTHRIL_SWORD = registerItem("mythril_sword", settings -> new SwordItem(QuesToolMaterials.MYTHRIL, 3.0F, -2.2F, settings.fireproof()));
+    public static final Item MYTHRIL_PICKAXE = registerItem("mythril_pickaxe", settings -> new PickaxeItem(QuesToolMaterials.MYTHRIL, 1.0F, -2.6F, settings.fireproof()));
+    public static final Item MYTHRIL_AXE = registerItem("mythril_axe", settings -> new AxeItem(QuesToolMaterials.MYTHRIL, 5.0F, -2.8F, settings.fireproof()));
+    public static final Item MYTHRIL_SHOVEL = registerItem("mythril_shovel", settings -> new ShovelItem(QuesToolMaterials.MYTHRIL, 1.5F, -2.8F, settings.fireproof()));
+    public static final Item MYTHRIL_HOE = registerItem("mythril_hoe", settings -> new HoeItem(QuesToolMaterials.MYTHRIL, -4.0F, 0.0F, settings.fireproof()));
+    public static final Item MYTHRIL_HELMET = registerItem("mythril_helmet", settings -> new ArmorItem(QuesArmorMaterials.MYTHRIL, EquipmentType.HELMET, settings.fireproof()));
+    public static final Item MYTHRIL_CHESTPLATE = registerItem("mythril_chestplate", settings -> new ArmorItem(QuesArmorMaterials.MYTHRIL, EquipmentType.CHESTPLATE, settings.fireproof()));
+    public static final Item MYTHRIL_LEGGINGS = registerItem("mythril_leggings", settings -> new ArmorItem(QuesArmorMaterials.MYTHRIL, EquipmentType.LEGGINGS, settings.fireproof()));
+    public static final Item MYTHRIL_BOOTS = registerItem("mythril_boots", settings -> new ArmorItem(QuesArmorMaterials.MYTHRIL, EquipmentType.BOOTS, settings.fireproof()));
+    public static final Item MYTHRIL_UPGRADE_TEMPLATE = registerItem("mythril_upgrade_template", settings -> new SmithingTemplateItem(
+            Text.translatable("item.ques-mod.mythril_template_apply").formatted(Formatting.BLUE),
+            Text.translatable("item.ques-mod.mythril_template_ingredient").formatted(Formatting.BLUE),
+            Text.translatable("item.ques-mod.mythril_template_base_description"),
+            Text.translatable("item.ques-mod.mythril_template_addition_description"),
+            List.of(
+                    EMPTY_ARMOR_SLOT_HELMET_TEXTURE,
+                    EMPTY_ARMOR_SLOT_CHESTPLATE_TEXTURE,
+                    EMPTY_ARMOR_SLOT_LEGGINGS_TEXTURE,
+                    EMPTY_ARMOR_SLOT_BOOTS_TEXTURE,
+                    EMPTY_SLOT_HOE_TEXTURE,
+                    EMPTY_SLOT_AXE_TEXTURE,
+                    EMPTY_SLOT_SWORD_TEXTURE,
+                    EMPTY_SLOT_SHOVEL_TEXTURE,
+                    EMPTY_SLOT_PICKAXE_TEXTURE),
+            List.of(
+                    EMPTY_SLOT_INGOT_TEXTURE),
+            settings.fireproof().rarity(Rarity.RARE)));
+    
+    public static Item registerItem(String id, Function<Item.Settings, Item> factory) {
+        return registerWithKey(keyOf(id), factory, new Item.Settings());
+    }
+    public static RegistryKey<Item> keyOf(String id) {
+        return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(QuesMod.MOD_ID, id));
+    }
+    public static Item registerWithKey(RegistryKey<Item> key, Function<Item.Settings, Item> factory, Item.Settings settings) {
+        Item item = (Item) factory.apply(settings.registryKey(key));
+        if (item instanceof BlockItem blockItem) {
+            blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
+        }
         
-        return Registry.register(Registries.ITEM, itemId, item);
+        return (Item) Registry.register(Registries.ITEM, key, item);
     }
     
+    
+    
     public static void initialize() {
-        Registry.register(Registries.ITEM_GROUP, QUES_ITEM_GROUP_KEY, QUES_ITEM_GROUP);
-        ItemGroupEvents.modifyEntriesEvent(QUES_ITEM_GROUP_KEY).register(itemGroup -> {
-            itemGroup.add(MYTHRIL_FRAGMENT);
-            itemGroup.add(MYTHRIL_INGOT);
-            itemGroup.add(QuesBlocks.MYTHRIL_CHUNK.asItem());
-            itemGroup.add(MYTHRIL_UPGRADE_TEMPLATE);
-            itemGroup.add(MYTHRIL_SWORD);
-            itemGroup.add(MYTHRIL_PICKAXE);
-            itemGroup.add(MYTHRIL_AXE);
-            itemGroup.add(MYTHRIL_SHOVEL);
-            itemGroup.add(MYTHRIL_HOE);
-            itemGroup.add(MYTHRIL_HELMET);
-            itemGroup.add(MYTHRIL_CHESTPLATE);
-            itemGroup.add(MYTHRIL_LEGGINGS);
-            itemGroup.add(MYTHRIL_BOOTS);
-        });
+        //Registry.register(Registries.ITEM_GROUP, QUES_ITEM_GROUP_KEY, QUES_ITEM_GROUP);
+        //ItemGroupEvents.modifyEntriesEvent(QUES_ITEM_GROUP_KEY).register(itemGroup -> {
+        //    itemGroup.add(MYTHRIL_FRAGMENT);
+        //    itemGroup.add(MYTHRIL_INGOT);
+        //    itemGroup.add(QuesBlocks.MYTHRIL_CHUNK.asItem());
+        //    itemGroup.add(MYTHRIL_UPGRADE_TEMPLATE);
+        //    itemGroup.add(MYTHRIL_SWORD);
+        //    itemGroup.add(MYTHRIL_PICKAXE);
+        //    itemGroup.add(MYTHRIL_AXE);
+        //    itemGroup.add(MYTHRIL_SHOVEL);
+        //    itemGroup.add(MYTHRIL_HOE);
+        //    itemGroup.add(MYTHRIL_HELMET);
+        //    itemGroup.add(MYTHRIL_CHESTPLATE);
+        //    itemGroup.add(MYTHRIL_LEGGINGS);
+        //    itemGroup.add(MYTHRIL_BOOTS);
+        //});
     }
 }

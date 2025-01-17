@@ -8,8 +8,6 @@ import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.registry.tag.ItemTags;
@@ -53,16 +51,16 @@ public class SkillCheckHandler {
                     
                     Identifier efficiencyModifier = Identifier.of(QuesMod.MOD_ID, "efficiency_modifier");
                     if (currentStack.isIn(ItemTags.PICKAXES) || currentStack.isIn(ItemTags.SHOVELS) && equipmentSlot.equals(EquipmentSlot.MAINHAND)) {
-                        player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
+                        player.getAttributeInstance(EntityAttributes.MINING_EFFICIENCY).overwritePersistentModifier(
                                 new EntityAttributeModifier(efficiencyModifier, state.skillLevels.getOrDefault("mining", 1) * .5, EntityAttributeModifier.Operation.ADD_VALUE));
-                        QuesMod.LOGGER.info(String.valueOf(player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).getModifier(efficiencyModifier)));
+                        QuesMod.LOGGER.info(String.valueOf(player.getAttributeInstance(EntityAttributes.MINING_EFFICIENCY).getModifier(efficiencyModifier)));
                     } else if (currentStack.isIn(ItemTags.AXES) && equipmentSlot.equals(EquipmentSlot.MAINHAND)) {
-                        player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).overwritePersistentModifier(
+                        player.getAttributeInstance(EntityAttributes.MINING_EFFICIENCY).overwritePersistentModifier(
                                 new EntityAttributeModifier(efficiencyModifier, state.skillLevels.getOrDefault("woodcutting", 1) * .5, EntityAttributeModifier.Operation.ADD_VALUE)
                         );
-                        QuesMod.LOGGER.info(String.valueOf(player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).getModifier(efficiencyModifier)));
+                        QuesMod.LOGGER.info(String.valueOf(player.getAttributeInstance(EntityAttributes.MINING_EFFICIENCY).getModifier(efficiencyModifier)));
                     } else {
-                        player.getAttributeInstance(EntityAttributes.PLAYER_MINING_EFFICIENCY).removeModifier(efficiencyModifier);
+                        player.getAttributeInstance(EntityAttributes.MINING_EFFICIENCY).removeModifier(efficiencyModifier);
                     }
                 }
             }

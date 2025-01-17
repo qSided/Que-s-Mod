@@ -15,10 +15,10 @@ import net.minecraft.client.util.InputUtil;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
-import net.minecraft.util.Identifier;
 import org.lwjgl.glfw.GLFW;
 import qsided.quesmod.config.requirements.ItemWithRequirements;
-import qsided.quesmod.gui.*;
+import qsided.quesmod.gui.classes.ClassSelection;
+import qsided.quesmod.gui.skills.*;
 import qsided.quesmod.networking.LevelUpPayload;
 import qsided.quesmod.networking.RequestSkillsPayload;
 import qsided.quesmod.networking.SendSkillsExperiencePayload;
@@ -45,6 +45,7 @@ public class QuesModClient implements ClientModInitializer {
 		MinecraftClient client = MinecraftClient.getInstance();
 		
 		KeyBinding openSkills = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.ques-mod.open_skills", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_ALT, "key.category.skills.open"));
+		KeyBinding openClassSelection = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.ques-mod.open_class_selection", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_X, "key.category.class_selection.open"));
 		
 		ClientTickEvents.END_CLIENT_TICK.register(client1 -> {
 			while (openSkills.wasPressed()) {
@@ -59,12 +60,15 @@ public class QuesModClient implements ClientModInitializer {
                     default -> client.setScreen(new MiningSkillScreen());
                 }
 			}
+			while (openClassSelection.wasPressed()) {
+				client.setScreen(new ClassSelection());
+			}
 		});
 		
 		ClientPlayNetworking.registerGlobalReceiver(LevelUpPayload.ID, (payload, context) -> {
 			context.client().execute(() -> {
 				ClientPlayNetworking.send(new RequestSkillsPayload(client.player.getUuid().toString()));
-				context.player().sendMessage(Text.translatable("skills.level_up.ques-mod." + payload.skill()).append(String.valueOf(payload.level())));
+				context.player().sendMessage(Text.translatable("skills.level_up.ques-mod." + payload.skill()).append(String.valueOf(payload.level())), false);
 			});
 		});
 		
@@ -99,8 +103,8 @@ public class QuesModClient implements ClientModInitializer {
 			EnduranceSkillScreen.setEnduranceLevel(payload.endurance());
 			EnduranceSkillScreen.setMaxHealth(context.player().getMaxHealth());
 			AgilitySkillScreen.setAgilityLevel(payload.agility());
-			AgilitySkillScreen.setJumpStrength(context.player().getAttributeInstance(EntityAttributes.GENERIC_JUMP_STRENGTH).getValue());
-			AgilitySkillScreen.setSafeDistance(context.player().getAttributeInstance(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE).getValue());
+			AgilitySkillScreen.setJumpStrength(context.player().getAttributeInstance(EntityAttributes.JUMP_STRENGTH).getValue());
+			AgilitySkillScreen.setSafeDistance(context.player().getAttributeInstance(EntityAttributes.SAFE_FALL_DISTANCE).getValue());
 			});
 		ClientPlayNetworking.registerGlobalReceiver(SendSkillsExperiencePayload.ID, (payload, context) -> {
 			MiningSkillScreen.setMiningExperience(payload.mining());
@@ -110,8 +114,12 @@ public class QuesModClient implements ClientModInitializer {
 			EnduranceSkillScreen.setEnduranceExperience(payload.endurance());
 			EnduranceSkillScreen.setMaxHealth(context.player().getMaxHealth());
 			AgilitySkillScreen.setAgilityExperience(payload.agility());
-			AgilitySkillScreen.setJumpStrength(context.player().getAttributeInstance(EntityAttributes.GENERIC_JUMP_STRENGTH).getValue());
-			AgilitySkillScreen.setSafeDistance(context.player().getAttributeInstance(EntityAttributes.GENERIC_SAFE_FALL_DISTANCE).getValue());
+			AgilitySkillScreen.setJumpStrength(context.player().getAttributeInstance(EntityAttributes.JUMP_STRENGTH).getValue());
+			AgilitySkillScreen.setSafeDistance(context.player().getAttributeInstance(EntityAttributes.SAFE_FALL_DISTANCE).getValue());
 			});
 	}
+	
+	public MinecraftClient getClient() {
+        return MinecraftClient.getInstance();
+    }
 }

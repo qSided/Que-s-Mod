@@ -1,7 +1,0 @@
-{
-	"parent": "minecraft:block/cube_column",
-	"textures": {
-		"end": "ques-mod:block/mythril_chunk_top",
-		"side": "ques-mod:block/mythril_chunk_side"
-	}
-}

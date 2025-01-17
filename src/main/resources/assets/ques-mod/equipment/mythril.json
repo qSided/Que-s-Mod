@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "ques-mod:mythril"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "ques-mod:mythril"
+      }
+    ]
+  }
+}
