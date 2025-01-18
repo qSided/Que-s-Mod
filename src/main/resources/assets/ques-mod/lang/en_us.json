@@ -37,8 +37,9 @@
   "classes.ques-mod.levels": "Starting Levels:",
   "classes.ques-mod.modifiers": "Bonus Modifiers:",
 
-  "key.category.skills.open": "Que's Mod",
+  "key.category.ques-mod": "Que's Mod",
   "key.ques-mod.open_skills": "Open Skills",
+  "key.ques-mod.open_class_selection": "Open Class Selection",
   "text.config.ques-config.option.displayJoinMessage": "Display Join Message",
   "text.config.ques-config.option.enableRequirements": "Skill Requirements for Gear",
   "text.config.ques-config.title": [
@@ -215,7 +216,7 @@
     { "text": "efficiency", "color": "#9d65e6"},
     { "text": " when mining or digging and the ", "color": "#d1d0cd"},
     { "text": "degrade chance", "color": "#9d65e6"},
-    { "text": " of your pickaxes and shovels.", "color": "#d1d0cd"}
+    { "text": " of your pickaxes and shovels. Gained by breaking stones and ores.", "color": "#d1d0cd"}
   ],
   "skills.descriptions.ques-mod.enchanting": [
     { "text": "Your ", "color": "#d1d0cd"},
@@ -224,7 +225,7 @@
     { "text": "cost of enchanting", "color": "#4646ca"},
     { "text": " and your ", "color": "#d1d0cd"},
     { "text": "enchanting power modifier", "color": "#4646ca"},
-    { "text": " when enchanting items.", "color": "#d1d0cd"}
+    { "text": " when enchanting items. Gained by enchanting anything at an enchanting table.", "color": "#d1d0cd"}
   ],
   "skills.descriptions.ques-mod.combat": [
     { "text": "Your ", "color": "#d1d0cd"},
@@ -233,7 +234,7 @@
     { "text": "damage done", "color": "#a0395a"},
     { "text": " to other creatures and your ", "color": "#d1d0cd"},
     { "text": "attack speed", "color": "#a0395a"},
-    { "text": " with swords and axes.", "color": "#d1d0cd"}
+    { "text": " with swords and axes. Gained by defeating any mobs.", "color": "#d1d0cd"}
   ],
   "skills.descriptions.ques-mod.woodcutting": [
     { "text": "Your ", "color": "#d1d0cd"},
@@ -242,14 +243,14 @@
     { "text": "efficiency", "color": "#cfaa46"},
     { "text": " with axes and the ", "color": "#d1d0cd"},
     { "text": "extra drop chance", "color": "#cfaa46"},
-    { "text": " when harvesting trees.", "color": "#d1d0cd"}
+    { "text": " when harvesting trees. Gained by harvesting trees.", "color": "#d1d0cd"}
   ],
   "skills.descriptions.ques-mod.endurance": [
     { "text": "Your ", "color": "#d1d0cd"},
     { "text": "endurance", "color": "dark_red"},
     { "text": " skill determines your ", "color": "#d1d0cd"},
     { "text": "maximum health", "color": "#912e2e"},
-    { "text": ".", "color": "#d1d0cd"}
+    { "text": ". Gained by taking (almost) any type of damage.", "color": "#d1d0cd"}
   ],
   "skills.descriptions.ques-mod.agility": [
     { "text": "Your ", "color": "#d1d0cd"},
@@ -260,6 +261,6 @@
     { "text": "jump strength", "color": "dark_green"},
     { "text": ", and ", "color": "#d1d0cd"},
     { "text": "safe fall distance", "color": "dark_green"},
-    { "text": ".", "color": "#d1d0cd"}
+    { "text": ". Gained by moving in any way (i.e. falling, jumping, etc.).", "color": "#d1d0cd"}
   ]
 }

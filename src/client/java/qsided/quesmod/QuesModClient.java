@@ -44,8 +44,8 @@ public class QuesModClient implements ClientModInitializer {
 		
 		MinecraftClient client = MinecraftClient.getInstance();
 		
-		KeyBinding openSkills = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.ques-mod.open_skills", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_ALT, "key.category.skills.open"));
-		KeyBinding openClassSelection = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.ques-mod.open_class_selection", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_X, "key.category.class_selection.open"));
+		KeyBinding openSkills = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.ques-mod.open_skills", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_RIGHT_ALT, "key.category.ques-mod"));
+		KeyBinding openClassSelection = KeyBindingHelper.registerKeyBinding(new KeyBinding("key.ques-mod.open_class_selection", InputUtil.Type.KEYSYM, GLFW.GLFW_KEY_M, "key.category.ques-mod"));
 		
 		ClientTickEvents.END_CLIENT_TICK.register(client1 -> {
 			while (openSkills.wasPressed()) {

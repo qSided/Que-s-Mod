@@ -73,7 +73,7 @@ public class CombatSkillScreen extends BaseUIModelScreen<FlowLayout> {
         } else {
             rootComponent.childById(GridLayout.class, "combat")
                     .child(
-                            Components.label(Text.of(String.valueOf(combatLevel * .18)))
+                            Components.label(Text.of(String.valueOf(df.format(combatLevel * .18))))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                             2,
@@ -90,7 +90,7 @@ public class CombatSkillScreen extends BaseUIModelScreen<FlowLayout> {
         } else {
             rootComponent.childById(GridLayout.class, "combat")
                     .child(
-                            Components.label(Text.of(String.valueOf(combatLevel * .03)))
+                            Components.label(Text.of(String.valueOf(df.format(combatLevel * .03))))
                                     .color(Color.ofArgb(0xd1d0cd))
                                     .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                             3,
