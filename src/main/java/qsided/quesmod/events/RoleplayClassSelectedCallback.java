@@ -9,9 +9,9 @@ import qsided.quesmod.PlayerData;
 public interface RoleplayClassSelectedCallback {
     
     Event<RoleplayClassSelectedCallback> EVENT = EventFactory.createArrayBacked(RoleplayClassSelectedCallback.class,
-            (listeners) -> (player, state, rpClass) -> {
+            (listeners) -> (player, state, rpClassId) -> {
                 for (RoleplayClassSelectedCallback listener : listeners) {
-                    ActionResult result = listener.selectClass(player, state, rpClass);
+                    ActionResult result = listener.selectClass(player, state, rpClassId);
                     
                     if(result != ActionResult.PASS) {
                         return result;
@@ -21,5 +21,5 @@ public interface RoleplayClassSelectedCallback {
                 return ActionResult.PASS;
             });
     
-    ActionResult selectClass(ServerPlayerEntity player, PlayerData state, String rpClass);
+    ActionResult selectClass(ServerPlayerEntity player, PlayerData state, Integer rpClassId);
 }

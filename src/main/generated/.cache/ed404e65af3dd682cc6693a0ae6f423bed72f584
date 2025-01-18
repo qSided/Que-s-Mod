@@ -1,2 +1,11 @@
 // 1.21.4	-999999999-01-01T00:00:00	Que's Mod/Tags for minecraft:item
+9c27a0577a388f84d857edf212056b2001ac33bc data/minecraft/tags/item/axes.json
+a452e43ae467366e156f2f2c87727bccc01ff073 data/minecraft/tags/item/enchantable/chest_armor.json
+98acab4054739066e2c402740647e5aa01f0c96b data/minecraft/tags/item/enchantable/foot_armor.json
+7bf4c35d6fc833a53ef947d9c6478f43040f7621 data/minecraft/tags/item/enchantable/head_armor.json
+998af602bf9eeeb410e84d61fc41598f3991ee83 data/minecraft/tags/item/enchantable/leg_armor.json
+62689ea1f338681a2e6878ea85e607a456802edf data/minecraft/tags/item/hoes.json
+3a63585dbb92c6a887f07330ebb5f823f8863fa3 data/minecraft/tags/item/pickaxes.json
+2fcfbc31e876a6a9e252d967c7d01fd207fcdac5 data/minecraft/tags/item/shovels.json
+c6f639743392f12c8aa54e91d15ba813bad76a99 data/minecraft/tags/item/swords.json
 517c569868efe7315144a48d2887e800bfcf8f86 data/minecraft/tags/item/trimmable_armor.json

@@ -13,11 +13,11 @@ import static qsided.quesmod.QuesMod.sendSkillData;
 
 public class LevelUp {
     public static void onLevelUp() {
-        IncreaseSkillLevelCallback.EVENT.register((player, state, skill, value) -> {
+        IncreaseSkillLevelCallback.EVENT.register((player, state, skill, value, shouldMessage) -> {
             
             state.skillExperience.put(skill, (float) Math.max((state.skillExperience.getOrDefault(skill, 0F) - (60 * (state.skillLevels.getOrDefault(skill, 1) * 3.4))), 0));
             state.skillLevels.put(skill, state.skillLevels.getOrDefault(skill, 1) + value);
-            ServerPlayNetworking.send(player, new LevelUpPayload(skill, state.skillLevels.get(skill)));
+            ServerPlayNetworking.send(player, new LevelUpPayload(skill, state.skillLevels.get(skill), shouldMessage));
             
             switch (skill) {
                 case "mining" -> {

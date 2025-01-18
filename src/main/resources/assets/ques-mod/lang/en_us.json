@@ -20,6 +20,12 @@
   "itemGroup.ques_items": "Que's Items",
 
   "classes.ques-mod.select": "Select",
+  "classes.ques-mod.already_selected": [
+    {
+      "text": "You have already selected a class!",
+      "color": "red"
+    }
+  ],
   "classes.ques-mod.class_selected": [
     {
       "text": "Class selected: ",
@@ -29,6 +35,7 @@
   "classes.ques-mod.description": "Description:",
   "classes.ques-mod.starting_gear": "Starting Gear:",
   "classes.ques-mod.levels": "Starting Levels:",
+  "classes.ques-mod.modifiers": "Bonus Modifiers:",
 
   "key.category.skills.open": "Que's Mod",
   "key.ques-mod.open_skills": "Open Skills",

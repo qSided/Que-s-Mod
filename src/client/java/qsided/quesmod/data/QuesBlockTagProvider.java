@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import qsided.quesmod.blocks.QuesBlocks;
 import qsided.quesmod.tags.blocks.QuesBlockTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,5 +22,8 @@ public class QuesBlockTagProvider extends FabricTagProvider<Block> {
         getOrCreateTagBuilder(QuesBlockTags.INCORRECT_FOR_MYTHRIL_TOOL)
                 .addOptionalTag(BlockTags.INCORRECT_FOR_NETHERITE_TOOL.id())
                 .setReplace(true);
+        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(QuesBlocks.MYTHRIL_DEBRIS)
+                .setReplace(false);
     }
 }

@@ -9,9 +9,9 @@ import qsided.quesmod.PlayerData;
 public interface IncreaseSkillLevelCallback {
     
     Event<IncreaseSkillLevelCallback> EVENT = EventFactory.createArrayBacked(IncreaseSkillLevelCallback.class,
-            (listeners) -> (player, state, skill, value) -> {
+            (listeners) -> (player, state, skill, value, shouldMessage) -> {
                 for (IncreaseSkillLevelCallback listener : listeners) {
-                    ActionResult result = listener.increaseLevel(player, state, skill, value);
+                    ActionResult result = listener.increaseLevel(player, state, skill, value, shouldMessage);
                     
                     if(result != ActionResult.PASS) {
                         return result;
@@ -21,5 +21,5 @@ public interface IncreaseSkillLevelCallback {
                 return ActionResult.PASS;
             });
     
-    ActionResult increaseLevel(ServerPlayerEntity player, PlayerData state, String skill, Integer value);
+    ActionResult increaseLevel(ServerPlayerEntity player, PlayerData state, String skill, Integer value, boolean shouldMessage);
 }

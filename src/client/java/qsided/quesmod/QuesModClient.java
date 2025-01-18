@@ -68,7 +68,9 @@ public class QuesModClient implements ClientModInitializer {
 		ClientPlayNetworking.registerGlobalReceiver(LevelUpPayload.ID, (payload, context) -> {
 			context.client().execute(() -> {
 				ClientPlayNetworking.send(new RequestSkillsPayload(client.player.getUuid().toString()));
-				context.player().sendMessage(Text.translatable("skills.level_up.ques-mod." + payload.skill()).append(String.valueOf(payload.level())), false);
+				if (payload.shouldMessage()) {
+					context.player().sendMessage(Text.translatable("skills.level_up.ques-mod." + payload.skill()).append(String.valueOf(payload.level())), false);
+				}
 			});
 		});
 		

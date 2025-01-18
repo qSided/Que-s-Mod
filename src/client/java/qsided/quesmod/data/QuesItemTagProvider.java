@@ -24,5 +24,32 @@ public class QuesItemTagProvider extends FabricTagProvider<Item> {
                 .add(QuesItems.MYTHRIL_LEGGINGS)
                 .add(QuesItems.MYTHRIL_BOOTS)
                 .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(QuesItems.MYTHRIL_SWORD)
+                .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(QuesItems.MYTHRIL_PICKAXE)
+                .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.AXES)
+                .add(QuesItems.MYTHRIL_AXE)
+                .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .add(QuesItems.MYTHRIL_SHOVEL)
+                .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.HOES)
+                .add(QuesItems.MYTHRIL_HOE)
+                .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE)
+                .add(QuesItems.MYTHRIL_HELMET)
+                .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE)
+                .add(QuesItems.MYTHRIL_CHESTPLATE)
+                .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE)
+                .add(QuesItems.MYTHRIL_LEGGINGS)
+                .setReplace(false);
+        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE)
+                .add(QuesItems.MYTHRIL_BOOTS)
+                .setReplace(false);
     }
 }

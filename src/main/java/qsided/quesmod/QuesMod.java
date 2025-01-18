@@ -38,6 +38,7 @@ import qsided.quesmod.config.ConfigGenerator;
 import qsided.quesmod.config.QuesConfig;
 import qsided.quesmod.config.roleplay_classes.RoleplayClass;
 import qsided.quesmod.events.IncreaseSkillExperienceCallback;
+import qsided.quesmod.events.RoleplayClassSelectedCallback;
 import qsided.quesmod.items.QuesItems;
 import qsided.quesmod.items.materials.QuesArmorMaterials;
 import qsided.quesmod.networking.*;
@@ -57,14 +58,14 @@ public class QuesMod implements ModInitializer {
 	public static final String MOD_ID = "ques-mod";
 	public static final RegistryKey<PlacedFeature> MYTHRIL_DEBRIS_FEATURE = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(MOD_ID, "mythril_debris_feature"));
     public static final QuesConfig OWO_CONFIG = QuesConfig.createAndLoad();
-    Map<Integer, RoleplayClass> rpClasses;
+    static Map<Integer, RoleplayClass> rpClasses;
     
-    public Map<Integer, RoleplayClass> getRpClasses() {
+    public static Map<Integer, RoleplayClass> getRpClasses() {
         return rpClasses;
     }
     
     public void setRpClasses(Map<Integer, RoleplayClass> rpClasses) {
-        this.rpClasses = rpClasses;
+        QuesMod.rpClasses = rpClasses;
     }
     
 	@Override
@@ -96,6 +97,7 @@ public class QuesMod implements ModInitializer {
         
         LevelUp.onLevelUp();
         ExperienceUp.onExperienceUp();
+        RoleplayClasses.onSelected();
         
         SkillsCommand.register();
         
@@ -127,18 +129,18 @@ public class QuesMod implements ModInitializer {
         
         ServerPlayNetworking.registerGlobalReceiver(SendClassSelectedPayload.ID, (((payload, context) -> {
             
-            context.player().sendMessage(Text.translatable("classes.ques-mod.class_selected")
-                    .append(Text.literal(
-                            rpClasses.get(payload.rpClassId()).getName()).getWithStyle(Style.EMPTY.withColor(Color.decode(rpClasses.get(payload.rpClassId()).getColor()).getRGB())).getFirst()
-                    )
-            );
+            //context.player().sendMessage(Text.translatable("classes.ques-mod.class_selected")
+            //        .append(Text.literal(
+            //                rpClasses.get(payload.rpClassId()).getName()).getWithStyle(Style.EMPTY.withColor(Color.decode(rpClasses.get(payload.rpClassId()).getColor()).getRGB())).getFirst()
+            //        )
+            //);
+            //getRpClasses().get(payload.rpClassId()).getStartingEquipment().forEach(startingEquipment -> {
+            //    for (int i = 0; i<startingEquipment.getCount(); i++) {
+            //        context.player().giveItemStack(Registries.ITEM.get(Identifier.of(startingEquipment.getItem())).getDefaultStack());
+            //    }
+            //});
             
-            getRpClasses().get(payload.rpClassId()).getStartingEquipment().forEach(startingEquipment -> {
-                for (int i = 0; i<startingEquipment.getCount(); i++) {
-                    context.player().giveItemStack(Registries.ITEM.get(Identifier.of(startingEquipment.getItem())).getDefaultStack());
-                }
-            });
-            
+            RoleplayClassSelectedCallback.EVENT.invoker().selectClass(context.player(), getPlayerState(context.player()), payload.rpClassId());
         })));
         
         ServerPlayConnectionEvents.JOIN.register((handler, sender, server) -> {

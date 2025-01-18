@@ -38,6 +38,14 @@ public class StateSaverAndLoader extends PersistentState {
             playerData.rpClassExperience.forEach(rpClassExpNbt::putFloat);
             playerNbt.put("rpClassExperience", rpClassExpNbt);
             
+            NbtCompound expModifiersNbt = new NbtCompound();
+            playerData.expModifiers.forEach((id, skillPercentHashmap) -> {
+                NbtCompound skillsAndPercentsNbt = new NbtCompound();
+                skillPercentHashmap.forEach(skillsAndPercentsNbt::putInt);
+                expModifiersNbt.put(id, skillsAndPercentsNbt);
+            });
+            playerNbt.put("expModifiers", expModifiersNbt);
+            
             //Puts each player's data into nbt
             playersNbt.put(uuid.toString(), playerNbt);
         });
@@ -73,12 +81,20 @@ public class StateSaverAndLoader extends PersistentState {
                 int level = rpClassLevelNbt.getInt(s);
                 playerData.rpClassLevel.put(rpClass, level);
             });
-            
             NbtCompound rpClassExpNbt = playersNbt.getCompound(key).getCompound("rpClassExp");
             rpClassExpNbt.getKeys().forEach(s -> {
                 String rpClass = String.valueOf(s);
                 float experience = rpClassExpNbt.getInt(s);
                 playerData.rpClassExperience.put(rpClass, experience);
+            });
+            
+            NbtCompound expModifiersNbt = playersNbt.getCompound(key).getCompound("expModifiers");
+            expModifiersNbt.getKeys().forEach(s -> {
+                NbtCompound modifiersNbt = expModifiersNbt.getCompound(s);
+                String id = String.valueOf(s);
+                HashMap<String, Integer> modifiers = new HashMap<>();
+                modifiersNbt.getKeys().forEach(skill -> modifiers.put(skill, modifiersNbt.getInt(skill)));
+                playerData.expModifiers.put(id, modifiers);
             });
             
             UUID uuid = UUID.fromString(key);

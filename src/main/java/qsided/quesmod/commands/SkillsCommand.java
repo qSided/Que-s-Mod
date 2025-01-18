@@ -26,7 +26,7 @@ public class SkillsCommand {
                                                 final int value = IntegerArgumentType.getInteger(context, "value");
                                                 final ServerPlayerEntity player = context.getSource().getPlayer();
                                                 PlayerData state = StateSaverAndLoader.getPlayerState(player);
-                                                IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, value - state.skillLevels.getOrDefault(skill, 1));
+                                                IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, value - state.skillLevels.getOrDefault(skill, 1), true);
                                                 return 1;
                                             })
                                     )))

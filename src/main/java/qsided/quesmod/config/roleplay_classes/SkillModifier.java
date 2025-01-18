@@ -3,13 +3,13 @@ package qsided.quesmod.config.roleplay_classes;
 public class SkillModifier {
     
     String skill;
-    Float percentage;
+    Integer percentage;
     
     public SkillModifier() {
         super();
     }
     
-    public SkillModifier(String skill, Float percentage) {
+    public SkillModifier(String skill, Integer percentage) {
         this.skill = skill;
         this.percentage = percentage;
     }
@@ -22,11 +22,11 @@ public class SkillModifier {
         this.skill = skill;
     }
     
-    public Float getPercentage() {
+    public Integer getPercentage() {
         return percentage;
     }
     
-    public void setPercentage(Float percentage) {
+    public void setPercentage(Integer percentage) {
         this.percentage = percentage;
     }
 }

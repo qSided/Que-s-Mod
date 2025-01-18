@@ -30,6 +30,25 @@ public class ClassSelection extends BaseOwoScreen<FlowLayout> {
     Integer itemPosY;
     Integer levelBonusPosX;
     Integer levelBonusPosY;
+    
+    public Integer getBonusModifierPosX() {
+        return bonusModifierPosX;
+    }
+    
+    public void setBonusModifierPosX(Integer bonusModifierPosX) {
+        this.bonusModifierPosX = bonusModifierPosX;
+    }
+    
+    public Integer getBonusModifierPosY() {
+        return bonusModifierPosY;
+    }
+    
+    public void setBonusModifierPosY(Integer bonusModifierPosY) {
+        this.bonusModifierPosY = bonusModifierPosY;
+    }
+    
+    Integer bonusModifierPosX;
+    Integer bonusModifierPosY;
     Integer maxWidthWithGUIScaleOffset;
     
     public Integer getMaxWidthWithGUIScaleOffset() {
@@ -103,6 +122,8 @@ public class ClassSelection extends BaseOwoScreen<FlowLayout> {
         setItemPosY(12);
         setLevelBonusPosX(3);
         setLevelBonusPosY(12);
+        setBonusModifierPosX(3);
+        setBonusModifierPosY(12);
         
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -148,6 +169,14 @@ public class ClassSelection extends BaseOwoScreen<FlowLayout> {
                                 .id("starting_skills")
                                 .positioning(Positioning.relative(50, 100))
                         )
+                        .child(Containers.verticalFlow(Sizing.fill(33), Sizing.fill(60))
+                                .child(Components.label(Text.translatable("classes.ques-mod.modifiers"))
+                                        .positioning(Positioning.absolute(0,0)))
+                                .surface(Surface.flat(Color.decode("#171717").getRGB()).and(Surface.outline(Color.decode("#121212").getRGB())))
+                                .padding(Insets.of(3))
+                                .id("xp_modifiers")
+                                .positioning(Positioning.relative(100, 100))
+                        )
                     //Information box formatting
                     .padding(Insets.of(6))
                     .surface(Surface.DARK_PANEL)
@@ -186,6 +215,17 @@ public class ClassSelection extends BaseOwoScreen<FlowLayout> {
                             setLevelBonusPosX(getLevelBonusPosX() + 36);
                         } else {
                             setLevelBonusPosY(getLevelBonusPosY() + 12);
+                        }
+                    });
+                    roleplayClass.getSkillModifiers().forEach(skillModifier -> {
+                        rootComponent.childById(FlowLayout.class, "xp_modifiers")
+                                .child(Components.label(Text.literal("+" + skillModifier.getPercentage() + "% ").append(Text.translatable("skills.ques-mod." + skillModifier.getSkill())))
+                                        .positioning(Positioning.absolute(getBonusModifierPosX(), getBonusModifierPosY())));
+                        if (getBonusModifierPosY() >= 120) {
+                            setBonusModifierPosY(12);
+                            setBonusModifierPosX(getBonusModifierPosX() + 36);
+                        } else {
+                            setBonusModifierPosY(getBonusModifierPosY() + 12);
                         }
                     });
                 }
