@@ -30,14 +30,6 @@ public class StateSaverAndLoader extends PersistentState {
             playerData.skillExperience.forEach(skillExpNbt::putFloat);
             playerNbt.put("skillExp", skillExpNbt);
             
-            NbtCompound rpClassLevelNbt = new NbtCompound();
-            playerData.rpClassLevel.forEach(rpClassLevelNbt::putInt);
-            playerNbt.put("rpClassLevel", rpClassLevelNbt);
-            
-            NbtCompound rpClassExpNbt = new NbtCompound();
-            playerData.rpClassExperience.forEach(rpClassExpNbt::putFloat);
-            playerNbt.put("rpClassExperience", rpClassExpNbt);
-            
             NbtCompound expModifiersNbt = new NbtCompound();
             playerData.expModifiers.forEach((id, skillPercentHashmap) -> {
                 NbtCompound skillsAndPercentsNbt = new NbtCompound();
@@ -46,10 +38,14 @@ public class StateSaverAndLoader extends PersistentState {
             });
             playerNbt.put("expModifiers", expModifiersNbt);
             
+            NbtCompound rpClassNbt = new NbtCompound();
+            rpClassNbt.putString("rpClass", playerData.rpClass);
+            playerNbt.put("rpClass", rpClassNbt);
+            
             //Puts each player's data into nbt
             playersNbt.put(uuid.toString(), playerNbt);
         });
-        //Writes all players' saved class and skill nbt into a save file
+        //Writes all players' saved class and rpClass nbt into a save file
         nbt.put("players", playersNbt);
         
         return nbt;
@@ -75,19 +71,6 @@ public class StateSaverAndLoader extends PersistentState {
                 playerData.skillExperience.put(skill, experience);
             });
             
-            NbtCompound rpClassLevelNbt = playersNbt.getCompound(key).getCompound("rpClassLevel");
-            rpClassLevelNbt.getKeys().forEach(s -> {
-                String rpClass = String.valueOf(s);
-                int level = rpClassLevelNbt.getInt(s);
-                playerData.rpClassLevel.put(rpClass, level);
-            });
-            NbtCompound rpClassExpNbt = playersNbt.getCompound(key).getCompound("rpClassExp");
-            rpClassExpNbt.getKeys().forEach(s -> {
-                String rpClass = String.valueOf(s);
-                float experience = rpClassExpNbt.getInt(s);
-                playerData.rpClassExperience.put(rpClass, experience);
-            });
-            
             NbtCompound expModifiersNbt = playersNbt.getCompound(key).getCompound("expModifiers");
             expModifiersNbt.getKeys().forEach(s -> {
                 NbtCompound modifiersNbt = expModifiersNbt.getCompound(s);
@@ -96,6 +79,8 @@ public class StateSaverAndLoader extends PersistentState {
                 modifiersNbt.getKeys().forEach(skill -> modifiers.put(skill, modifiersNbt.getInt(skill)));
                 playerData.expModifiers.put(id, modifiers);
             });
+            
+            playerData.rpClass = playersNbt.getCompound(key).getString("rpClass");
             
             UUID uuid = UUID.fromString(key);
             state.players.put(uuid, playerData);

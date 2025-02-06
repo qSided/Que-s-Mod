@@ -9,6 +9,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.network.ServerPlayerEntity;
 import qsided.quesmod.PlayerData;
+import qsided.quesmod.QuesMod;
 import qsided.quesmod.config.experience_values.BlockExperience;
 import qsided.quesmod.events.IncreaseSkillExperienceCallback;
 
@@ -24,29 +25,22 @@ public class MiningSkill {
     public static void register() {
         Random r = new Random();
         int randomInt = r.nextInt(100) + 1;
-        ObjectMapper mapper = new ObjectMapper();
-        CollectionType typeReference = TypeFactory.defaultInstance().constructCollectionType(List.class, BlockExperience.class);
         
         PlayerBlockBreakEvents.AFTER.register((world, player, pos, blockState, blockEntity) -> {
             
             PlayerData state = getPlayerState(player);
             int miningLevel = state.skillLevels.getOrDefault("mining", 1);
             
-            try {
-                List<BlockExperience> experience = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir()
-                        + "/ques-mod/skills/mining.json"), typeReference);
-                experience.forEach(block -> {
-                    if (blockState.getBlock().asItem().toString().equals(block.getId())) {
-                        
-                        block.getExperience().forEach((skill, value) -> {
-                            IncreaseSkillExperienceCallback.EVENT.invoker()
-                                    .increaseExp((ServerPlayerEntity) player, state, skill, value);
-                        });
-                    }
-                });
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            QuesMod.getBlockValues().forEach(block -> {
+                if (blockState.getBlock().asItem().toString().equals(block.getId())) {
+                    
+                    block.getExperience().forEach((skill, value) -> {
+                        IncreaseSkillExperienceCallback.EVENT.invoker()
+                                .increaseExp((ServerPlayerEntity) player, state, skill, value);
+                    });
+                }
+            });
+            
             
             if (player.getEquippedStack(EquipmentSlot.MAINHAND).isIn(ItemTags.PICKAXES) || player.getEquippedStack(EquipmentSlot.MAINHAND).isIn(ItemTags.SHOVELS)
                     && player.getEquippedStack(EquipmentSlot.MAINHAND).isDamaged() && randomInt <= miningLevel) {

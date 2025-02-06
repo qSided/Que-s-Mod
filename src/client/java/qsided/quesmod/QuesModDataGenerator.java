@@ -13,5 +13,6 @@ public class QuesModDataGenerator implements DataGeneratorEntrypoint {
 		quesPack.addProvider(QuesItemTagProvider::new);
 		quesPack.addProvider(QuesBlockTagProvider::new);
 		quesPack.addProvider(QuesRecipeProvider::new);
+		quesPack.addProvider(QuesBlockLootTableProvider::new);
 	}
 }

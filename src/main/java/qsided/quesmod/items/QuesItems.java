@@ -1,5 +1,6 @@
 package qsided.quesmod.items;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.*;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
@@ -11,10 +12,12 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import qsided.quesmod.QuesMod;
+import qsided.quesmod.blocks.QuesBlocks;
 import qsided.quesmod.items.materials.QuesArmorMaterials;
 import qsided.quesmod.items.materials.QuesToolMaterials;
 
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public class QuesItems {
@@ -38,6 +41,7 @@ public class QuesItems {
     //        .displayName(Text.translatable("itemGroup.ques_items"))
     //        .build();
     
+    public static final Item MYTHRIL_DEBRIS = registerBlockItem(QuesBlocks.MYTHRIL_DEBRIS, new Item.Settings().fireproof().rarity(Rarity.UNCOMMON));
     public static final Item MYTHRIL_FRAGMENT = registerItem("mythril_fragment", settings -> new Item(settings.maxCount(64).fireproof()));
     public static final Item MYTHRIL_INGOT = registerItem("mythril_ingot", settings -> new Item(settings.fireproof().maxCount(64)));
     public static final Item MYTHRIL_SWORD = registerItem("mythril_sword", settings -> new SwordItem(QuesToolMaterials.MYTHRIL, 3.0F, -2.2F, settings.fireproof()));
@@ -68,19 +72,34 @@ public class QuesItems {
                     EMPTY_SLOT_INGOT_TEXTURE),
             settings.fireproof().rarity(Rarity.RARE)));
     
-    public static Item registerItem(String id, Function<Item.Settings, Item> factory) {
-        return registerWithKey(keyOf(id), factory, new Item.Settings());
+    public static Item registerBlockItem(Block block, Item.Settings settings) {
+        return registerBlockItemWIthKey(block, BlockItem::new, settings);
     }
-    public static RegistryKey<Item> keyOf(String id) {
+    
+    public static Item registerBlockItemWIthKey(Block block, BiFunction<Block, Item.Settings, Item> factory, Item.Settings settings) {
+        return registerWithKey(blockKeyOf(block.getRegistryEntry().registryKey()), (itemSettings) -> {
+            return (Item)factory.apply(block, itemSettings);
+        }, settings.useBlockPrefixedTranslationKey());
+    }
+    
+    public static Item registerItem(String id, Function<Item.Settings, Item> factory) {
+        return registerWithKey(itemKeyOf(id), factory, new Item.Settings());
+    }
+    public static RegistryKey<Item> itemKeyOf(String id) {
         return RegistryKey.of(RegistryKeys.ITEM, Identifier.of(QuesMod.MOD_ID, id));
     }
+    
+    private static RegistryKey<Item> blockKeyOf(RegistryKey<Block> blockKey) {
+        return RegistryKey.of(RegistryKeys.ITEM, blockKey.getValue());
+    }
+    
     public static Item registerWithKey(RegistryKey<Item> key, Function<Item.Settings, Item> factory, Item.Settings settings) {
-        Item item = (Item) factory.apply(settings.registryKey(key));
+        Item item = factory.apply(settings.registryKey(key));
         if (item instanceof BlockItem blockItem) {
             blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
         }
         
-        return (Item) Registry.register(Registries.ITEM, key, item);
+        return Registry.register(Registries.ITEM, key, item);
     }
     
     

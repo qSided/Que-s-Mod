@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cube_column",
   "textures": {
     "end": "ques-mod:block/mythril_debris_top",
-    "side": "ques-mod:block/mythril_debris_side"
+    "side": "ques-mod:block/mythril_debris"
   }
 }

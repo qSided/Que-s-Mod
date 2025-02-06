@@ -18,6 +18,7 @@ import qsided.quesmod.QuesMod;
 import qsided.quesmod.StateSaverAndLoader;
 import qsided.quesmod.config.requirements.ItemWithRequirements;
 import qsided.quesmod.config.requirements.Requirements;
+import qsided.quesmod.config.roleplay_classes.RoleplayClass;
 
 import java.io.File;
 import java.io.IOException;
@@ -38,12 +39,18 @@ public class SkillCheckHandler {
                     try {
                         List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/reqs.json"), typeReference);
                         items.forEach(item -> {
-                            if (currentStack.getItem().toString().equals(item.getItemId())
-                                    && state.skillLevels.getOrDefault(item.getRequirements().getSkill(), 1) < item.getRequirements().getLevel()) {
+                            //Check if current item being iterated is the same id as one currently equipped.
+                            if (currentStack.getItem().toString().equals(item.getItemId())) {
+                                if (
+                                    //Check if the skill requirement for that items is the same or greater than player's current level.
+                                    state.skillLevels.getOrDefault(item.getRequirements().getSkill(), 1) < item.getRequirements().getSkillLevel()
+                                    //Check if the player's class is the required one
+                                    || (!state.rpClass.equals(QuesMod.getRpClasses().getOrDefault(item.getRequirements().getRpClassId(), new RoleplayClass("", "", "", null, null, null)).getName()) && !item.getRequirements().getRpClassId().equals(-1))) {
                                 player.dropItem(currentStack, true);
                                 player.equipStack(equipmentSlot, Items.AIR.getDefaultStack());
                                 player.sendMessage(Text.translatable("skills.ques-mod.failed_reqs"), false);
                             }
+                        }
                         });
                     } catch (IOException e) {
                         throw new RuntimeException(e);

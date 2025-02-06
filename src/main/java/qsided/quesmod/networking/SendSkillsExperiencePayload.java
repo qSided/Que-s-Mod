@@ -5,7 +5,7 @@ import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 
-public record SendSkillsExperiencePayload(Float mining, Float enchanting, Float combat, Float woodcutting, Float endurance, Float agility) implements CustomPayload {
+public record SendSkillsExperiencePayload(Float mining, Float enchanting, Float combat, Float woodcutting, Float endurance, Float agility, Float crafting) implements CustomPayload {
     
     public static final Id<SendSkillsExperiencePayload> ID = new Id<>(QuesNetworkingConstants.SEND_SKILLS_EXPERIENCE);
     public static final PacketCodec<RegistryByteBuf, SendSkillsExperiencePayload> CODEC = PacketCodec.tuple(
@@ -15,6 +15,7 @@ public record SendSkillsExperiencePayload(Float mining, Float enchanting, Float 
             PacketCodecs.FLOAT, SendSkillsExperiencePayload::woodcutting,
             PacketCodecs.FLOAT, SendSkillsExperiencePayload::endurance,
             PacketCodecs.FLOAT, SendSkillsExperiencePayload::agility,
+            PacketCodecs.FLOAT, SendSkillsExperiencePayload::crafting,
             SendSkillsExperiencePayload::new);
     
     @Override

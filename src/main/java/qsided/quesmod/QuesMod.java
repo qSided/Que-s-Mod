@@ -2,6 +2,8 @@ package qsided.quesmod;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
@@ -21,11 +23,9 @@ import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.gen.GenerationStep;
@@ -36,6 +36,8 @@ import qsided.quesmod.blocks.QuesBlocks;
 import qsided.quesmod.commands.SkillsCommand;
 import qsided.quesmod.config.ConfigGenerator;
 import qsided.quesmod.config.QuesConfig;
+import qsided.quesmod.config.experience_values.BlockExperience;
+import qsided.quesmod.config.requirements.ItemCraftingRequirement;
 import qsided.quesmod.config.roleplay_classes.RoleplayClass;
 import qsided.quesmod.events.IncreaseSkillExperienceCallback;
 import qsided.quesmod.events.RoleplayClassSelectedCallback;
@@ -47,9 +49,9 @@ import qsided.quesmod.skills.leveling.ExperienceUp;
 import qsided.quesmod.skills.leveling.LevelUp;
 import qsided.quesmod.tags.blocks.QuesBlockTags;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 public class QuesMod implements ModInitializer {
@@ -59,6 +61,8 @@ public class QuesMod implements ModInitializer {
 	public static final RegistryKey<PlacedFeature> MYTHRIL_DEBRIS_FEATURE = RegistryKey.of(RegistryKeys.PLACED_FEATURE, Identifier.of(MOD_ID, "mythril_debris_feature"));
     public static final QuesConfig OWO_CONFIG = QuesConfig.createAndLoad();
     static Map<Integer, RoleplayClass> rpClasses;
+    static List<BlockExperience> blockValues;
+    static List<ItemCraftingRequirement> craftingReqs;
     
     public static Map<Integer, RoleplayClass> getRpClasses() {
         return rpClasses;
@@ -68,7 +72,23 @@ public class QuesMod implements ModInitializer {
         QuesMod.rpClasses = rpClasses;
     }
     
-	@Override
+    public static List<BlockExperience> getBlockValues() {
+        return blockValues;
+    }
+    
+    public static void setBlockValues(List<BlockExperience> blockValues) {
+        QuesMod.blockValues = blockValues;
+    }
+    
+    public static List<ItemCraftingRequirement> getCraftingReqs() {
+        return craftingReqs;
+    }
+    
+    public static void setCraftingReqs(List<ItemCraftingRequirement> craftingReqs) {
+        QuesMod.craftingReqs = craftingReqs;
+    }
+    
+    @Override
 	public void onInitialize() {
         QuesItems.initialize();
         QuesArmorMaterials.initialize();
@@ -76,15 +96,25 @@ public class QuesMod implements ModInitializer {
         QuesBlocks.initialize();
         
         ObjectMapper mapper = new ObjectMapper();
+        CollectionType miningRef = TypeFactory.defaultInstance().constructCollectionType(List.class, BlockExperience.class);
+        CollectionType craftingRef = TypeFactory.defaultInstance().constructCollectionType(List.class, ItemCraftingRequirement.class);
         try {
             ConfigGenerator.genReqsConfig();
             ConfigGenerator.genWoodcuttingConfig();
             ConfigGenerator.genMiningConfig();
             ConfigGenerator.genDefaultClasses();
             ConfigGenerator.genPassiveMobs();
+            ConfigGenerator.genCraftingConfig();
             
             Map<Integer, RoleplayClass> rpClasses = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/classes/classes.json"), new TypeReference<Map<Integer, RoleplayClass>>() {});
+            List<BlockExperience> experience = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir()
+                    + "/ques-mod/skills/mining.json"), miningRef);
+            List<ItemCraftingRequirement> craftingReqs = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir()
+                    + "/ques-mod/skills/crafting.json"), craftingRef);
+            
             setRpClasses(rpClasses);
+            setBlockValues(experience);
+            setCraftingReqs(craftingReqs);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -97,7 +127,7 @@ public class QuesMod implements ModInitializer {
         
         LevelUp.onLevelUp();
         ExperienceUp.onExperienceUp();
-        RoleplayClasses.onSelected();
+        RoleplayClasses.initialize();
         
         SkillsCommand.register();
         
@@ -209,6 +239,7 @@ public class QuesMod implements ModInitializer {
 		Integer woodcuttingLevel = playerState.skillLevels.getOrDefault("woodcutting", 1);
 		Integer enduranceLevel = playerState.skillLevels.getOrDefault("endurance", 1);
         Integer agilityLevel = playerState.skillLevels.getOrDefault("agility", 1);
+		Integer craftingLevel = playerState.skillLevels.getOrDefault("crafting", 1);
 		
 		Float miningExp = playerState.skillExperience.getOrDefault("mining", 0F);
 		Float enchantingExp = playerState.skillExperience.getOrDefault("enchanting", 0F);
@@ -216,8 +247,9 @@ public class QuesMod implements ModInitializer {
 		Float woodcuttingExp = playerState.skillExperience.getOrDefault("woodcutting", 0F);
 		Float enduranceExp = playerState.skillExperience.getOrDefault("endurance", 0F);
         Float agilityExp = playerState.skillExperience.getOrDefault("agility", 0F);
+		Float craftingExp = playerState.skillExperience.getOrDefault("crafting", 0F);
 		
-		ServerPlayNetworking.send(player, new SendSkillsLevelsPayload(miningLevel, enchantingLevel, combatLevel, woodcuttingLevel, enduranceLevel, agilityLevel));
-		ServerPlayNetworking.send(player, new SendSkillsExperiencePayload(miningExp, enchantingExp, combatExp, woodcuttingExp, enduranceExp, agilityExp));
+		ServerPlayNetworking.send(player, new SendSkillsLevelsPayload(miningLevel, enchantingLevel, combatLevel, woodcuttingLevel, enduranceLevel, agilityLevel, craftingLevel));
+		ServerPlayNetworking.send(player, new SendSkillsExperiencePayload(miningExp, enchantingExp, combatExp, woodcuttingExp, enduranceExp, agilityExp, craftingExp));
 	}
 }

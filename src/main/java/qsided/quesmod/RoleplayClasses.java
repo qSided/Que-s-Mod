@@ -16,22 +16,25 @@ import qsided.quesmod.events.RoleplayClassSelectedCallback;
 import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class RoleplayClasses {
     public static final RoleplayClass PALADIN;
     public static final RoleplayClass RANGER;
     public static final RoleplayClass FIGHTER;
     
-    public static void onSelected() {
+    public static void initialize() {
         RoleplayClassSelectedCallback.EVENT.register((player, state, rpClassId) -> {
             
-            if (!(state.rpClassLevel.getOrDefault(rpClassId.toString(), 0) >= 1)) {
+            if (state.rpClass.equals("")) {
                 player.sendMessage(Text.translatable("classes.ques-mod.class_selected")
                     .append(Text.literal(
                             QuesMod.getRpClasses().get(rpClassId).getName()).getWithStyle(Style.EMPTY.withColor(Color.decode(QuesMod.getRpClasses().get(rpClassId).getColor()).getRGB())).getFirst()
                     )
                 );
-            
+                
+                QuesMod.getRpClasses().get(rpClassId).getStartingSkills().forEach(startingSkill -> IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, startingSkill.getSkill(), startingSkill.getLevel(), false));
+                
                 QuesMod.getRpClasses().get(rpClassId).getStartingEquipment().forEach(startingEquipment -> {
                     for (int i = 0; i<startingEquipment.getCount(); i++) {
                         player.giveItemStack(Registries.ITEM.get(Identifier.of(startingEquipment.getItem())).getDefaultStack());
@@ -44,13 +47,12 @@ public class RoleplayClasses {
                 });
                 state.expModifiers.put(QuesMod.getRpClasses().get(rpClassId).getName(), modifiers);
                 
-                state.rpClassLevel.put(String.valueOf(QuesMod.getRpClasses().get(rpClassId)), 1);
-                state.rpClassExperience.put(String.valueOf(QuesMod.getRpClasses().get(rpClassId)), 0.0F);
+                state.rpClass = QuesMod.getRpClasses().get(rpClassId).getName();
             } else {
                 player.sendMessage(Text.translatable("classes.ques-mod.already_selected"));
             }
             
-            QuesMod.getRpClasses().get(rpClassId).getStartingSkills().forEach(startingSkill -> IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, startingSkill.getSkill(), startingSkill.getLevel(), false));
+            
             
             return ActionResult.PASS;
         });

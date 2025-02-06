@@ -144,6 +144,11 @@ public class AgilitySkillScreen extends BaseUIModelScreen<FlowLayout> {
                     client.setScreen(new EnchantingSkillScreen());
                 })
                 .divider()
+                .button(Text.translatable("skills.ques-mod.crafting"), button -> {
+                    QuesModClient.setLastScreenOpen("crafting");
+                    client.setScreen(new CraftingSkillScreen());
+                })
+                .divider()
                 .button(Text.translatable("skills.ques-mod.combat"), button -> {
                     QuesModClient.setLastScreenOpen("combat");
                     client.setScreen(new CombatSkillScreen());

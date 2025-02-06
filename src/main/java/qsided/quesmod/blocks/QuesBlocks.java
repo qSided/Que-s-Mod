@@ -17,7 +17,7 @@ import qsided.quesmod.QuesMod;
 import java.util.function.Function;
 
 public class QuesBlocks {
-    public static final Block MYTHRIL_DEBRIS = registerBlock("mythril_debris", PillarBlock::new, AbstractBlock.Settings.create().mapColor(DyeColor.CYAN).requiresTool().strength(35.0F, 1300.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS), true);
+    public static final Block MYTHRIL_DEBRIS = registerBlock("mythril_debris", PillarBlock::new, AbstractBlock.Settings.create().mapColor(DyeColor.CYAN).requiresTool().strength(35.0F, 1300.0F).sounds(BlockSoundGroup.ANCIENT_DEBRIS), false);
     
     public static Block registerToRegistry(RegistryKey<Block> key, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings, boolean shouldRegisterItem) {
         Block block = factory.apply(settings.registryKey(key));

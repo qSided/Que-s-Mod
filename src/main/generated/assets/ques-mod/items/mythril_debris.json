@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "ques-mod:item/mythril_debris"
+    "model": "ques-mod:block/mythril_debris"
   }
 }

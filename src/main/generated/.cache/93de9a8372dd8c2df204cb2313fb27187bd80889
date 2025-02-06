@@ -1,8 +1,9 @@
 // 1.21.4	-999999999-01-01T00:00:00	Que's Mod/Model Definitions
+dcf9ff88de769603e2dea8fceb67dee4a4db85bc assets/ques-mod/blockstates/mythril_debris.json
 fce4e5b83cf7ae1efa9b328d93b1cff6970879c0 assets/ques-mod/items/mythril_axe.json
 2a01a8e5d42daabab1a2585c4d0506190ab22014 assets/ques-mod/items/mythril_boots.json
 4ae485c8197b0c0a24e07251b5496b8dd2514b27 assets/ques-mod/items/mythril_chestplate.json
-77bd6c16c3c17ffb2daae25c8f2f96a964253e99 assets/ques-mod/items/mythril_debris.json
+5b63085ad016e2c5f24e53f2e5d0e988f6be3b9b assets/ques-mod/items/mythril_debris.json
 caf72eae69c7e05f0eaa22b3fc584531588019ef assets/ques-mod/items/mythril_fragment.json
 4d3dbae16e5b9ecebaeeb05381fb80a613914c45 assets/ques-mod/items/mythril_helmet.json
 175e4e49512054d7fcbcea21e45d5b75935f2e02 assets/ques-mod/items/mythril_hoe.json
@@ -12,6 +13,7 @@ a2234cc7c428b23fe16596a002892b3a273cf30a assets/ques-mod/items/mythril_pickaxe.j
 7e0c124ad1f4ac6e6b3a1688ddced6e38bdcd4bb assets/ques-mod/items/mythril_shovel.json
 1cfc6b99cd3670f22c8710b7b1e8d8742904d5a8 assets/ques-mod/items/mythril_sword.json
 9f70edf4eb9e1d7e3b81bb261c17b477b99ce713 assets/ques-mod/items/mythril_upgrade_template.json
+4c291ca5e05a29210bd196d2d79def402e0a4843 assets/ques-mod/models/block/mythril_debris.json
 6a578fe3d07ffc218d5c90dee20af808d2d4e325 assets/ques-mod/models/item/mythril_axe.json
 aa70ed5c2dfce7d503cd209154852aeaf42f7255 assets/ques-mod/models/item/mythril_boots.json
 34ea797c12f7d34611b9ae6996c5a0bf34463624 assets/ques-mod/models/item/mythril_boots_amethyst_trim.json
@@ -37,7 +39,6 @@ cccf5a51904f5b7bff4705079859f83008e4cad4 assets/ques-mod/models/item/mythril_che
 9fd8e8c53d8fdb2022859395ccd001d86db5d72b assets/ques-mod/models/item/mythril_chestplate_quartz_trim.json
 7a0d0d845f71abce93c6cb9b7d9941132a155c7b assets/ques-mod/models/item/mythril_chestplate_redstone_trim.json
 37c9a36cbe03eb0bf87521d4ed3cc00917bf1a04 assets/ques-mod/models/item/mythril_chestplate_resin_trim.json
-60830ac713e477f8a5c0bcb5de684d971b995be7 assets/ques-mod/models/item/mythril_debris.json
 c3d82d07205a32a065912939b04c110e95c4f4d6 assets/ques-mod/models/item/mythril_fragment.json
 947c9282b869dc36b3bdaf7d531fa51e9c70b89a assets/ques-mod/models/item/mythril_helmet.json
 77b71a7521b37c5b4d02e544f9e6fd56f6f4e74e assets/ques-mod/models/item/mythril_helmet_amethyst_trim.json

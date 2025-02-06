@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.minecraft.client.data.BlockStateModelGenerator;
 import net.minecraft.client.data.ItemModelGenerator;
 import net.minecraft.client.data.Models;
+import net.minecraft.client.data.TexturedModel;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 import qsided.quesmod.QuesMod;
@@ -18,6 +19,7 @@ public class QuesModelProvider extends FabricModelProvider {
     
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
+        blockStateModelGenerator.registerSingleton(QuesBlocks.MYTHRIL_DEBRIS, TexturedModel.END_FOR_TOP_CUBE_COLUMN);
     }
     
     @Override
@@ -35,7 +37,5 @@ public class QuesModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(QuesItems.MYTHRIL_CHESTPLATE, RegistryKey.of(RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset")), Identifier.of(QuesMod.MOD_ID, "mythril")), "chestplate", false);
         itemModelGenerator.registerArmor(QuesItems.MYTHRIL_LEGGINGS, RegistryKey.of(RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset")), Identifier.of(QuesMod.MOD_ID, "mythril")), "leggings", false);
         itemModelGenerator.registerArmor(QuesItems.MYTHRIL_BOOTS, RegistryKey.of(RegistryKey.ofRegistry(Identifier.ofVanilla("equipment_asset")), Identifier.of(QuesMod.MOD_ID, "mythril")), "boots", false);
-        
-        itemModelGenerator.register(QuesBlocks.MYTHRIL_DEBRIS.asItem(), Models.GENERATED);
     }
 }
