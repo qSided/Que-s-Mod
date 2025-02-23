@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "qsided.rpmechanics.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "EnchantItemMixin",
+    "IncreaseTravelMotionStatsAndJumpMixin",
+    "OnDamagedMixin",
+    "crafting.CraftingResultSlotMixin",
+    "crafting.CraftingScreenHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

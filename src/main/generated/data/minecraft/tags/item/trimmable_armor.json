@@ -1,8 +1,8 @@
 {
   "values": [
-    "ques-mod:mythril_helmet",
-    "ques-mod:mythril_chestplate",
-    "ques-mod:mythril_leggings",
-    "ques-mod:mythril_boots"
+    "rpmechanics:mythril_helmet",
+    "rpmechanics:mythril_chestplate",
+    "rpmechanics:mythril_leggings",
+    "rpmechanics:mythril_boots"
   ]
 }

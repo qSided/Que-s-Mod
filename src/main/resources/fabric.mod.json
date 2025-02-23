@@ -1,9 +1,9 @@
 {
 	"schemaVersion": 1,
-	"id": "ques-mod",
+	"id": "rpmechanics",
 	"version": "${version}",
-	"name": "Que's Mod",
-	"description": "Que's mod does a lot of different stuff.",
+	"name": "Roleplay Mechanics",
+	"description": "A work-in-progress RPG mod adding skills, classes, and some related items.",
 	"authors": [
 		"qSided"
 	],
@@ -12,23 +12,23 @@
 		"sources": "https://github.com/qSided/Que-s-Mod"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/ques-mod/icon.png",
+	"icon": "assets/rpmechanics/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"qsided.quesmod.QuesMod"
+			"qsided.rpmechanics.RoleplayMechanicsCommon"
 		],
 		"client": [
-			"qsided.quesmod.QuesModClient"
+			"qsided.rpmechanics.RoleplayMechanicsClient"
 		],
 		"fabric-datagen": [
-			"qsided.quesmod.QuesModDataGenerator"
+			"qsided.rpmechanics.QuesModDataGenerator"
 		]
 	},
 	"mixins": [
-		"ques-mod.mixins.json",
+		"rpmechanics.mixins.json",
 		{
-			"config": "ques-mod.client.mixins.json",
+			"config": "rpmechanics.client.mixins.json",
 			"environment": "client"
 		}
 	],

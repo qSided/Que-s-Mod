@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "qsided.rpmechanics.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "JumpAndHandleFallDamageMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixins": [
+    "JumpAndHandleFallDamageMixin"
+  ]
+}

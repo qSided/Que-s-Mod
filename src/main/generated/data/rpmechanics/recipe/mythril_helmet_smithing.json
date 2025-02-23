@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": "rpmechanics:mythril_ingot",
+  "base": "minecraft:netherite_helmet",
+  "result": {
+    "count": 1,
+    "id": "rpmechanics:mythril_helmet"
+  },
+  "template": "rpmechanics:mythril_upgrade_template"
+}

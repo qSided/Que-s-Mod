@@ -1,0 +1,346 @@
+{
+  "item.rpmechanics.mythril_fragment": "Mythril Fragment",
+  "item.rpmechanics.mythril_ingot": "Mythril Ingot",
+  "item.rpmechanics.mythril_sword": "Mythril Sword",
+  "item.rpmechanics.mythril_pickaxe": "Mythril Pickaxe",
+  "item.rpmechanics.mythril_axe": "Mythril Axe",
+  "item.rpmechanics.mythril_shovel": "Mythril Shovel",
+  "item.rpmechanics.mythril_hoe": "Mythril Hoe",
+  "item.rpmechanics.mythril_helmet": "Mythril Helmet",
+  "item.rpmechanics.mythril_chestplate": "Mythril Chestplate",
+  "item.rpmechanics.mythril_leggings": "Mythril Leggings",
+  "item.rpmechanics.mythril_boots": "Mythril Boots",
+  "block.rpmechanics.mythril_debris": "Mythril Debris",
+  "item.rpmechanics.mythril_template_apply": "Netherite Equipment",
+  "item.rpmechanics.mythril_template_ingredient": "Mythril Ingot",
+  "item.rpmechanics.mythril_template_base_description": "Add netherite armor, weapon, or tool",
+  "item.rpmechanics.mythril_template_addition_description": "Add Mythril Ingot",
+  "item.rpmechanics.mythril_upgrade_template": "Mythril Upgrade",
+  "itemGroup.ques_items": "Roleplay Mechanics Items",
+
+  "classes.rpmechanics.select": "Select",
+  "classes.rpmechanics.already_selected": [
+    {
+      "text": "You have already selected a class!",
+      "color": "red"
+    }
+  ],
+  "classes.rpmechanics.class_selected": [
+    {
+      "text": "Class selected: ",
+      "color": "#8f8f96"
+    }
+  ],
+  "classes.rpmechanics.description": "Description:",
+  "classes.rpmechanics.starting_gear": "Starting Gear:",
+  "classes.rpmechanics.levels": "Starting Levels:",
+  "classes.rpmechanics.modifiers": "Bonus Modifiers:",
+
+  "key.category.rpmechanics": "Roleplay Mechanics Mod",
+  "key.rpmechanics.open_skills": "Open Skills",
+  "key.rpmechanics.open_class_selection": "Open Class Selection",
+  "text.config.ques-config.option.displayJoinMessage": "Display Join Message",
+  "text.config.ques-config.option.enableRequirements": "Skill Requirements for Gear",
+  "text.config.ques-config.option.experienceOptions.useGlobal": "Use Global Values for All Skills",
+
+  "text.config.ques-config.category.experienceOptions.globalOptions": "Global (if enabled)",
+  "text.config.ques-config.option.experienceOptions.globalOptions.baseExperience": "Base Experience Value",
+  "text.config.ques-config.option.experienceOptions.globalOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.ques-config.option.experienceOptions.globalOptions.amount": "Amount to Add or Multiply By",
+
+  "text.config.ques-config.category.experienceOptions.agilityOptions": [
+    { "text": "Agility", "color": "green"}
+  ],
+  "text.config.ques-config.option.experienceOptions.agilityOptions.baseExperience": "Base Experience Value",
+  "text.config.ques-config.option.experienceOptions.agilityOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.ques-config.option.experienceOptions.agilityOptions.amount": "Amount to Add or Multiply By",
+
+  "text.config.ques-config.category.experienceOptions.combatOptions": [
+    { "text": "Combat", "color": "red"}
+  ],
+  "text.config.ques-config.option.experienceOptions.combatOptions.baseExperience": "Base Experience Value",
+  "text.config.ques-config.option.experienceOptions.combatOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.ques-config.option.experienceOptions.combatOptions.amount": "Amount to Add or Multiply By",
+
+  "text.config.ques-config.category.experienceOptions.craftingOptions": [
+    { "text": "Crafting", "color": "gold"}
+  ],
+  "text.config.ques-config.option.experienceOptions.craftingOptions.baseExperience": "Base Experience Value",
+  "text.config.ques-config.option.experienceOptions.craftingOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.ques-config.option.experienceOptions.craftingOptions.amount": "Amount to Add or Multiply By",
+
+  "text.config.ques-config.category.experienceOptions.enchantingOptions": [
+    { "text": "Enchanting", "color": "blue"}
+  ],
+  "text.config.ques-config.option.experienceOptions.enchantingOptions.baseExperience": "Base Experience Value",
+  "text.config.ques-config.option.experienceOptions.enchantingOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.ques-config.option.experienceOptions.enchantingOptions.amount": "Amount to Add or Multiply By",
+
+  "text.config.ques-config.category.experienceOptions.enduranceOptions": [
+    { "text": "Endurance", "color": "dark_red"}
+  ],
+  "text.config.ques-config.option.experienceOptions.enduranceOptions.baseExperience": "Base Experience Value",
+  "text.config.ques-config.option.experienceOptions.enduranceOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.ques-config.option.experienceOptions.enduranceOptions.amount": "Amount to Add or Multiply By",
+
+  "text.config.ques-config.category.experienceOptions.miningOptions": [
+    { "text": "Mining", "color": "dark_purple"}
+  ],
+  "text.config.ques-config.option.experienceOptions.miningOptions.baseExperience": "Base Experience Value",
+  "text.config.ques-config.option.experienceOptions.miningOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.ques-config.option.experienceOptions.miningOptions.amount": "Amount to Add or Multiply By",
+
+  "text.config.ques-config.category.experienceOptions.woodcuttingOptions": [
+    { "text": "Woodcutting", "color": "yellow"}
+  ],
+  "text.config.ques-config.option.experienceOptions.woodcuttingOptions.baseExperience": "Base Experience Value",
+  "text.config.ques-config.option.experienceOptions.woodcuttingOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.ques-config.option.experienceOptions.woodcuttingOptions.amount": "Amount to Add or Multiply By",
+
+  "text.config.ques-config.category.experienceOptions": "Experience Options",
+  "text.config.ques-config.enum.choices.additive": "Additive",
+  "text.config.ques-config.enum.choices.multiplicative": "Multiplicative",
+  "text.config.ques-config.title": [
+    {
+      "text": "Roleplay Mechanics Mod Settings",
+      "color": "#2e6391"
+    }
+  ],
+
+  "skills.rpmechanics.failed_reqs": [
+    { "text": "You do not meet the requirements for that item!", "color": "red" }
+  ],
+
+  "rpmechanics.player_joined": [
+    { "text": "You are using verion ", "color": "#2e469e"},
+    { "text": "0.6.3-", "color": "#3533d4"},
+    { "text": "alpha", "color": "#b633d4"},
+    { "text": ".", "color": "#2e469e"},
+    { "text": " Press ", "color": "#2e469e"},
+    { "text": "Right-Alt", "color": "#3a31e8"},
+    { "text": " (default) to open the skills screen", "color": "#2e469e"}
+  ],
+
+
+  "tooltip.rpmechanics.requirements": [
+    { "text": "Requires ", "color": "gray"}
+  ],
+  "tooltip.rpmechanics.class_requirements": [
+    { "text": "Must be a ", "color": "gray"}
+  ],
+  "tooltip.rpmechanics.requirements_two": [
+    { "text": " to Use", "color": "gray"}
+  ],
+  "tooltip.rpmechanics.craft_requirements_two": [
+    { "text": " to Craft", "color": "gray"}
+  ],
+  "skills.rpmechanics.max_level": [
+    { "text":  "Max Level", "color": "#b58259"}
+  ],
+  "skills.rpmechanics.select_skill": [
+    { "text":  "Select Skill:", "color": "#b58259"}
+  ],
+
+
+  "skills.rpmechanics.mining": [
+    { "text": "Mining", "color": "dark_purple"}
+  ],
+  "skills.rpmechanics.mining.efficiency": [
+    { "text": "Efficiency", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.mining.efficiency.tooltip": [
+    { "text": "Efficiency", "color": "#9d65e6"},
+    { "text": " determines how quickly you break blocks.\n", "color": "#d1d0cd"},
+    { "text": "Each level is an", "color": "#d1d0cd"},
+    { "text": " ~2% ", "color": "#9d65e6"},
+    { "text": "increase in mining speed.", "color": "#d1d0cd"}
+  ],
+  "skills.rpmechanics.mining.degrade_chance": [
+    { "text": "Degrade Chance", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.mining.degrade_chance.tooltip": [
+    { "text": "Every level is -1% ", "color": "#d1d0cd"},
+    { "text": "degrade chance", "color": "#9d65e6"},
+    { "text": ". For example, level 40 would be a 40% chance\nfor the tool not to lose durability. Or a 60% chance that it would.", "color": "#d1d0cd"}
+  ],
+  "skills.level_up.rpmechanics.mining": [
+    { "text": "Mining ", "color": "dark_purple"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+
+  "skills.rpmechanics.enchanting": [
+    { "text": "Enchanting", "color": "blue"}
+  ],
+  "skills.rpmechanics.enchanting.cost": [
+    { "text": "Enchanting Cost", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.enchanting.cost.tooltip": [
+    { "text": "Enchanting cost", "color": "#4646ca"},
+    { "text": " decreases twice. Once at level 33\nand again at level 66. Minimum cost is always one.", "color": "#d1d0cd"}
+  ],
+  "skills.rpmechanics.enchanting.modifier": [
+    { "text": "Power Modifier", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.enchanting.modifier.tooltip": [
+    { "text": "Every time you enchant something there's a chance for the\nlevel of the enchant(s) to be increased. Your ", "color": "#d1d0cd"},
+    { "text": "power modifier", "color": "#4646ca"},
+    { "text": "\nincreases every 20 levels and is the maximum amount which\nenchantment levels may be increased.\nMinimum modifier at level 100 is two.", "color": "#d1d0cd"}
+  ],
+  "skills.level_up.rpmechanics.enchanting": [
+    { "text": "Enchanting ", "color": "blue"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+
+  "skills.rpmechanics.combat": [
+    { "text": "Combat", "color": "red"}
+  ],
+  "skills.rpmechanics.combat.attack_damage": [
+  { "text": "Damage", "color": "#869970"},
+  { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.combat.attack_speed": [
+    { "text": "Speed", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.level_up.rpmechanics.combat": [
+    { "text": "Combat ", "color": "red"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+
+  "skills.rpmechanics.alchemy": [
+    { "text": "Alchemy", "color": "yellow"}
+  ],
+
+  "skills.rpmechanics.woodcutting": [
+    { "text": "Woodcutting", "color": "#cccf46"}
+  ],
+  "skills.rpmechanics.woodcutting.efficiency": [
+    { "text": "Efficiency", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.woodcutting.extra_chance": [
+    { "text": "Extra Chance", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.level_up.rpmechanics.woodcutting": [
+    { "text": "Woodcutting ", "color": "#cccf46"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+  "skills.rpmechanics.endurance": [
+    { "text": "Endurance", "color": "dark_red"}
+  ],
+  "skills.rpmechanics.endurance.max_health": [
+    { "text": "Max Health", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.level_up.rpmechanics.endurance": [
+    { "text": "Endurance ", "color": "dark_red"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+  "skills.rpmechanics.agility": [
+    { "text": "Agility", "color": "green"}
+  ],
+  "skills.rpmechanics.agility.movement_speed": [
+    { "text": "Movement Speed", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.agility.jump_strength": [
+    { "text": "Jump Strength", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.agility.safe_distance": [
+    { "text": "Safe Distance", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.level_up.rpmechanics.agility": [
+    { "text": "Agility ", "color": "green"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+  "skills.rpmechanics.crafting": [
+    { "text": "Crafting", "color": "gold"}
+  ],
+  "skills.level_up.rpmechanics.crafting": [
+    { "text": "Crafting ", "color": "gold"},
+    { "text": "↑", "color": "#8f8f96"}
+  ],
+
+  "skills.rpmechanics.current_level": [
+    { "text": "Level", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+  ],
+  "skills.rpmechanics.current_experience": [
+    { "text": "Experience", "color": "#869970"},
+    { "text": ": ", "color": "#8ca66d"}
+    ],
+
+  "skills.descriptions.rpmechanics.mining": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "mining", "color": "dark_purple"},
+    { "text": " skill determines your ", "color": "#d1d0cd"},
+    { "text": "efficiency", "color": "#9d65e6"},
+    { "text": " when mining or digging and the ", "color": "#d1d0cd"},
+    { "text": "degrade chance", "color": "#9d65e6"},
+    { "text": " of your pickaxes and shovels. Gained by breaking stones and ores.", "color": "#d1d0cd"}
+  ],
+  "skills.descriptions.rpmechanics.enchanting": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "enchanting", "color": "blue"},
+    { "text": " skill determines the ", "color": "#d1d0cd"},
+    { "text": "cost of enchanting", "color": "#4646ca"},
+    { "text": " and your ", "color": "#d1d0cd"},
+    { "text": "enchanting power modifier", "color": "#4646ca"},
+    { "text": " when enchanting items. Gained by enchanting anything at an enchanting table.", "color": "#d1d0cd"}
+  ],
+  "skills.descriptions.rpmechanics.combat": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "combat", "color": "red"},
+    { "text": " skill determines the ", "color": "#d1d0cd"},
+    { "text": "damage done", "color": "#a0395a"},
+    { "text": " to other creatures and your ", "color": "#d1d0cd"},
+    { "text": "attack speed", "color": "#a0395a"},
+    { "text": " with swords and axes. Gained by defeating any mobs.", "color": "#d1d0cd"}
+  ],
+  "skills.descriptions.rpmechanics.woodcutting": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "woodcutting", "color": "#cccf46"},
+    { "text": " skill determines your ", "color": "#d1d0cd"},
+    { "text": "efficiency", "color": "#cfaa46"},
+    { "text": " with axes and the ", "color": "#d1d0cd"},
+    { "text": "extra drop chance", "color": "#cfaa46"},
+    { "text": " when harvesting trees. Gained by harvesting trees.", "color": "#d1d0cd"}
+  ],
+  "skills.descriptions.rpmechanics.endurance": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "endurance", "color": "dark_red"},
+    { "text": " skill determines your ", "color": "#d1d0cd"},
+    { "text": "maximum health", "color": "#912e2e"},
+    { "text": ". Gained by taking (almost) any type of damage.", "color": "#d1d0cd"}
+  ],
+  "skills.descriptions.rpmechanics.agility": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "agility", "color": "green"},
+    { "text": " skill determines your ", "color": "#d1d0cd"},
+    { "text": "movement speed", "color": "dark_green"},
+    { "text": ", ", "color": "#d1d0cd"},
+    { "text": "jump strength", "color": "dark_green"},
+    { "text": ", and ", "color": "#d1d0cd"},
+    { "text": "safe fall distance", "color": "dark_green"},
+    { "text": ". Gained by moving in any way (i.e. falling, jumping, etc.).", "color": "#d1d0cd"}
+  ],
+  "skills.descriptions.rpmechanics.crafting": [
+    { "text": "Your ", "color": "#d1d0cd"},
+    { "text": "crafting", "color": "gold"},
+    { "text": " skill determines what you are able to craft. Hover over an item to see it's crafting level requirement. If none is displayed, it can be crafted from level 1.", "color": "#d1d0cd"},
+    { "text": " Experience is gained by crafting at a crafting table.", "color": "#d1d0cd"}
+  ]
+}
