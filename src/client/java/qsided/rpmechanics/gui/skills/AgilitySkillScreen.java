@@ -110,14 +110,14 @@ public class AgilitySkillScreen extends BaseUIModelScreen<FlowLayout> {
             
             if (!RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.useGlobal()) {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "agility")
+                    case ADD -> rootComponent.childById(GridLayout.class, "agility")
                             .child(
                                     Components.label(Text.of(df.format(agilityExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.baseExperience() + (agilityLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "agility")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "agility")
                             .child(
                                     Components.label(Text.of(df.format(agilityExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.baseExperience() * (agilityLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
@@ -127,14 +127,14 @@ public class AgilitySkillScreen extends BaseUIModelScreen<FlowLayout> {
                 }
             } else {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "agility")
+                    case ADD -> rootComponent.childById(GridLayout.class, "agility")
                             .child(
                                     Components.label(Text.of(df.format(agilityExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() + (agilityLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "agility")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "agility")
                             .child(
                                     Components.label(Text.of(df.format(agilityExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() * (agilityLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))

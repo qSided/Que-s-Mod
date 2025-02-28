@@ -89,14 +89,14 @@ public class WoodcuttingSkillScreen extends BaseUIModelScreen<FlowLayout> {
             
             if (!RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.useGlobal()) {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "woodcutting")
+                    case ADD -> rootComponent.childById(GridLayout.class, "woodcutting")
                             .child(
                                     Components.label(Text.of(df.format(woodcuttingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.baseExperience() + (woodcuttingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "woodcutting")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "woodcutting")
                             .child(
                                     Components.label(Text.of(df.format(woodcuttingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.baseExperience() * (woodcuttingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
@@ -106,14 +106,14 @@ public class WoodcuttingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 }
             } else {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "woodcutting")
+                    case ADD -> rootComponent.childById(GridLayout.class, "woodcutting")
                             .child(
                                     Components.label(Text.of(df.format(woodcuttingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() + (woodcuttingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "woodcutting")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "woodcutting")
                             .child(
                                     Components.label(Text.of(df.format(woodcuttingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() * (woodcuttingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))

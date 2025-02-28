@@ -148,14 +148,14 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
             
             if (!RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.useGlobal()) {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "enchanting")
+                    case ADD -> rootComponent.childById(GridLayout.class, "enchanting")
                             .child(
                                     Components.label(Text.of(df.format(enchantingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.baseExperience() + (enchantingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "enchanting")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "enchanting")
                             .child(
                                     Components.label(Text.of(df.format(enchantingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.baseExperience() * (enchantingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
@@ -165,14 +165,14 @@ public class EnchantingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 }
             } else {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "enchanting")
+                    case ADD -> rootComponent.childById(GridLayout.class, "enchanting")
                             .child(
                                     Components.label(Text.of(df.format(enchantingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() + (enchantingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "enchanting")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "enchanting")
                             .child(
                                     Components.label(Text.of(df.format(enchantingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() * (enchantingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))

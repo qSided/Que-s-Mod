@@ -28,7 +28,7 @@ public class WoodcuttingSkill {
             PlayerData data = getPlayerState(player);
             try {
                 List<BlockExperience> experience = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir()
-                        + "/ques-mod/skills/woodcutting.json"), typeReference);
+                        + "/rpmechanics/skills/woodcutting.json"), typeReference);
                 experience.forEach(block -> {
                     if (state.getBlock().asItem().toString().equals(block.getId())) {
                         

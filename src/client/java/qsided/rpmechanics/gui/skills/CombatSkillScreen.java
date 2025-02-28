@@ -101,14 +101,14 @@ public class CombatSkillScreen extends BaseUIModelScreen<FlowLayout> {
             
             if (!RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.useGlobal()) {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "combat")
+                    case ADD -> rootComponent.childById(GridLayout.class, "combat")
                             .child(
                                     Components.label(Text.of(df.format(combatExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.baseExperience() + (combatLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "combat")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "combat")
                             .child(
                                     Components.label(Text.of(df.format(combatExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.baseExperience() * (combatLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
@@ -118,14 +118,14 @@ public class CombatSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 }
             } else {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "combat")
+                    case ADD -> rootComponent.childById(GridLayout.class, "combat")
                             .child(
                                     Components.label(Text.of(df.format(combatExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() + (combatLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "combat")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "combat")
                             .child(
                                     Components.label(Text.of(df.format(combatExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() * (combatLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))

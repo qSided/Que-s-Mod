@@ -41,7 +41,7 @@ public class CombatSkill {
                
                ObjectMapper mapper = new ObjectMapper();
                try {
-                   List<String> mobs = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/passive_mobs.json"), new TypeReference<List<String>>() {});
+                   List<String> mobs = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/rpmechanics/passive_mobs.json"), new TypeReference<List<String>>() {});
                    
                    if (mobs.contains(livingEntity.getType().getName().getString().toLowerCase())) {
                        livingEntity.getAttributeInstance(EntityAttributes.MAX_HEALTH).overwritePersistentModifier(

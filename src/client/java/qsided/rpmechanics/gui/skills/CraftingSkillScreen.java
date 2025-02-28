@@ -57,14 +57,14 @@ public class CraftingSkillScreen extends BaseUIModelScreen<FlowLayout> {
             
             if (!RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.useGlobal()) {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "crafting")
+                    case ADD -> rootComponent.childById(GridLayout.class, "crafting")
                             .child(
                                     Components.label(Text.of(df.format(craftingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.baseExperience() + (craftingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "crafting")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "crafting")
                             .child(
                                     Components.label(Text.of(df.format(craftingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.baseExperience() * (craftingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
@@ -74,14 +74,14 @@ public class CraftingSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 }
             } else {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "crafting")
+                    case ADD -> rootComponent.childById(GridLayout.class, "crafting")
                             .child(
                                     Components.label(Text.of(df.format(craftingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() + (craftingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "crafting")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "crafting")
                             .child(
                                     Components.label(Text.of(df.format(craftingExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() * (craftingLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))

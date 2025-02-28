@@ -8,7 +8,7 @@ import io.wispforest.owo.config.annotation.Sync;
 import qsided.rpmechanics.RoleplayMechanicsCommon;
 
 @Modmenu(modId = RoleplayMechanicsCommon.MOD_ID)
-@Config(name = "ques-config", wrapperName = "QuesConfig")
+@Config(name = "rpmechanics", wrapperName = "QuesConfig")
 public class QuesConfigModel {
     
     @Sync(Option.SyncMode.OVERRIDE_CLIENT)
@@ -16,8 +16,23 @@ public class QuesConfigModel {
     @Sync(Option.SyncMode.OVERRIDE_CLIENT)
     public boolean enableRequirements = true;
     
+    
+    
+    @Nest
+    public SkillOptions skillOptions = new SkillOptions();
     @Nest
     public ExperienceOptions experienceOptions = new ExperienceOptions();
+    
+    public static class SkillOptions {
+        
+        @Nest
+        public AgilityRewards agilityRewardOptions = new AgilityRewards();
+        public static class AgilityRewards {
+            @Sync(Option.SyncMode.OVERRIDE_CLIENT)
+            public float jumpHeightIncrease = 60;
+        }
+        
+    }
     
     public static class ExperienceOptions {
         @Sync(Option.SyncMode.OVERRIDE_CLIENT)
@@ -28,7 +43,7 @@ public class QuesConfigModel {
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public float baseExperience = 60;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-            public Choices multiplicativeOrAdditive = Choices.MULTIPLICATIVE;
+            public Choices multiplicativeOrAdditive = Choices.MULTIPLY;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public double amount = 3.4;
         }
@@ -38,7 +53,7 @@ public class QuesConfigModel {
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public float baseExperience = 60;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-            public Choices multiplicativeOrAdditive = Choices.MULTIPLICATIVE;
+            public Choices multiplicativeOrAdditive = Choices.MULTIPLY;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public double amount = 3.4;
         }
@@ -48,7 +63,7 @@ public class QuesConfigModel {
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public float baseExperience = 60;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-            public Choices multiplicativeOrAdditive = Choices.MULTIPLICATIVE;
+            public Choices multiplicativeOrAdditive = Choices.MULTIPLY;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public double amount = 3.4;
         }
@@ -58,7 +73,7 @@ public class QuesConfigModel {
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public float baseExperience = 60;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-            public Choices multiplicativeOrAdditive = Choices.MULTIPLICATIVE;
+            public Choices multiplicativeOrAdditive = Choices.MULTIPLY;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public double amount = 3.4;
         }
@@ -68,7 +83,7 @@ public class QuesConfigModel {
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public float baseExperience = 60;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-            public Choices multiplicativeOrAdditive = Choices.MULTIPLICATIVE;
+            public Choices multiplicativeOrAdditive = Choices.MULTIPLY;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public double amount = 3.4;
         }
@@ -78,7 +93,7 @@ public class QuesConfigModel {
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public float baseExperience = 60;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-            public Choices multiplicativeOrAdditive = Choices.MULTIPLICATIVE;
+            public Choices multiplicativeOrAdditive = Choices.MULTIPLY;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public double amount = 3.4;
         }
@@ -88,7 +103,7 @@ public class QuesConfigModel {
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public float baseExperience = 60;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-            public Choices multiplicativeOrAdditive = Choices.MULTIPLICATIVE;
+            public Choices multiplicativeOrAdditive = Choices.MULTIPLY;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public double amount = 3.4;
         }
@@ -98,13 +113,13 @@ public class QuesConfigModel {
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public float baseExperience = 60;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
-            public Choices multiplicativeOrAdditive = Choices.MULTIPLICATIVE;
+            public Choices multiplicativeOrAdditive = Choices.MULTIPLY;
             @Sync(Option.SyncMode.OVERRIDE_CLIENT)
             public double amount = 3.4;
         }
     }
     
     public enum Choices {
-        ADDITIVE, MULTIPLICATIVE;
+        ADD, MULTIPLY;
     }
 }

@@ -37,7 +37,7 @@ public class SkillCheckHandler {
                 
                 if (RoleplayMechanicsCommon.OWO_CONFIG.enableRequirements()) {
                     try {
-                        List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/ques-mod/reqs.json"), typeReference);
+                        List<ItemWithRequirements> items = mapper.readValue(new File(FabricLoader.getInstance().getConfigDir() + "/rpmechanics/reqs.json"), typeReference);
                         items.forEach(item -> {
                             //Check if current item being iterated is the same id as one currently equipped.
                             if (currentStack.getItem().toString().equals(item.getItemId())) {
@@ -48,7 +48,7 @@ public class SkillCheckHandler {
                                     || (!state.rpClass.equals(RoleplayMechanicsCommon.getRpClasses().getOrDefault(item.getRequirements().getRpClassId(), new RoleplayClass("", "", "", null, null, null)).getName()) && !item.getRequirements().getRpClassId().equals(-1))) {
                                 player.dropItem(currentStack, true);
                                 player.equipStack(equipmentSlot, Items.AIR.getDefaultStack());
-                                player.sendMessage(Text.translatable("skills.ques-mod.failed_reqs"), false);
+                                player.sendMessage(Text.translatable("skills.rpmechanics.failed_reqs"), false);
                             }
                         }
                         });

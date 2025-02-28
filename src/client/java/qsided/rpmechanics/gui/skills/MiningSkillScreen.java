@@ -91,14 +91,14 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
             
             if (!RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.useGlobal()) {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "mining")
+                    case ADD -> rootComponent.childById(GridLayout.class, "mining")
                             .child(
                                     Components.label(Text.of(df.format(miningExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.baseExperience() + (miningLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "mining")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "mining")
                             .child(
                                     Components.label(Text.of(df.format(miningExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.baseExperience() * (miningLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
@@ -108,14 +108,14 @@ public class MiningSkillScreen extends BaseUIModelScreen<FlowLayout> {
                 }
             } else {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> rootComponent.childById(GridLayout.class, "mining")
+                    case ADD -> rootComponent.childById(GridLayout.class, "mining")
                             .child(
                                     Components.label(Text.of(df.format(miningExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() + (miningLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))
                                             .horizontalTextAlignment(HorizontalAlignment.RIGHT),
                                     1,
                                     2);
-                    case MULTIPLICATIVE -> rootComponent.childById(GridLayout.class, "mining")
+                    case MULTIPLY -> rootComponent.childById(GridLayout.class, "mining")
                             .child(
                                     Components.label(Text.of(df.format(miningExperience) + "/" + df.format(RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() * (miningLevel * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount()))))
                                             .color(Color.ofArgb(0xd1d0cd))

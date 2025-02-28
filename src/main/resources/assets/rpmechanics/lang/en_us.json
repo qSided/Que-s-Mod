@@ -39,68 +39,68 @@
   "key.category.rpmechanics": "Roleplay Mechanics Mod",
   "key.rpmechanics.open_skills": "Open Skills",
   "key.rpmechanics.open_class_selection": "Open Class Selection",
-  "text.config.ques-config.option.displayJoinMessage": "Display Join Message",
-  "text.config.ques-config.option.enableRequirements": "Skill Requirements for Gear",
-  "text.config.ques-config.option.experienceOptions.useGlobal": "Use Global Values for All Skills",
+  "text.config.rpmechanics.option.displayJoinMessage": "Display Join Message",
+  "text.config.rpmechanics.option.enableRequirements": "Skill Requirements for Gear",
+  "text.config.rpmechanics.option.experienceOptions.useGlobal": "Use Global Values for All Skills",
 
-  "text.config.ques-config.category.experienceOptions.globalOptions": "Global (if enabled)",
-  "text.config.ques-config.option.experienceOptions.globalOptions.baseExperience": "Base Experience Value",
-  "text.config.ques-config.option.experienceOptions.globalOptions.multiplicativeOrAdditive": "Increase Type",
-  "text.config.ques-config.option.experienceOptions.globalOptions.amount": "Amount to Add or Multiply By",
+  "text.config.rpmechanics.category.experienceOptions.globalOptions": "Global (if enabled)",
+  "text.config.rpmechanics.option.experienceOptions.globalOptions.baseExperience": "Base Experience Value",
+  "text.config.rpmechanics.option.experienceOptions.globalOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.rpmechanics.option.experienceOptions.globalOptions.amount": "Amount to Add or Multiply By",
 
-  "text.config.ques-config.category.experienceOptions.agilityOptions": [
+  "text.config.rpmechanics.category.experienceOptions.agilityOptions": [
     { "text": "Agility", "color": "green"}
   ],
-  "text.config.ques-config.option.experienceOptions.agilityOptions.baseExperience": "Base Experience Value",
-  "text.config.ques-config.option.experienceOptions.agilityOptions.multiplicativeOrAdditive": "Increase Type",
-  "text.config.ques-config.option.experienceOptions.agilityOptions.amount": "Amount to Add or Multiply By",
+  "text.config.rpmechanics.option.experienceOptions.agilityOptions.baseExperience": "Base Experience Value",
+  "text.config.rpmechanics.option.experienceOptions.agilityOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.rpmechanics.option.experienceOptions.agilityOptions.amount": "Amount to Add or Multiply By",
 
-  "text.config.ques-config.category.experienceOptions.combatOptions": [
+  "text.config.rpmechanics.category.experienceOptions.combatOptions": [
     { "text": "Combat", "color": "red"}
   ],
-  "text.config.ques-config.option.experienceOptions.combatOptions.baseExperience": "Base Experience Value",
-  "text.config.ques-config.option.experienceOptions.combatOptions.multiplicativeOrAdditive": "Increase Type",
-  "text.config.ques-config.option.experienceOptions.combatOptions.amount": "Amount to Add or Multiply By",
+  "text.config.rpmechanics.option.experienceOptions.combatOptions.baseExperience": "Base Experience Value",
+  "text.config.rpmechanics.option.experienceOptions.combatOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.rpmechanics.option.experienceOptions.combatOptions.amount": "Amount to Add or Multiply By",
 
-  "text.config.ques-config.category.experienceOptions.craftingOptions": [
+  "text.config.rpmechanics.category.experienceOptions.craftingOptions": [
     { "text": "Crafting", "color": "gold"}
   ],
-  "text.config.ques-config.option.experienceOptions.craftingOptions.baseExperience": "Base Experience Value",
-  "text.config.ques-config.option.experienceOptions.craftingOptions.multiplicativeOrAdditive": "Increase Type",
-  "text.config.ques-config.option.experienceOptions.craftingOptions.amount": "Amount to Add or Multiply By",
+  "text.config.rpmechanics.option.experienceOptions.craftingOptions.baseExperience": "Base Experience Value",
+  "text.config.rpmechanics.option.experienceOptions.craftingOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.rpmechanics.option.experienceOptions.craftingOptions.amount": "Amount to Add or Multiply By",
 
-  "text.config.ques-config.category.experienceOptions.enchantingOptions": [
+  "text.config.rpmechanics.category.experienceOptions.enchantingOptions": [
     { "text": "Enchanting", "color": "blue"}
   ],
-  "text.config.ques-config.option.experienceOptions.enchantingOptions.baseExperience": "Base Experience Value",
-  "text.config.ques-config.option.experienceOptions.enchantingOptions.multiplicativeOrAdditive": "Increase Type",
-  "text.config.ques-config.option.experienceOptions.enchantingOptions.amount": "Amount to Add or Multiply By",
+  "text.config.rpmechanics.option.experienceOptions.enchantingOptions.baseExperience": "Base Experience Value",
+  "text.config.rpmechanics.option.experienceOptions.enchantingOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.rpmechanics.option.experienceOptions.enchantingOptions.amount": "Amount to Add or Multiply By",
 
-  "text.config.ques-config.category.experienceOptions.enduranceOptions": [
+  "text.config.rpmechanics.category.experienceOptions.enduranceOptions": [
     { "text": "Endurance", "color": "dark_red"}
   ],
-  "text.config.ques-config.option.experienceOptions.enduranceOptions.baseExperience": "Base Experience Value",
-  "text.config.ques-config.option.experienceOptions.enduranceOptions.multiplicativeOrAdditive": "Increase Type",
-  "text.config.ques-config.option.experienceOptions.enduranceOptions.amount": "Amount to Add or Multiply By",
+  "text.config.rpmechanics.option.experienceOptions.enduranceOptions.baseExperience": "Base Experience Value",
+  "text.config.rpmechanics.option.experienceOptions.enduranceOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.rpmechanics.option.experienceOptions.enduranceOptions.amount": "Amount to Add or Multiply By",
 
-  "text.config.ques-config.category.experienceOptions.miningOptions": [
+  "text.config.rpmechanics.category.experienceOptions.miningOptions": [
     { "text": "Mining", "color": "dark_purple"}
   ],
-  "text.config.ques-config.option.experienceOptions.miningOptions.baseExperience": "Base Experience Value",
-  "text.config.ques-config.option.experienceOptions.miningOptions.multiplicativeOrAdditive": "Increase Type",
-  "text.config.ques-config.option.experienceOptions.miningOptions.amount": "Amount to Add or Multiply By",
+  "text.config.rpmechanics.option.experienceOptions.miningOptions.baseExperience": "Base Experience Value",
+  "text.config.rpmechanics.option.experienceOptions.miningOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.rpmechanics.option.experienceOptions.miningOptions.amount": "Amount to Add or Multiply By",
 
-  "text.config.ques-config.category.experienceOptions.woodcuttingOptions": [
+  "text.config.rpmechanics.category.experienceOptions.woodcuttingOptions": [
     { "text": "Woodcutting", "color": "yellow"}
   ],
-  "text.config.ques-config.option.experienceOptions.woodcuttingOptions.baseExperience": "Base Experience Value",
-  "text.config.ques-config.option.experienceOptions.woodcuttingOptions.multiplicativeOrAdditive": "Increase Type",
-  "text.config.ques-config.option.experienceOptions.woodcuttingOptions.amount": "Amount to Add or Multiply By",
+  "text.config.rpmechanics.option.experienceOptions.woodcuttingOptions.baseExperience": "Base Experience Value",
+  "text.config.rpmechanics.option.experienceOptions.woodcuttingOptions.multiplicativeOrAdditive": "Increase Type",
+  "text.config.rpmechanics.option.experienceOptions.woodcuttingOptions.amount": "Amount to Add or Multiply By",
 
-  "text.config.ques-config.category.experienceOptions": "Experience Options",
-  "text.config.ques-config.enum.choices.additive": "Additive",
-  "text.config.ques-config.enum.choices.multiplicative": "Multiplicative",
-  "text.config.ques-config.title": [
+  "text.config.rpmechanics.category.experienceOptions": "Experience Options",
+  "text.config.rpmechanics.enum.choices.add": "Add",
+  "text.config.rpmechanics.enum.choices.multiply": "Multiply",
+  "text.config.rpmechanics.title": [
     {
       "text": "Roleplay Mechanics Mod Settings",
       "color": "#2e6391"
@@ -112,7 +112,9 @@
   ],
 
   "rpmechanics.player_joined": [
-    { "text": "You are using verion ", "color": "#2e469e"},
+    { "text": "You are using ", "color": "#2e469e"},
+    { "text": "Roleplay Mechanics", "color": "#2e6391"},
+    { "text": " version ", "color": "#2e469e"},
     { "text": "0.6.3-", "color": "#3533d4"},
     { "text": "alpha", "color": "#b633d4"},
     { "text": ".", "color": "#2e469e"},

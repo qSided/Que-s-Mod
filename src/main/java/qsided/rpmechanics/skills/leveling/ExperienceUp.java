@@ -30,12 +30,12 @@ public class ExperienceUp {
                 switch (skill) {
                     case "agility" -> {
                         switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.multiplicativeOrAdditive()) {
-                            case ADDITIVE -> {
+                            case ADD -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.baseExperience() + (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
                             }
-                            case MULTIPLICATIVE -> {
+                            case MULTIPLY -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.baseExperience() * (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.agilityOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
@@ -44,12 +44,12 @@ public class ExperienceUp {
                     }
                     case "combat" -> {
                         switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.multiplicativeOrAdditive()) {
-                            case ADDITIVE -> {
+                            case ADD -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.baseExperience() + (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
                             }
-                            case MULTIPLICATIVE -> {
+                            case MULTIPLY -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.baseExperience() * (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.combatOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
@@ -58,12 +58,12 @@ public class ExperienceUp {
                     }
                     case "crafting" -> {
                         switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.multiplicativeOrAdditive()) {
-                            case ADDITIVE -> {
+                            case ADD -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.baseExperience() + (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
                             }
-                            case MULTIPLICATIVE -> {
+                            case MULTIPLY -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.baseExperience() * (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.craftingOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
@@ -72,12 +72,12 @@ public class ExperienceUp {
                     }
                     case "enchanting" -> {
                         switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.multiplicativeOrAdditive()) {
-                            case ADDITIVE -> {
+                            case ADD -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.baseExperience() + (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
                             }
-                            case MULTIPLICATIVE -> {
+                            case MULTIPLY -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.baseExperience() * (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enchantingOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
@@ -86,12 +86,12 @@ public class ExperienceUp {
                     }
                     case "endurance" -> {
                         switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enduranceOptions.multiplicativeOrAdditive()) {
-                            case ADDITIVE -> {
+                            case ADD -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enduranceOptions.baseExperience() + (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enduranceOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
                             }
-                            case MULTIPLICATIVE -> {
+                            case MULTIPLY -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enduranceOptions.baseExperience() * (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.enduranceOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
@@ -100,12 +100,12 @@ public class ExperienceUp {
                     }
                     case "mining" -> {
                         switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.multiplicativeOrAdditive()) {
-                            case ADDITIVE -> {
+                            case ADD -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.baseExperience() + (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
                             }
-                            case MULTIPLICATIVE -> {
+                            case MULTIPLY -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.baseExperience() * (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.miningOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
@@ -114,12 +114,12 @@ public class ExperienceUp {
                     }
                     case "woodcutting" -> {
                         switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.multiplicativeOrAdditive()) {
-                            case ADDITIVE -> {
+                            case ADD -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.baseExperience() + (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
                             }
-                            case MULTIPLICATIVE -> {
+                            case MULTIPLY -> {
                                 if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.baseExperience() * (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.woodcuttingOptions.amount())) {
                                     IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                                 }
@@ -130,12 +130,12 @@ public class ExperienceUp {
                 }
             } else {
                 switch (RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.multiplicativeOrAdditive()) {
-                    case ADDITIVE -> {
+                    case ADD -> {
                         if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() + (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount())) {
                             IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                         }
                     }
-                    case MULTIPLICATIVE -> {
+                    case MULTIPLY -> {
                         if (state.skillExperience.getOrDefault(skill, 0F) >= RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.baseExperience() * (state.skillLevels.getOrDefault(skill, 1) * RoleplayMechanicsCommon.OWO_CONFIG.experienceOptions.globalOptions.amount())) {
                             IncreaseSkillLevelCallback.EVENT.invoker().increaseLevel(player, state, skill, 1, true);
                         }
